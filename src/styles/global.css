@@ -1077,6 +1077,17 @@ textarea::placeholder {
 select {
   padding-right: 3rem;
 }
+select option {
+  color: var(--text);
+  background: #13241a;
+}
+select option[value=''] {
+  color: rgba(201, 194, 179, 0.72);
+}
+select option:checked {
+  background: #274d37;
+  color: #f8f1e3;
+}
 input[type='date'] {
   padding-right: 3rem;
   color-scheme: dark;
