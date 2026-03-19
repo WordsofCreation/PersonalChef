@@ -23,6 +23,27 @@ export type MenuBuilderClientData = {
   };
 };
 
+export type MenuRequestDetails = {
+  diningStyle: string;
+  starter: string;
+  mainCourseCategory: string;
+  mainCourse: string;
+  sauce: string;
+  starch: string;
+  vegetable: string;
+  additions: string[];
+  dessert: string;
+  customConsiderations: string;
+};
+
+export type MenuRequestPayload = {
+  source?: string;
+  state: MenuBuilderState;
+  details: MenuRequestDetails;
+  summary: string;
+  savedAt?: string;
+};
+
 export const MENU_BUILDER_STORAGE_KEY = 'personalChef.sampleMenuBuilder';
 export const MENU_REQUEST_STORAGE_KEY = 'personalChef.sampleMenuRequest';
 
@@ -121,19 +142,26 @@ export const writeBuilderState = (
 };
 
 export const storeMenuRequestPayload = (
-  payload: Record<string, unknown>,
+  payload: MenuRequestPayload,
   storage: Storage | undefined = globalThis.sessionStorage
 ) => {
   if (!storage) return;
   storage.setItem(MENU_REQUEST_STORAGE_KEY, JSON.stringify(payload));
 };
 
-export const readMenuRequestPayload = (storage: Storage | undefined = globalThis.sessionStorage) => {
+export const clearMenuRequestPayload = (storage: Storage | undefined = globalThis.sessionStorage) => {
+  if (!storage) return;
+  storage.removeItem(MENU_REQUEST_STORAGE_KEY);
+};
+
+export const readMenuRequestPayload = (
+  storage: Storage | undefined = globalThis.sessionStorage
+): MenuRequestPayload | null => {
   if (!storage) return null;
 
   try {
     const raw = storage.getItem(MENU_REQUEST_STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
+    return raw ? (JSON.parse(raw) as MenuRequestPayload) : null;
   } catch {
     return null;
   }
@@ -255,7 +283,7 @@ export const getComposedMenuPreview = (data: MenuBuilderClientData, state: MenuB
       additions,
       dessert,
       customConsiderations: state.customConsiderations.trim()
-    }
+    } satisfies MenuRequestDetails
   };
 };
 
@@ -268,18 +296,49 @@ export const joinWithAnd = (items: string[]) => {
 export const buildMenuRequestMessage = (data: MenuBuilderClientData, state: MenuBuilderState) => {
   const preview = getComposedMenuPreview(data, state);
   const lines = [
-    'Sample Menu Builder selections:',
-    preview.details.diningStyle ? `Dining Style: ${preview.details.diningStyle}` : '',
-    preview.details.starter ? `Starter: ${preview.details.starter}` : '',
-    preview.details.mainCourseCategory ? `Main Course Category: ${preview.details.mainCourseCategory}` : '',
-    preview.details.mainCourse ? `Main Course Selection: ${preview.details.mainCourse}` : '',
-    preview.details.sauce ? `Sauce: ${preview.details.sauce}` : '',
-    preview.details.starch ? `Starch / Grain: ${preview.details.starch}` : '',
-    preview.details.vegetable ? `Vegetable Accompaniment(s): ${preview.details.vegetable}` : '',
-    preview.details.additions.length ? `Optional Additions: ${joinWithAnd(preview.details.additions)}` : '',
-    preview.details.dessert ? `Dessert: ${preview.details.dessert}` : '',
-    preview.details.customConsiderations ? `Custom Considerations: ${preview.details.customConsiderations}` : ''
-  ].filter(Boolean);
+    `Dining Style: ${preview.details.diningStyle || ''}`,
+    `Starter: ${preview.details.starter || ''}`,
+    `Main Course Category: ${preview.details.mainCourseCategory || ''}`,
+    `Main Course Selection: ${preview.details.mainCourse || ''}`,
+    `Sauce: ${preview.details.sauce || ''}`,
+    `Starch / Grain: ${preview.details.starch || ''}`,
+    `Vegetable Accompaniment(s): ${preview.details.vegetable || ''}`,
+    `Optional Additions: ${preview.details.additions.length ? joinWithAnd(preview.details.additions) : ''}`,
+    `Dessert: ${preview.details.dessert || ''}`,
+    `Custom Considerations: ${preview.details.customConsiderations || ''}`
+  ];
 
   return lines.join('\n');
+};
+
+export const hasMenuRequestSelections = (payload: Pick<MenuRequestPayload, 'details'> | null | undefined) => {
+  if (!payload) return false;
+
+  const details = payload.details;
+  if (!details) return false;
+
+  return Boolean(
+    details.diningStyle ||
+      details.starter ||
+      details.mainCourseCategory ||
+      details.mainCourse ||
+      details.sauce ||
+      details.starch ||
+      details.vegetable ||
+      details.additions.length ||
+      details.dessert ||
+      details.customConsiderations
+  );
+};
+
+export const createMenuRequestPayload = (data: MenuBuilderClientData, state: MenuBuilderState, source = 'menu-preview'): MenuRequestPayload => {
+  const preview = getComposedMenuPreview(data, state);
+
+  return {
+    source,
+    state,
+    details: preview.details,
+    summary: buildMenuRequestMessage(data, state),
+    savedAt: new Date().toISOString()
+  };
 };
