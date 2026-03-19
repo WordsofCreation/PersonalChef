@@ -260,7 +260,7 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
   </section>
 
   <script type="application/json" id="menu-builder-data" set:html={JSON.stringify(dataPayload)}></script>
-  <script type="module">
+  <script>
     import {
       MENU_BUILDER_STORAGE_KEY,
       createEmptyMenuBuilderState,
