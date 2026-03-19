@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqList from '../components/FaqList.astro';
+import CTA from '../components/CTA.astro';
+const faqs = await getCollection('faqs');
+const schema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.data.question, acceptedAnswer: { '@type': 'Answer', text: faq.data.answer } })) };
+---
+<BaseLayout title="FAQ | Port Angeles Personal Chef" description="Answers to common questions about booking a personal chef in Port Angeles, custom pricing, dietary accommodations, and Olympic Peninsula service areas." path="/faq" schema={schema}>
+  <section class="section">
+    <div class="container section-header">
+      <p class="eyebrow">FAQ</p>
+      <h1>Answers to common questions about chef services on the Olympic Peninsula.</h1>
+    </div>
+    <div class="container">
+      <FaqList faqs={faqs} />
+    </div>
+  </section>
+  <CTA title="Still have questions?" text="Use the booking form to share a few details. You’ll receive guidance on service fit, timing, and a personalized quote." secondaryHref="/contact" secondaryLabel="Contact the Chef" />
+</BaseLayout>

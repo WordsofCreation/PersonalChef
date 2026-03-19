@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MenuCard from '../components/MenuCard.astro';
+import CTA from '../components/CTA.astro';
+const menus = await getCollection('menus');
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  hasMenuSection: menus.map((menu) => ({ '@type': 'MenuSection', name: menu.data.title, description: menu.data.description }))
+};
+---
+<BaseLayout title="Sample Menus | Olympic Peninsula Personal Chef" description="Explore elegant sample menus for Pacific Northwest dinners, romantic dinners for two, weekly meal prep, brunch service, and holiday meals." path="/sample-menus" schema={schema}>
+  <section class="section">
+    <div class="container section-header">
+      <p class="eyebrow">Sample Menus</p>
+      <h1>Thoughtfully structured menus designed to be customized.</h1>
+      <p>These sample menus are stored as structured content so they can be updated quickly as seasons, ingredients, and service styles evolve.</p>
+    </div>
+    <div class="container grid two-col">
+      {menus.map((menu) => <MenuCard menu={menu} />)}
+    </div>
+  </section>
+  <CTA title="See something you love?" text="Every menu can be adjusted for dietary needs, favorite ingredients, local sourcing opportunities, and the tone of your event." secondaryHref="/contact" secondaryLabel="Ask About Custom Menus" />
+</BaseLayout>

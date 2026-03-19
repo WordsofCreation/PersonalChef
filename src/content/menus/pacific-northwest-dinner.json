@@ -1,0 +1,10 @@
+{
+  "title": "Pacific Northwest Dinner",
+  "category": "Signature Dining",
+  "description": "A seasonal multi-course menu showcasing the coast, farms, and forests of the Olympic Peninsula.",
+  "courses": [
+    { "name": "First Course", "items": ["Dungeness crab cakes with lemon-herb aioli", "Charred chicories with apple cider vinaigrette"] },
+    { "name": "Main Course", "items": ["Cedar-roasted salmon", "Wild mushroom farro", "Blistered broccolini with garlic oil"] },
+    { "name": "Dessert", "items": ["Marionberry olive oil cake", "Salted honey crème fraîche"] }
+  ]
+}

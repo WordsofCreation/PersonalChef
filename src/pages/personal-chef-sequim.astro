@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Personal Chef Sequim',
+  areaServed: 'Sequim, WA',
+  provider: { '@type': 'LocalBusiness', name: 'Olympic Peninsula Personal Chef' }
+};
+---
+<BaseLayout title="Personal Chef Sequim | Weekly Meal Prep & Private Dining" description="Personal chef Sequim services offering refined meal prep, custom dietary menus, private dinners, and elevated hospitality for Peninsula clients." path="/personal-chef-sequim" schema={schema}>
+  <section class="section">
+    <div class="container section-header">
+      <p class="eyebrow">Personal Chef Sequim</p>
+      <h1>Refined, convenient chef services for Sequim clients who value ease and quality.</h1>
+      <p>From tailored weekly meals to hosted dinners at home, Sequim clients receive chef-crafted food with thoughtful planning, polished presentation, and warm service.</p>
+    </div>
+    <div class="container grid two-col">
+      <article class="card">
+        <h2>Popular Sequim services</h2>
+        <ul>
+          <li>Meal prep designed for active households, retirees, and wellness-focused routines.</li>
+          <li>Private dinners for anniversaries, birthdays, and visiting family weekends.</li>
+          <li>Customized dietary planning for gluten-free, heart-healthy, and pescatarian preferences.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Why it works locally</h2>
+        <p>Sequim households often want dependable support without sacrificing taste, ingredient quality, or flexibility. This service provides a practical luxury that feels calm, personal, and trustworthy.</p>
+      </article>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid two-col">
+      <article class="card">
+        <p class="eyebrow">Related services</p>
+        <p>Compare <a href="/services">meal prep, private dining, and dietary custom menus</a> to find the best fit for your Sequim home.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Nearby locations</p>
+        <p>Planning another event? See <a href="/personal-chef-port-angeles">Port Angeles</a> and <a href="/vacation-rental-chef-olympic-peninsula">Olympic Peninsula vacation rental chef services</a>.</p>
+      </article>
+    </div>
+  </section>
+  <CTA title="Need a personal chef in Sequim?" text="Inquire about ongoing meal prep, seasonal dinner parties, or dietary planning for your home or second residence." secondaryHref="/services" secondaryLabel="Compare Services" />
+</BaseLayout>

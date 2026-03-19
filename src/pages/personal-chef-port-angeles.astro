@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Personal Chef Port Angeles',
+  areaServed: 'Port Angeles, WA',
+  provider: { '@type': 'LocalBusiness', name: 'Olympic Peninsula Personal Chef' }
+};
+---
+<BaseLayout title="Personal Chef Port Angeles | Private Chef Port Angeles WA" description="Personal chef Port Angeles services for weekly meal prep, private dinners, holiday meals, and boutique catering with refined Pacific Northwest style." path="/personal-chef-port-angeles" schema={schema}>
+  <section class="section">
+    <div class="container section-header">
+      <p class="eyebrow">Personal Chef Port Angeles</p>
+      <h1>Luxury personal chef services for Port Angeles households and gatherings.</h1>
+      <p>Whether you need weeknight meal prep, a polished private dinner, or support for a holiday table, this Port Angeles personal chef service is designed to make hosting and dining at home feel effortless.</p>
+    </div>
+    <div class="container grid two-col">
+      <article class="card">
+        <h2>Why Port Angeles clients book</h2>
+        <ul>
+          <li>Reliable, elevated meal prep for full-time residents and second-home owners.</li>
+          <li>Private chef Port Angeles WA dining experiences for anniversaries, celebrations, and executive hosting.</li>
+          <li>Custom menus inspired by local produce, seafood, and Pacific Northwest seasons.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Ideal local occasions</h2>
+        <ul>
+          <li>Waterfront dinner parties and intimate celebrations.</li>
+          <li>Weekly family meal support and dietary-focused meal prep.</li>
+          <li>Holiday entertaining and boutique catering for small guest lists.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid two-col">
+      <article class="card">
+        <p class="eyebrow">Related services</p>
+        <p>Explore <a href="/services">weekly meal prep, private dinners, holiday meals, and dietary custom menus</a> for Port Angeles households.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Nearby locations</p>
+        <p>Also serving <a href="/personal-chef-sequim">Sequim</a> and <a href="/vacation-rental-chef-olympic-peninsula">vacation rentals across the Olympic Peninsula</a>.</p>
+      </article>
+    </div>
+  </section>
+  <CTA title="Planning a Port Angeles dinner or meal prep schedule?" text="Share your guest count, location, and preferred style of service to receive a personalized quote." secondaryHref="/sample-menus" secondaryLabel="View Menus" />
+</BaseLayout>

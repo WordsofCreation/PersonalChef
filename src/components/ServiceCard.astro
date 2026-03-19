@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content';
+const { service } = Astro.props as { service: CollectionEntry<'services'> };
+---
+<article class="card service-card">
+  <p class="eyebrow">{service.data.seoKeyword}</p>
+  <h3>{service.data.title}</h3>
+  <p>{service.data.summary}</p>
+  <ul>
+    {service.data.benefits.map((benefit) => <li>{benefit}</li>)}
+  </ul>
+  <p><strong>Ideal for:</strong> {service.data.idealFor}</p>
+  <a class="btn btn-secondary" href="/contact">{service.data.cta}</a>
+</article>

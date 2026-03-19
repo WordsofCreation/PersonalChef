@@ -1,0 +1,10 @@
+{
+  "title": "Romantic Dinner for Two",
+  "category": "Private Dinner",
+  "description": "An intimate chef-curated dinner designed for anniversaries, proposals, and special evenings in.",
+  "courses": [
+    { "name": "Welcome", "items": ["Sparkling rosé pairing", "Oysters with cucumber mignonette"] },
+    { "name": "Dinner", "items": ["Seared filet with rosemary jus", "Potato pavé", "Roasted asparagus"] },
+    { "name": "Sweet Finish", "items": ["Dark chocolate pot de crème", "Candied hazelnuts"] }
+  ]
+}

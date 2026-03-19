@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from 'astro:content';
+const { faqs } = Astro.props as { faqs: CollectionEntry<'faqs'>[] };
+---
+<div class="grid two-col">
+  {faqs.map((faq) => (
+    <article class="card">
+      <h3>{faq.data.question}</h3>
+      <p>{faq.data.answer}</p>
+    </article>
+  ))}
+</div>

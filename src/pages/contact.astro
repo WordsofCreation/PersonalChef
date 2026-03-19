@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Book a Personal Chef',
+  mainEntity: { '@type': 'LocalBusiness', name: 'Olympic Peninsula Personal Chef' }
+};
+---
+<BaseLayout title="Contact & Book Now | Olympic Peninsula Personal Chef" description="Request a quote for personal chef Port Angeles, personal chef Sequim, meal prep, private dinners, and vacation rental chef experiences." path="/contact" schema={schema}>
+  <section class="section">
+    <div class="container grid two-col">
+      <div>
+        <p class="eyebrow">Contact / Book Now</p>
+        <h1>Tell us about your table, your guests, and your timeline.</h1>
+        <p>Every inquiry receives a thoughtful response, a customized recommendation, and transparent next steps for pricing. Most replies can be sent within one business day.</p>
+        <div class="card schema-note">
+          <p><strong>Trust note:</strong> Your inquiry starts a personalized quote process. Menus, service style, and logistics are all tailored to your occasion, home, and dietary needs.</p>
+        </div>
+      </div>
+      <form class="card form-grid" name="booking" method="post" action="#">
+        <label>Name<input type="text" name="name" autocomplete="name" required /></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+        <label>Phone<input type="tel" name="phone" autocomplete="tel" /></label>
+        <label>Event Type
+          <select name="eventType">
+            <option>Weekly Meal Prep</option>
+            <option>Private Dinner</option>
+            <option>Vacation Rental Chef Experience</option>
+            <option>Small Event Catering</option>
+            <option>Holiday Meal</option>
+            <option>Custom Dietary Plan</option>
+          </select>
+        </label>
+        <label>Guest Count<input type="number" name="guestCount" min="1" /></label>
+        <label>Date<input type="date" name="date" /></label>
+        <label>Location<input type="text" name="location" placeholder="Port Angeles, Sequim, or Olympic Peninsula address" /></label>
+        <label>Dietary Needs<input type="text" name="dietaryNeeds" placeholder="Allergies, preferences, wellness goals" /></label>
+        <label class="full-span">Message<textarea name="message" placeholder="Tell us about the occasion, menu style, service expectations, and anything else helpful."></textarea></label>
+        <div class="full-span"><button class="btn btn-primary" type="submit">Request a Quote</button></div>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
