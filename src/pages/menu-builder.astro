@@ -53,12 +53,12 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
         <h1>Shape a sample dinner that already feels thoughtfully hosted.</h1>
         <p>
           Explore a polished first version of the menu planning experience. Select a dining style, build your courses,
-          and watch the menu summary evolve into a refined concept for your table.
+          and watch the menu summary evolve into a refined Olympic Peninsula concept for your table.
         </p>
         <div class="menu-builder-hero-points">
           <div>
             <strong>Curated, not cluttered</strong>
-            <span>Every option is presented like a considered hospitality choice rather than a generic form field.</span>
+            <span>Every option is shaped around Pacific Northwest ingredients, seasonal rhythm, and premium private-chef service.</span>
           </div>
           <div>
             <strong>Ready for future expansion</strong>
@@ -119,13 +119,13 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
             <div class="builder-subsection">
               <div class="builder-subsection-head">
                 <h3>Main Course Selection</h3>
-                <p>Available entrées update based on your chosen category.</p>
+                <p>Available entrées update based on your chosen category, with subtle chef-curated pairing guidance where helpful.</p>
               </div>
               <div class="builder-option-grid builder-option-grid--compact" data-main-course-options>
                 <BuilderOptions sectionId="mainCourseSelection" options={initialMainCourseOptions} type="single" />
               </div>
               <p class="builder-inline-note" data-main-course-helper>
-                Select a category above to view compatible entrée options.
+                Select a category above to view curated entrée options.
               </p>
             </div>
           </section>
@@ -199,19 +199,19 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
             <div class="builder-section-head">
               <p class="eyebrow">Step 6</p>
               <h2 id="custom-considerations-heading">Custom Considerations</h2>
-              <p>Share dietary needs, celebratory notes, ingredient preferences, or service details for future planning.</p>
+              <p>Share allergies, favorite ingredients, dietary preferences, celebration notes, or anything special you would love included.</p>
             </div>
             <label class="builder-textarea-wrap" for="custom-considerations">
-              <span class="builder-label">Anything you would want the chef to keep in mind?</span>
+              <span class="builder-label">What should the chef know to personalize this menu?</span>
               <textarea
                 id="custom-considerations"
                 name="customConsiderations"
                 rows="6"
                 maxlength="600"
-                placeholder="Examples: shellfish allergy, less dairy, birthday dessert moment, local produce focus, or a wine-friendly menu direction."
+                placeholder="Examples: shellfish allergy, favorite local seafood, dairy-light menu, anniversary dessert moment, wellness focus, or a wine-friendly direction."
                 data-builder-textarea
               ></textarea>
-              <span class="builder-helper-text">This is saved only in the page state for now and prepares the feature for future inquiry integration.</span>
+              <span class="builder-helper-text">This stays in page state for now and helps shape future inquiry and menu-planning features.</span>
             </label>
           </section>
 
@@ -233,7 +233,7 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
           <div class="menu-summary-head">
             <p class="eyebrow">Live summary</p>
             <h2 id="menu-summary-heading">Your sample menu</h2>
-            <p>A curated snapshot of the dinner taking shape as you make selections.</p>
+            <p>A curated snapshot of your Pacific Northwest dinner as it takes shape.</p>
           </div>
 
           <div class="menu-summary-empty" data-summary-empty>
@@ -251,7 +251,7 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
           </div>
 
           <div class="menu-summary-footer">
-            <span>Designed for a premium, static-site friendly planning flow.</span>
+            <span>Designed for a premium, static-site friendly planning flow on GitHub Pages.</span>
             <a href={withBase('/contact')}>Inquire about a custom dinner</a>
           </div>
         </div>
@@ -321,11 +321,11 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
           mainCourseContainer.innerHTML = `
             <div class="builder-empty-state">
               <strong>Select a main course category</strong>
-              <p>Once you choose Seafood, Poultry, or Vegetarian, matching entrée selections will appear here.</p>
+              <p>Once you choose a main course style, matching entrées for that Pacific Northwest direction will appear here.</p>
             </div>
           `;
           if (mainCourseHelper) {
-            mainCourseHelper.textContent = 'Choose a main course category to unlock entrée selections.';
+            mainCourseHelper.textContent = 'Choose a main course style to unlock curated entrée selections.';
           }
           return;
         }
@@ -346,6 +346,7 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
             <span class="builder-option-copy">
               <strong>${option.label}</strong>
               <span>${option.description || ''}</span>
+              ${option.note ? `<small class="builder-option-note">${option.note}</small>` : ''}
             </span>
           </label>
         `).join('');
@@ -410,7 +411,7 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
         if (summaryConsiderations) {
           summaryConsiderations.textContent = state.customConsiderations.trim()
             ? state.customConsiderations.trim()
-            : 'No custom considerations yet. Use the notes field to mention dietary needs, event tone, or ingredient preferences.';
+            : 'No custom considerations yet. Use the notes field to mention allergies, celebration details, favorite ingredients, or dietary preferences.';
         }
       };
 
