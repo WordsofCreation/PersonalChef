@@ -1,3 +1,5 @@
+import { withBase } from '../utils/paths';
+
 const pages = [
   '',
   'services',
@@ -13,7 +15,7 @@ const pages = [
 export async function GET(context) {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map((page) => `  <url><loc>${new URL(page ? `/${page}` : '/', context.site).toString()}</loc></url>`).join('\n')}
+${pages.map((page) => `  <url><loc>${new URL(withBase(page ? `/${page}` : '/'), context.site).toString()}</loc></url>`).join('\n')}
 </urlset>`;
 
   return new Response(body, {

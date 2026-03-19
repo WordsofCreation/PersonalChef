@@ -6,6 +6,7 @@ import MenuCard from '../components/MenuCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import FaqList from '../components/FaqList.astro';
 import CTA from '../components/CTA.astro';
+import { withBase } from '../utils/paths';
 
 const services = await getCollection('services');
 const menus = await getCollection('menus');
@@ -52,8 +53,8 @@ const schema = [
         <h1>Private chef experiences that bring Pacific Northwest elegance home.</h1>
         <p>From intimate Port Angeles dinners to refined weekly meal prep in Sequim and elevated vacation-rental dining across the Olympic Peninsula, every service is tailored with thoughtful hospitality, seasonal ingredients, and a calm, polished presence.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/contact">Request Your Custom Proposal</a>
-          <a class="btn btn-secondary" href="/sample-menus">Browse Sample Menus</a>
+          <a class="btn btn-primary" href={withBase('/contact')}>Request Your Custom Proposal</a>
+          <a class="btn btn-secondary" href={withBase('/sample-menus')}>Browse Sample Menus</a>
         </div>
         <div class="hero-proof">
           <p><strong>Responsive booking:</strong> Most inquiries receive a personal reply within one business day.</p>
@@ -204,7 +205,7 @@ const schema = [
         </article>
         <article class="card">
           <p class="eyebrow">Helpful next steps</p>
-          <p>Compare <a href="/services">services</a>, explore <a href="/sample-menus">sample menus</a>, or visit the dedicated <a href="/personal-chef-port-angeles">Port Angeles</a> and <a href="/personal-chef-sequim">Sequim</a> pages for locally focused details.</p>
+          <p>Compare <a href={withBase('/services')}>services</a>, explore <a href={withBase('/sample-menus')}>sample menus</a>, or visit the dedicated <a href={withBase('/personal-chef-port-angeles')}>Port Angeles</a> and <a href={withBase('/personal-chef-sequim')}>Sequim</a> pages for locally focused details.</p>
         </article>
       </div>
     </div>

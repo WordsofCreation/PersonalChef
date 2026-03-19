@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTA from '../components/CTA.astro';
+import { withBase } from '../utils/paths';
 
 const services = await getCollection('services');
 const schema = {
@@ -42,8 +43,8 @@ const schema = {
           </ul>
           <p class="service-meta"><strong>Ideal fit:</strong> {service.data.idealFor}</p>
           <div class="inline-links">
-            <a class="btn btn-primary" href="/contact">{service.data.cta}</a>
-            <a class="service-link" href="/sample-menus">View menu ideas →</a>
+            <a class="btn btn-primary" href={withBase('/contact')}>{service.data.cta}</a>
+            <a class="service-link" href={withBase('/sample-menus')}>View menu ideas →</a>
           </div>
         </article>
       ))}
@@ -55,14 +56,14 @@ const schema = {
       <article class="card">
         <p class="eyebrow">Local planning pages</p>
         <h2>Explore service details by location.</h2>
-        <p><a href="/personal-chef-port-angeles">Personal Chef Port Angeles</a> is ideal for waterfront homes, polished dinner parties, and week-to-week meal support.</p>
-        <p><a href="/personal-chef-sequim">Personal Chef Sequim</a> focuses on tailored meal prep, wellness-minded dining, and gracious in-home entertaining.</p>
-        <p><a href="/vacation-rental-chef-olympic-peninsula">Vacation Rental Chef Olympic Peninsula</a> is designed for destination stays, hosted weekends, and elevated guest amenities.</p>
+        <p><a href={withBase('/personal-chef-port-angeles')}>Personal Chef Port Angeles</a> is ideal for waterfront homes, polished dinner parties, and week-to-week meal support.</p>
+        <p><a href={withBase('/personal-chef-sequim')}>Personal Chef Sequim</a> focuses on tailored meal prep, wellness-minded dining, and gracious in-home entertaining.</p>
+        <p><a href={withBase('/vacation-rental-chef-olympic-peninsula')}>Vacation Rental Chef Olympic Peninsula</a> is designed for destination stays, hosted weekends, and elevated guest amenities.</p>
       </article>
       <article class="card">
         <p class="eyebrow">Menu inspiration</p>
         <h2>Use sample menus to refine the tone of your event.</h2>
-        <p>Browse the <a href="/sample-menus">Sample Menus</a> page to see how different services can feel—whether you want a celebratory multi-course dinner, stocked weekly meals, or a relaxed Peninsula brunch.</p>
+        <p>Browse the <a href={withBase('/sample-menus')}>Sample Menus</a> page to see how different services can feel—whether you want a celebratory multi-course dinner, stocked weekly meals, or a relaxed Peninsula brunch.</p>
       </article>
     </div>
   </section>

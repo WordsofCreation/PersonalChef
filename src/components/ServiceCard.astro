@@ -1,5 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../utils/paths';
+
 const { service } = Astro.props as { service: CollectionEntry<'services'> };
 ---
 <article class="card service-card" style="display:grid; gap:1rem;">
@@ -13,7 +15,7 @@ const { service } = Astro.props as { service: CollectionEntry<'services'> };
   </ul>
   <p class="service-meta"><strong>Best for:</strong> {service.data.idealFor}</p>
   <div class="inline-links">
-    <a class="btn btn-secondary" href="/contact">{service.data.cta}</a>
-    <a class="service-link" href="/sample-menus">See menu inspiration →</a>
+    <a class="btn btn-secondary" href={withBase('/contact')}>{service.data.cta}</a>
+    <a class="service-link" href={withBase('/sample-menus')}>See menu inspiration →</a>
   </div>
 </article>

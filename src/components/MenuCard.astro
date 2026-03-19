@@ -1,5 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../utils/paths';
+
 const { menu } = Astro.props as { menu: CollectionEntry<'menus'> };
 ---
 <article class="card menu-card" style="display:grid; gap:1rem;">
@@ -19,6 +21,6 @@ const { menu } = Astro.props as { menu: CollectionEntry<'menus'> };
     ))}
   </div>
   <div class="inline-links">
-    <a class="menu-link" href="/contact">Customize this menu →</a>
+    <a class="menu-link" href={withBase('/contact')}>Customize this menu →</a>
   </div>
 </article>
