@@ -1,0 +1,468 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths';
+import {
+  emptySummaryCopy,
+  mainCourseOptions,
+  menuBuilderSections,
+  summaryOrder
+} from '../data/menuBuilder';
+import BuilderOptions from '../components/BuilderOptions.astro';
+
+const pageTitle = 'Sample Menu Builder | Olympic Peninsula Personal Chef';
+const pageDescription = 'Build a polished sample dinner menu with a premium, interactive menu builder designed for private chef experiences across the Olympic Peninsula.';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: pageTitle,
+  description: pageDescription,
+  url: `https://YOUR-GITHUB-USERNAME.github.io/PersonalChef/menu-builder/`
+};
+
+const sectionLookup = Object.fromEntries(
+  menuBuilderSections.map((section) => [section.id, section])
+);
+
+const dataPayload = {
+  sections: menuBuilderSections,
+  mainCourseOptions,
+  summaryOrder,
+  emptySummaryCopy,
+  sectionLookup
+};
+
+const diningStyleSection = menuBuilderSections.find((section) => section.id === 'diningStyle');
+const starterSection = menuBuilderSections.find((section) => section.id === 'starter');
+const mainCourseCategorySection = menuBuilderSections.find((section) => section.id === 'mainCourseCategory');
+const sauceSection = menuBuilderSections.find((section) => section.id === 'sauce');
+const starchSection = menuBuilderSections.find((section) => section.id === 'starch');
+const vegetableSection = menuBuilderSections.find((section) => section.id === 'vegetable');
+const additionsSection = menuBuilderSections.find((section) => section.id === 'optionalAdditions');
+const dessertSection = menuBuilderSections.find((section) => section.id === 'dessert');
+
+const defaultMainCourseCategory = mainCourseCategorySection?.options?.[0]?.value ?? 'seafood';
+const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ?? [];
+
+---
+<BaseLayout title={pageTitle} description={pageDescription} path="/menu-builder" schema={schema}>
+  <section class="section menu-builder-hero-section">
+    <div class="container menu-builder-shell">
+      <div class="menu-builder-intro panel">
+        <p class="eyebrow">Sample menu builder</p>
+        <h1>Shape a sample dinner that already feels thoughtfully hosted.</h1>
+        <p>
+          Explore a polished first version of the menu planning experience. Select a dining style, build your courses,
+          and watch the menu summary evolve into a refined concept for your table.
+        </p>
+        <div class="menu-builder-hero-points">
+          <div>
+            <strong>Curated, not cluttered</strong>
+            <span>Every option is presented like a considered hospitality choice rather than a generic form field.</span>
+          </div>
+          <div>
+            <strong>Ready for future expansion</strong>
+            <span>Built to support menu previews, inquiry handoff, larger culinary datasets, and pairing logic in later phases.</span>
+          </div>
+        </div>
+        <div class="menu-builder-hero-actions">
+          <a class="btn btn-secondary" href={withBase('/sample-menus')}>Browse Sample Menus</a>
+          <a class="btn btn-primary" href="#menu-builder-form">Start Building</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container menu-builder-layout" id="menu-builder-form">
+      <form class="menu-builder-form" data-menu-builder novalidate>
+        <div class="menu-builder-grid">
+          <section class="panel builder-section" aria-labelledby="dining-style-heading">
+            <div class="builder-section-head">
+              <p class="eyebrow">Step 1</p>
+              <h2 id="dining-style-heading">{diningStyleSection?.title}</h2>
+              <p>{diningStyleSection?.helper}</p>
+            </div>
+            <div class="builder-option-grid">
+              {diningStyleSection?.options && <BuilderOptions sectionId="diningStyle" options={diningStyleSection.options} type="single" />}
+            </div>
+          </section>
+
+          <section class="panel builder-section" aria-labelledby="starter-heading">
+            <div class="builder-section-head">
+              <p class="eyebrow">Step 2</p>
+              <h2 id="starter-heading">{starterSection?.title}</h2>
+              <p>{starterSection?.helper}</p>
+            </div>
+            <div class="builder-option-grid builder-option-grid--compact">
+              {starterSection?.options && <BuilderOptions sectionId="starter" options={starterSection.options} type="single" />}
+            </div>
+          </section>
+
+          <section class="panel builder-section" aria-labelledby="main-course-heading">
+            <div class="builder-section-head">
+              <p class="eyebrow">Step 3</p>
+              <h2 id="main-course-heading">Main Course</h2>
+              <p>Choose a category first, then refine it into a featured entrée.</p>
+            </div>
+
+            <div class="builder-subsection">
+              <div class="builder-subsection-head">
+                <h3>{mainCourseCategorySection?.title}</h3>
+                <p>{mainCourseCategorySection?.helper}</p>
+              </div>
+              <div class="builder-option-grid builder-option-grid--compact">
+                {mainCourseCategorySection?.options && <BuilderOptions sectionId="mainCourseCategory" options={mainCourseCategorySection.options} type="single" />}
+              </div>
+            </div>
+
+            <div class="builder-subsection">
+              <div class="builder-subsection-head">
+                <h3>Main Course Selection</h3>
+                <p>Available entrées update based on your chosen category.</p>
+              </div>
+              <div class="builder-option-grid builder-option-grid--compact" data-main-course-options>
+                <BuilderOptions sectionId="mainCourseSelection" options={initialMainCourseOptions} type="single" />
+              </div>
+              <p class="builder-inline-note" data-main-course-helper>
+                Select a category above to view compatible entrée options.
+              </p>
+            </div>
+          </section>
+
+          <section class="panel builder-section" aria-labelledby="plate-details-heading">
+            <div class="builder-section-head">
+              <p class="eyebrow">Step 4</p>
+              <h2 id="plate-details-heading">Plate Details</h2>
+              <p>Compose the supporting elements that make the entrée feel complete.</p>
+            </div>
+            <div class="builder-multi-column">
+              <div class="builder-subsection">
+                <div class="builder-subsection-head">
+                  <h3>{sauceSection?.title}</h3>
+                  <p>{sauceSection?.helper}</p>
+                </div>
+                <div class="builder-option-grid builder-option-grid--compact">
+                  {sauceSection?.options && <BuilderOptions sectionId="sauce" options={sauceSection.options} type="single" />}
+                </div>
+              </div>
+              <div class="builder-subsection">
+                <div class="builder-subsection-head">
+                  <h3>{starchSection?.title}</h3>
+                  <p>{starchSection?.helper}</p>
+                </div>
+                <div class="builder-option-grid builder-option-grid--compact">
+                  {starchSection?.options && <BuilderOptions sectionId="starch" options={starchSection.options} type="single" />}
+                </div>
+              </div>
+              <div class="builder-subsection">
+                <div class="builder-subsection-head">
+                  <h3>{vegetableSection?.title}</h3>
+                  <p>{vegetableSection?.helper}</p>
+                </div>
+                <div class="builder-option-grid builder-option-grid--compact">
+                  {vegetableSection?.options && <BuilderOptions sectionId="vegetable" options={vegetableSection.options} type="single" />}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel builder-section" aria-labelledby="finishing-touches-heading">
+            <div class="builder-section-head">
+              <p class="eyebrow">Step 5</p>
+              <h2 id="finishing-touches-heading">Finishing Touches</h2>
+              <p>Add optional hosting details and a final dessert course.</p>
+            </div>
+            <div class="builder-multi-column builder-multi-column--wide">
+              <div class="builder-subsection">
+                <div class="builder-subsection-head">
+                  <h3>{additionsSection?.title}</h3>
+                  <p>{additionsSection?.helper}</p>
+                </div>
+                <div class="builder-option-grid builder-option-grid--compact">
+                  {additionsSection?.options && <BuilderOptions sectionId="optionalAdditions" options={additionsSection.options} type="multiple" />}
+                </div>
+              </div>
+              <div class="builder-subsection">
+                <div class="builder-subsection-head">
+                  <h3>{dessertSection?.title}</h3>
+                  <p>{dessertSection?.helper}</p>
+                </div>
+                <div class="builder-option-grid builder-option-grid--compact">
+                  {dessertSection?.options && <BuilderOptions sectionId="dessert" options={dessertSection.options} type="single" />}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel builder-section" aria-labelledby="custom-considerations-heading">
+            <div class="builder-section-head">
+              <p class="eyebrow">Step 6</p>
+              <h2 id="custom-considerations-heading">Custom Considerations</h2>
+              <p>Share dietary needs, celebratory notes, ingredient preferences, or service details for future planning.</p>
+            </div>
+            <label class="builder-textarea-wrap" for="custom-considerations">
+              <span class="builder-label">Anything you would want the chef to keep in mind?</span>
+              <textarea
+                id="custom-considerations"
+                name="customConsiderations"
+                rows="6"
+                maxlength="600"
+                placeholder="Examples: shellfish allergy, less dairy, birthday dessert moment, local produce focus, or a wine-friendly menu direction."
+                data-builder-textarea
+              ></textarea>
+              <span class="builder-helper-text">This is saved only in the page state for now and prepares the feature for future inquiry integration.</span>
+            </label>
+          </section>
+
+          <div class="panel builder-cta-panel">
+            <div>
+              <p class="eyebrow">Next phase ready</p>
+              <h2>Preview the direction you’ve created.</h2>
+              <p>The next phase can turn this foundation into a full preview flow and inquiry handoff without rewriting the builder.</p>
+            </div>
+            <button class="btn btn-primary builder-preview-button" type="button" data-preview-button>
+              Preview My Menu
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <aside class="panel menu-summary-panel" aria-labelledby="menu-summary-heading">
+        <div class="menu-summary-shell">
+          <div class="menu-summary-head">
+            <p class="eyebrow">Live summary</p>
+            <h2 id="menu-summary-heading">Your sample menu</h2>
+            <p>A curated snapshot of the dinner taking shape as you make selections.</p>
+          </div>
+
+          <div class="menu-summary-empty" data-summary-empty>
+            <strong>{emptySummaryCopy.title}</strong>
+            <p>{emptySummaryCopy.description}</p>
+          </div>
+
+          <div class="menu-summary-course-list" data-summary-list hidden></div>
+
+          <div class="menu-summary-notes">
+            <p class="menu-summary-notes-label">Chef notes</p>
+            <p data-summary-considerations>
+              No custom considerations yet. Use the notes field to mention dietary needs, event tone, or ingredient preferences.
+            </p>
+          </div>
+
+          <div class="menu-summary-footer">
+            <span>Designed for a premium, static-site friendly planning flow.</span>
+            <a href={withBase('/contact')}>Inquire about a custom dinner</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script type="application/json" id="menu-builder-data" set:html={JSON.stringify(dataPayload)}></script>
+  <script>
+    const dataElement = document.getElementById('menu-builder-data');
+
+    if (dataElement?.textContent) {
+      const builderData = JSON.parse(dataElement.textContent);
+      const summaryList = document.querySelector('[data-summary-list]');
+      const summaryEmpty = document.querySelector('[data-summary-empty]');
+      const summaryConsiderations = document.querySelector('[data-summary-considerations]');
+      const mainCourseContainer = document.querySelector('[data-main-course-options]');
+      const mainCourseHelper = document.querySelector('[data-main-course-helper]');
+      const previewButton = document.querySelector('[data-preview-button]');
+      const form = document.querySelector('[data-menu-builder]');
+      const state = {
+        diningStyle: '',
+        starter: '',
+        mainCourseCategory: '',
+        mainCourseSelection: '',
+        sauce: '',
+        starch: '',
+        vegetable: '',
+        optionalAdditions: [],
+        dessert: '',
+        customConsiderations: ''
+      };
+
+      const summaryLabels = {
+        diningStyle: 'Dining style',
+        starter: 'Starter',
+        mainCourseSelection: 'Entrée',
+        sauce: 'Sauce',
+        starch: 'Starch / Grain',
+        vegetable: 'Vegetable',
+        optionalAdditions: 'Optional additions',
+        dessert: 'Dessert',
+        customConsiderations: 'Custom considerations'
+      };
+
+      const sectionMap = Object.fromEntries(builderData.sections.map((section) => [section.id, section]));
+
+      const getOptionLabel = (sectionId, value) => {
+        if (!value) return '';
+
+        if (sectionId === 'mainCourseSelection') {
+          const categoryOptions = builderData.mainCourseOptions[state.mainCourseCategory] || [];
+          return categoryOptions.find((option) => option.value === value)?.label || '';
+        }
+
+        const option = sectionMap[sectionId]?.options?.find((item) => item.value === value);
+        return option?.label || '';
+      };
+
+      const renderMainCourseOptions = () => {
+        const category = state.mainCourseCategory;
+        const options = builderData.mainCourseOptions[category] || [];
+
+        if (!mainCourseContainer) return;
+
+        if (!category || options.length === 0) {
+          mainCourseContainer.innerHTML = `
+            <div class="builder-empty-state">
+              <strong>Select a main course category</strong>
+              <p>Once you choose Seafood, Poultry, or Vegetarian, matching entrée selections will appear here.</p>
+            </div>
+          `;
+          if (mainCourseHelper) {
+            mainCourseHelper.textContent = 'Choose a main course category to unlock entrée selections.';
+          }
+          return;
+        }
+
+        mainCourseContainer.innerHTML = options.map((option) => `
+          <label class="builder-option" for="mainCourseSelection-${option.value}" data-option-card data-section="mainCourseSelection" data-value="${option.value}">
+            <input
+              id="mainCourseSelection-${option.value}"
+              class="builder-option-input"
+              type="radio"
+              name="mainCourseSelection"
+              value="${option.value}"
+              data-builder-input
+              data-section="mainCourseSelection"
+              ${state.mainCourseSelection === option.value ? 'checked' : ''}
+            />
+            <span class="builder-option-check" aria-hidden="true"></span>
+            <span class="builder-option-copy">
+              <strong>${option.label}</strong>
+              <span>${option.description || ''}</span>
+            </span>
+          </label>
+        `).join('');
+
+        if (mainCourseHelper) {
+          const categoryLabel = getOptionLabel('mainCourseCategory', category);
+          mainCourseHelper.textContent = `${categoryLabel} entrées ready to refine your menu.`;
+        }
+      };
+
+      const renderSummary = () => {
+        const summaryItems = builderData.summaryOrder
+          .map((sectionId) => {
+            if (sectionId === 'customConsiderations') {
+              return state.customConsiderations.trim()
+                ? {
+                    label: summaryLabels.customConsiderations,
+                    value: state.customConsiderations.trim()
+                  }
+                : null;
+            }
+
+            if (sectionId === 'optionalAdditions') {
+              if (!state.optionalAdditions.length) return null;
+              const labels = state.optionalAdditions
+                .map((value) => getOptionLabel('optionalAdditions', value))
+                .filter(Boolean)
+                .join(' · ');
+              return {
+                label: summaryLabels.optionalAdditions,
+                value: labels
+              };
+            }
+
+            const value = state[sectionId];
+            if (!value) return null;
+
+            return {
+              label: summaryLabels[sectionId],
+              value: getOptionLabel(sectionId, value)
+            };
+          })
+          .filter(Boolean);
+
+        if (!summaryList || !summaryEmpty) return;
+
+        if (summaryItems.length === 0) {
+          summaryEmpty.hidden = false;
+          summaryList.hidden = true;
+          summaryList.innerHTML = '';
+        } else {
+          summaryEmpty.hidden = true;
+          summaryList.hidden = false;
+          summaryList.innerHTML = summaryItems.map((item) => `
+            <article class="menu-summary-item">
+              <p>${item.label}</p>
+              <strong>${item.value}</strong>
+            </article>
+          `).join('');
+        }
+
+        if (summaryConsiderations) {
+          summaryConsiderations.textContent = state.customConsiderations.trim()
+            ? state.customConsiderations.trim()
+            : 'No custom considerations yet. Use the notes field to mention dietary needs, event tone, or ingredient preferences.';
+        }
+      };
+
+      const syncCardStates = () => {
+        document.querySelectorAll('[data-option-card]').forEach((card) => {
+          const section = card.getAttribute('data-section');
+          const value = card.getAttribute('data-value');
+          const isMultiple = section === 'optionalAdditions';
+          const active = isMultiple
+            ? state.optionalAdditions.includes(value)
+            : state[section] === value;
+          card.classList.toggle('is-selected', Boolean(active));
+        });
+      };
+
+      form?.addEventListener('change', (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLInputElement)) return;
+
+        const sectionId = target.dataset.section;
+        if (!sectionId) return;
+
+        if (sectionId === 'optionalAdditions') {
+          state.optionalAdditions = Array.from(document.querySelectorAll('input[name="optionalAdditions"]:checked')).map((input) => input.value);
+        } else {
+          state[sectionId] = target.value;
+        }
+
+        if (sectionId === 'mainCourseCategory') {
+          state.mainCourseSelection = '';
+          renderMainCourseOptions();
+        }
+
+        syncCardStates();
+        renderSummary();
+      });
+
+      document.querySelector('[data-builder-textarea]')?.addEventListener('input', (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLTextAreaElement)) return;
+        state.customConsiderations = target.value;
+        renderSummary();
+      });
+
+      previewButton?.addEventListener('click', () => {
+        const summarySection = document.querySelector('.menu-summary-panel');
+        summarySection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      renderMainCourseOptions();
+      syncCardStates();
+      renderSummary();
+    }
+  </script>
+</BaseLayout>
