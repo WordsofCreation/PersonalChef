@@ -1,4 +1,9 @@
-import type { BuilderOption, BuilderSection, MainCourseCollection } from '../data/menuBuilder';
+import type {
+  BuilderCategoryCollection,
+  BuilderOption,
+  BuilderSection,
+  MainCourseCollection
+} from '../data/menuBuilder';
 
 export type MenuBuilderState = {
   diningStyle: string;
@@ -6,8 +11,10 @@ export type MenuBuilderState = {
   mainCourseCategory: string;
   mainCourseSelection: string;
   sauce: string;
-  starch: string;
-  vegetable: string;
+  starchCategory: string;
+  starchSelection: string;
+  vegetableCategory: string;
+  vegetableSelections: string[];
   optionalAdditions: string[];
   dessert: string;
   customConsiderations: string;
@@ -16,6 +23,8 @@ export type MenuBuilderState = {
 export type MenuBuilderClientData = {
   sections: BuilderSection[];
   mainCourseOptions: MainCourseCollection;
+  starchOptionsByCategory: BuilderCategoryCollection;
+  vegetableOptionsByCategory: BuilderCategoryCollection;
   summaryOrder: readonly string[];
   emptySummaryCopy: {
     title: string;
@@ -29,8 +38,10 @@ export type MenuRequestDetails = {
   mainCourseCategory: string;
   mainCourse: string;
   sauce: string;
-  starch: string;
-  vegetable: string;
+  starchCategory: string;
+  starchSelection: string;
+  vegetableCategories: string[];
+  vegetableSelections: string[];
   additions: string[];
   dessert: string;
   customConsiderations: string;
@@ -53,8 +64,8 @@ export const previewSectionOrder = [
   'mainCourseCategory',
   'mainCourseSelection',
   'sauce',
-  'starch',
-  'vegetable',
+  'starchSelection',
+  'vegetableSelection',
   'optionalAdditions',
   'dessert',
   'customConsiderations'
@@ -66,8 +77,8 @@ export const summaryLabels: Record<string, string> = {
   mainCourseCategory: 'Main Course Category',
   mainCourseSelection: 'Main Course Selection',
   sauce: 'Sauce',
-  starch: 'Starch / Grain',
-  vegetable: 'Vegetable Accompaniment',
+  starchSelection: 'Starch / Grain',
+  vegetableSelection: 'Vegetables',
   optionalAdditions: 'Optional Additions',
   dessert: 'Dessert',
   customConsiderations: 'Custom Considerations'
@@ -78,8 +89,8 @@ export const previewLabels = {
   mainCourseCategory: 'Main Course Category',
   mainCourseSelection: 'Main Course',
   sauce: 'Finished With',
-  starch: 'Starch / Grain',
-  vegetable: 'Vegetable Accompaniment',
+  starchSelection: 'Starch / Grain',
+  vegetableSelection: 'Vegetables',
   optionalAdditions: 'Optional Additions',
   dessert: 'Dessert',
   customConsiderations: 'Custom Considerations'
@@ -102,8 +113,10 @@ export const createEmptyMenuBuilderState = (): MenuBuilderState => ({
   mainCourseCategory: '',
   mainCourseSelection: '',
   sauce: '',
-  starch: '',
-  vegetable: '',
+  starchCategory: '',
+  starchSelection: '',
+  vegetableCategory: '',
+  vegetableSelections: [],
   optionalAdditions: [],
   dessert: '',
   customConsiderations: ''
@@ -120,10 +133,22 @@ export const readBuilderState = (storage: Storage | undefined = globalThis.sessi
     if (!raw) return createEmptyMenuBuilderState();
 
     const parsed = JSON.parse(raw);
+    const fallbackVegetableSelections = Array.isArray(parsed?.vegetableSelections)
+      ? parsed.vegetableSelections.filter((value: unknown): value is string => typeof value === 'string')
+      : typeof parsed?.vegetable === 'string' && parsed.vegetable
+        ? [parsed.vegetable]
+        : [];
 
     return {
       ...createEmptyMenuBuilderState(),
       ...parsed,
+      starchSelection:
+        typeof parsed?.starchSelection === 'string'
+          ? parsed.starchSelection
+          : typeof parsed?.starch === 'string'
+            ? parsed.starch
+            : '',
+      vegetableSelections: fallbackVegetableSelections,
       optionalAdditions: Array.isArray(parsed?.optionalAdditions)
         ? parsed.optionalAdditions.filter((value: unknown): value is string => typeof value === 'string')
         : []
@@ -167,6 +192,9 @@ export const readMenuRequestPayload = (
   }
 };
 
+const getOptionFromCollection = (collection: BuilderCategoryCollection, categoryValue: string, value: string) =>
+  (collection[categoryValue] || []).find((option) => option.value === value);
+
 export const getOptionLabel = (
   data: MenuBuilderClientData,
   state: MenuBuilderState,
@@ -176,12 +204,18 @@ export const getOptionLabel = (
   if (!value) return '';
 
   if (sectionId === 'mainCourseSelection') {
-    const categoryOptions = data.mainCourseOptions[state.mainCourseCategory] || [];
-    return categoryOptions.find((option) => option.value === value)?.label || '';
+    return (data.mainCourseOptions[state.mainCourseCategory] || []).find((option) => option.value === value)?.label || '';
   }
 
-  const sectionMap = getSectionMap(data.sections);
-  const option = sectionMap[sectionId]?.options?.find((item) => item.value === value);
+  if (sectionId === 'starchSelection') {
+    return getOptionFromCollection(data.starchOptionsByCategory, state.starchCategory, value)?.label || '';
+  }
+
+  if (sectionId === 'vegetableSelection') {
+    return getOptionFromCollection(data.vegetableOptionsByCategory, state.vegetableCategory, value)?.label || '';
+  }
+
+  const option = getSectionMap(data.sections)[sectionId]?.options?.find((item) => item.value === value);
   return option?.label || '';
 };
 
@@ -197,6 +231,10 @@ export const getOptionDescription = (
 
   if (sectionId === 'mainCourseSelection') {
     option = (data.mainCourseOptions[state.mainCourseCategory] || []).find((item) => item.value === value);
+  } else if (sectionId === 'starchSelection') {
+    option = getOptionFromCollection(data.starchOptionsByCategory, state.starchCategory, value);
+  } else if (sectionId === 'vegetableSelection') {
+    option = getOptionFromCollection(data.vegetableOptionsByCategory, state.vegetableCategory, value);
   } else {
     option = getSectionMap(data.sections)[sectionId]?.options?.find((item) => item.value === value);
   }
@@ -204,20 +242,34 @@ export const getOptionDescription = (
   return option?.description || '';
 };
 
+export const joinWithAnd = (items: string[]) => {
+  if (items.length <= 1) return items[0] || '';
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  return `${items.slice(0, -1).join(', ')}, and ${items.at(-1)}`;
+};
+
+export const getSelectedVegetableLabels = (data: MenuBuilderClientData, state: MenuBuilderState) =>
+  state.vegetableSelections
+    .map((value) => getOptionLabel(data, state, 'vegetableSelection', value))
+    .filter(Boolean);
+
 export const getComposedMenuPreview = (data: MenuBuilderClientData, state: MenuBuilderState) => {
   const diningStyle = getOptionLabel(data, state, 'diningStyle', state.diningStyle);
   const starter = getOptionLabel(data, state, 'starter', state.starter);
   const mainCourseCategory = getOptionLabel(data, state, 'mainCourseCategory', state.mainCourseCategory);
   const mainCourse = getOptionLabel(data, state, 'mainCourseSelection', state.mainCourseSelection);
   const sauce = getOptionLabel(data, state, 'sauce', state.sauce);
-  const starch = getOptionLabel(data, state, 'starch', state.starch);
-  const vegetable = getOptionLabel(data, state, 'vegetable', state.vegetable);
+  const starchCategory = getOptionLabel(data, state, 'starchCategory', state.starchCategory);
+  const starchSelection = getOptionLabel(data, state, 'starchSelection', state.starchSelection);
+  const vegetableCategory = getOptionLabel(data, state, 'vegetableCategory', state.vegetableCategory);
+  const vegetableSelections = getSelectedVegetableLabels(data, state);
   const dessert = getOptionLabel(data, state, 'dessert', state.dessert);
   const additions = state.optionalAdditions
     .map((value) => getOptionLabel(data, state, 'optionalAdditions', value))
     .filter(Boolean);
 
-  const servedWith = [starch, vegetable].filter(Boolean);
+  const servedWith = [starchSelection, ...vegetableSelections].filter(Boolean);
+  const accompanimentsLabel = vegetableSelections.length > 1 ? 'Accompaniments' : 'Served With';
 
   const composedLines = [
     starter
@@ -249,8 +301,9 @@ export const getComposedMenuPreview = (data: MenuBuilderClientData, state: MenuB
       : null,
     servedWith.length
       ? {
-          label: 'Served Alongside',
-          value: joinWithAnd(servedWith)
+          label: accompanimentsLabel,
+          value: joinWithAnd(servedWith),
+          description: [starchCategory, vegetableCategory].filter(Boolean).join(' · ')
         }
       : null,
     additions.length
@@ -278,19 +331,15 @@ export const getComposedMenuPreview = (data: MenuBuilderClientData, state: MenuB
       mainCourseCategory,
       mainCourse,
       sauce,
-      starch,
-      vegetable,
+      starchCategory,
+      starchSelection,
+      vegetableCategories: vegetableCategory ? [vegetableCategory] : [],
+      vegetableSelections,
       additions,
       dessert,
       customConsiderations: state.customConsiderations.trim()
     } satisfies MenuRequestDetails
   };
-};
-
-export const joinWithAnd = (items: string[]) => {
-  if (items.length <= 1) return items[0] || '';
-  if (items.length === 2) return `${items[0]} and ${items[1]}`;
-  return `${items.slice(0, -1).join(', ')}, and ${items.at(-1)}`;
 };
 
 export const buildMenuRequestMessage = (data: MenuBuilderClientData, state: MenuBuilderState) => {
@@ -301,8 +350,10 @@ export const buildMenuRequestMessage = (data: MenuBuilderClientData, state: Menu
     `Main Course Category: ${preview.details.mainCourseCategory || ''}`,
     `Main Course Selection: ${preview.details.mainCourse || ''}`,
     `Sauce: ${preview.details.sauce || ''}`,
-    `Starch / Grain: ${preview.details.starch || ''}`,
-    `Vegetable Accompaniment(s): ${preview.details.vegetable || ''}`,
+    `Starch Category: ${preview.details.starchCategory || ''}`,
+    `Starch / Grain: ${preview.details.starchSelection || ''}`,
+    `Vegetable Category: ${preview.details.vegetableCategories.length ? joinWithAnd(preview.details.vegetableCategories) : ''}`,
+    `Vegetables: ${preview.details.vegetableSelections.length ? joinWithAnd(preview.details.vegetableSelections) : ''}`,
     `Optional Additions: ${preview.details.additions.length ? joinWithAnd(preview.details.additions) : ''}`,
     `Dessert: ${preview.details.dessert || ''}`,
     `Custom Considerations: ${preview.details.customConsiderations || ''}`
@@ -323,8 +374,10 @@ export const hasMenuRequestSelections = (payload: Pick<MenuRequestPayload, 'deta
       details.mainCourseCategory ||
       details.mainCourse ||
       details.sauce ||
-      details.starch ||
-      details.vegetable ||
+      details.starchCategory ||
+      details.starchSelection ||
+      details.vegetableCategories.length ||
+      details.vegetableSelections.length ||
       details.additions.length ||
       details.dessert ||
       details.customConsiderations

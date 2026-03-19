@@ -1454,6 +1454,31 @@ input[type='checkbox'].builder-option-input + .builder-option-check {
 .builder-multi-column--wide {
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
 }
+
+.builder-subsection--stacked {
+  align-content: start;
+}
+.builder-nested-flow,
+.builder-nested-panel {
+  display: grid;
+  gap: 1rem;
+}
+.builder-nested-panel {
+  padding: 1rem;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.builder-subsection-head h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text);
+}
+.menu-summary-item-meta {
+  color: var(--bronze-soft);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
 .builder-inline-note {
   margin-top: -0.25rem;
   font-size: 0.95rem;

@@ -12,8 +12,10 @@ export type BuilderSection = {
     | 'mainCourseCategory'
     | 'mainCourseSelection'
     | 'sauce'
-    | 'starch'
-    | 'vegetable'
+    | 'starchCategory'
+    | 'starchSelection'
+    | 'vegetableCategory'
+    | 'vegetableSelection'
     | 'optionalAdditions'
     | 'dessert';
   title: string;
@@ -23,6 +25,7 @@ export type BuilderSection = {
 };
 
 export type MainCourseCollection = Record<string, BuilderOption[]>;
+export type BuilderCategoryCollection = Record<string, BuilderOption[]>;
 
 const slugify = (value: string) =>
   value
@@ -136,46 +139,40 @@ export const menuBuilderSections: BuilderSection[] = [
     ]
   },
   {
-    id: 'starch',
-    title: 'Starch / Grain',
-    helper: 'Ground the entrée with something creamy, rustic, or gently earthy.',
+    id: 'starchCategory',
+    title: 'Starch / Grain Category',
+    helper: 'Choose the style of starch or grain you want on the plate.',
     type: 'single',
     options: [
-      option('Pommes Purée', 'Classic, velvety potatoes finished with restaurant-style refinement.'),
-      option('Potato Gratin', 'Golden, layered potatoes with quiet decadence.'),
-      option('Roasted Fingerling Potatoes', 'Crisp edges and a simple, elegant roasted profile.'),
-      option('Wild Rice Pilaf', 'Nutty texture and a distinct Pacific Northwest sensibility.'),
-      option('Mushroom Rice Pilaf', 'Savory grains infused with woodland depth.'),
-      option('Creamy Polenta', 'Soft, luxurious, and deeply comforting.'),
-      option('Parmesan Risotto', 'A polished, crowd-pleasing accompaniment with rich texture.'),
-      option('Farro with herbs', 'Pleasant chew and a garden-forward, rustic-luxe finish.'),
-      option('Herb-roasted baby potatoes', 'Simple and elegant with aromatic herb notes.'),
-      option('Brown butter mashed potatoes', 'Nutty richness for celebratory dinners.'),
-      option('Barley with herbs', 'Wholesome and understated with earthy balance.'),
-      option('Cider-glazed root mash', 'A warm seasonal base with orchard sweetness.')
+      option('Potato Preparations', 'Classic potato sides with restaurant-level comfort and polish.'),
+      option('Rice & Grain Sides', 'Lighter grain-forward accompaniments with texture and lift.'),
+      option('Polenta & Risotto', 'Creamy, composed foundations for elegant plated dinners.'),
+      option('Seasonal Rustic Sides', 'Chef-driven seasonal sides with a warm, rustic-luxe feel.')
     ]
   },
   {
-    id: 'vegetable',
-    title: 'Vegetable Accompaniment',
-    helper: 'Choose one or two seasonal accompaniments.',
+    id: 'starchSelection',
+    title: 'Starch / Grain Selection',
+    helper: 'Select the starch or grain that best completes the entrée.',
+    type: 'single'
+  },
+  {
+    id: 'vegetableCategory',
+    title: 'Vegetable Category',
+    helper: 'Choose the vegetable direction that best fits the main course.',
     type: 'single',
     options: [
-      option('Roasted Root Vegetables', 'Caramelized and comforting with broad seasonal appeal.'),
-      option('Haricots Verts with shallots', 'Tender-crisp beans finished with subtle French influence.'),
-      option('Asparagus with lemon and herbs', 'Bright and graceful for spring menus and seafood entrées.'),
-      option('Charred Broccolini', 'A lightly smoky green element that brings contrast.'),
-      option('Glazed Carrots', 'Sweet, polished, and beautiful on the plate.'),
-      option('Sautéed Woodland Mushrooms', 'Earthy and luxurious with coastal-forest character.'),
-      option('Braised Greens', 'Soft bitterness and savory depth for balanced menus.'),
-      option('Roasted Brussels Sprouts', 'Crisp-edged and ideal for cool-weather dinners.'),
-      option('Seasonal Market Vegetables', 'Chef-selected produce based on what is best at the moment.'),
-      option('Fennel and leek braise', 'Softly aromatic and elegant with seafood or chicken.'),
-      option('Roasted cauliflower with herbs', 'Golden edges and savory herb warmth.'),
-      option('Butter-braised cabbage', 'Silky and unexpectedly refined alongside roast meats.'),
-      option('Roasted squash wedges', 'A seasonal favorite with sweetness and color.'),
-      option('Peas with mint and shallots', 'Fresh, bright, and especially lovely in spring.')
+      option('Green Vegetables', 'Bright, elegant greens that keep the plate lifted and fresh.'),
+      option('Root & Orchard Vegetables', 'Sweet-earthy vegetables with polished seasonal warmth.'),
+      option('Woodland & Earthy Sides', 'Savory, aromatic vegetables with forest-driven depth.'),
+      option('Seasonal Market Sides', 'Flexible market-led accompaniments chosen for freshness and balance.')
     ]
+  },
+  {
+    id: 'vegetableSelection',
+    title: 'Vegetable Selection',
+    helper: 'Choose your vegetable accompaniment.',
+    type: 'single'
   },
   {
     id: 'optionalAdditions',
@@ -220,6 +217,57 @@ export const menuBuilderSections: BuilderSection[] = [
     ]
   }
 ];
+
+export const starchOptionsByCategory: BuilderCategoryCollection = {
+  'potato-preparations': [
+    option('Pommes Purée', 'Classic, velvety potatoes finished with restaurant-style refinement.'),
+    option('Potato Gratin', 'Golden, layered potatoes with quiet decadence.'),
+    option('Roasted Fingerling Potatoes', 'Crisp edges and a simple, elegant roasted profile.'),
+    option('Brown Butter Mashed Potatoes', 'Nutty richness for celebratory dinners.'),
+    option('Herb-Roasted Baby Potatoes', 'Simple and elegant with aromatic herb notes.')
+  ],
+  'rice-and-grain-sides': [
+    option('Wild Rice Pilaf', 'Nutty texture and a distinct Pacific Northwest sensibility.'),
+    option('Mushroom Rice Pilaf', 'Savory grains infused with woodland depth.'),
+    option('Farro with Herbs', 'Pleasant chew and a garden-forward, rustic-luxe finish.'),
+    option('Barley with Herbs', 'Wholesome and understated with earthy balance.')
+  ],
+  'polenta-and-risotto': [
+    option('Creamy Polenta', 'Soft, luxurious, and deeply comforting.'),
+    option('Parmesan Risotto', 'A polished, crowd-pleasing accompaniment with rich texture.')
+  ],
+  'seasonal-rustic-sides': [
+    option('Cider-Glazed Root Mash', 'A warm seasonal base with orchard sweetness.'),
+    option('Herb Grain Medley', 'A savory seasonal grain blend with a composed rustic finish.'),
+    option('Woodland Mushroom Grain Pilaf', 'Earthy grain pilaf with deep woodland character.')
+  ]
+};
+
+export const vegetableOptionsByCategory: BuilderCategoryCollection = {
+  'green-vegetables': [
+    option('Haricots Verts with Shallots', 'Tender-crisp beans finished with subtle French influence.'),
+    option('Asparagus with Lemon and Herbs', 'Bright and graceful for spring menus and seafood entrées.'),
+    option('Charred Broccolini', 'A lightly smoky green element that brings contrast.'),
+    option('Braised Greens', 'Soft bitterness and savory depth for balanced menus.'),
+    option('Peas with Mint and Shallots', 'Fresh, bright, and especially lovely in spring.')
+  ],
+  'root-and-orchard-vegetables': [
+    option('Glazed Carrots', 'Sweet, polished, and beautiful on the plate.'),
+    option('Roasted Root Vegetables', 'Caramelized and comforting with broad seasonal appeal.'),
+    option('Butter-Braised Cabbage', 'Silky and unexpectedly refined alongside roast meats.'),
+    option('Roasted Brussels Sprouts', 'Crisp-edged and ideal for cool-weather dinners.'),
+    option('Roasted Squash Wedges', 'A seasonal favorite with sweetness and color.')
+  ],
+  'woodland-and-earthy-sides': [
+    option('Sautéed Woodland Mushrooms', 'Earthy and luxurious with coastal-forest character.'),
+    option('Fennel and Leek Braise', 'Softly aromatic and elegant with seafood or chicken.'),
+    option('Roasted Cauliflower with Herbs', 'Golden edges and savory herb warmth.')
+  ],
+  'seasonal-market-sides': [
+    option('Seasonal Market Vegetables', 'Chef-selected produce based on what is best at the moment.'),
+    option('Chef’s Market Vegetable Selection', 'A composed chef’s-choice pairing built around market finds.')
+  ]
+};
 
 export const mainCourseOptions: MainCourseCollection = {
   'pnw-seafood': [
@@ -282,8 +330,8 @@ export const summaryOrder = [
   'mainCourseCategory',
   'mainCourseSelection',
   'sauce',
-  'starch',
-  'vegetable',
+  'starchSelection',
+  'vegetableSelection',
   'optionalAdditions',
   'dessert',
   'customConsiderations'
