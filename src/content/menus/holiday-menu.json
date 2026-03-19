@@ -1,0 +1,10 @@
+{
+  "title": "Holiday Menu",
+  "category": "Seasonal",
+  "description": "Festive holiday favorites with refined preparation and abundant hospitality.",
+  "courses": [
+    { "name": "Starters", "items": ["Butternut squash soup", "Burrata crostini with cranberry compote"] },
+    { "name": "Celebration Feast", "items": ["Herb-roasted prime rib or maple glazed turkey", "Yukon gold gratin", "Green beans almondine"] },
+    { "name": "Dessert", "items": ["Pear tart", "Spiced pumpkin mousse cups"] }
+  ]
+}

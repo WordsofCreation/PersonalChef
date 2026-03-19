@@ -1,0 +1,10 @@
+{
+  "title": "Brunch Service",
+  "category": "Gatherings",
+  "description": "A relaxed but elevated brunch spread for family visits, wedding weekends, and vacation mornings.",
+  "courses": [
+    { "name": "Bakery & Fruit", "items": ["Warm cardamom rolls", "Citrus salad with mint"] },
+    { "name": "Savory", "items": ["Smoked salmon frittata", "Herb-roasted breakfast potatoes", "Local greens"] },
+    { "name": "Signature Extras", "items": ["Espresso bar setup", "Seasonal mocktail station"] }
+  ]
+}

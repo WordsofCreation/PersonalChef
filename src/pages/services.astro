@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTA from '../components/CTA.astro';
+
+const services = await getCollection('services');
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: services.map((service, index) => ({ '@type': 'Service', position: index + 1, name: service.data.title, description: service.data.summary }))
+};
+---
+<BaseLayout title="Services | Personal Chef Port Angeles & Olympic Peninsula" description="Explore weekly meal prep, private dinners, vacation rental chef services, small event catering, holiday meals, and custom dietary plans across Port Angeles and Sequim." path="/services" schema={schema}>
+  <section class="section">
+    <div class="container section-header">
+      <p class="eyebrow">Services</p>
+      <h1>Tailored chef services for everyday ease and elevated entertaining.</h1>
+      <p>Each service is customized around your home, your guests, your dietary needs, and the hospitality experience you want to create.</p>
+    </div>
+    <div class="container grid two-col">
+      {services.map((service) => <ServiceCard service={service} />)}
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid two-col">
+      {services.map((service) => (
+        <article class="card">
+          <p class="eyebrow">{service.data.seoKeyword}</p>
+          <h2>{service.data.title}</h2>
+          <p>{service.data.summary}</p>
+          <p><strong>Benefits</strong></p>
+          <ul>
+            {service.data.benefits.map((benefit) => <li>{benefit}</li>)}
+          </ul>
+          <p><strong>Ideal customer:</strong> {service.data.idealFor}</p>
+          <a class="btn btn-primary" href="/contact">{service.data.cta}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid two-col">
+      <article class="card">
+        <p class="eyebrow">Local landing pages</p>
+        <h2>Explore chef services by location.</h2>
+        <p><a href="/personal-chef-port-angeles">Personal Chef Port Angeles</a> for waterfront homes, family meal prep, and private dining.</p>
+        <p><a href="/personal-chef-sequim">Personal Chef Sequim</a> for routine meal support and elegant hosting.</p>
+        <p><a href="/vacation-rental-chef-olympic-peninsula">Vacation Rental Chef Olympic Peninsula</a> for destination stays and hospitality-driven guest experiences.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Popular menu references</p>
+        <h2>Pair services with sample menu inspiration.</h2>
+        <p>Use the <a href="/sample-menus">Sample Menus</a> page to guide your preferred service style, pacing, and flavor profile before requesting a quote.</p>
+      </article>
+    </div>
+  </section>
+
+  <CTA title="Need help choosing the right service?" text="Share your occasion, guest count, and location. We’ll recommend the best format, menu direction, and service level for your event or weekly routine." secondaryHref="/contact" secondaryLabel="Start Your Inquiry" />
+</BaseLayout>

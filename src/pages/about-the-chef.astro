@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Chef Placeholder Name',
+  jobTitle: 'Personal Chef',
+  worksFor: { '@type': 'LocalBusiness', name: 'Olympic Peninsula Personal Chef' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Port Angeles', addressRegion: 'WA' },
+  description: 'Personal chef serving Port Angeles and the Olympic Peninsula with meal prep, private dining, and custom menus.'
+};
+---
+<BaseLayout title="About the Chef | Port Angeles Personal Chef" description="Meet the chef behind this Port Angeles personal chef service, with a culinary and hospitality background focused on custom menus, premium ingredients, and polished service." path="/about-the-chef" schema={schema}>
+  <section class="section">
+    <div class="container grid two-col">
+      <div class="card">
+        <p class="eyebrow">About the Chef</p>
+        <h1>A culinary-forward approach grounded in hospitality, trust, and seasonality.</h1>
+        <p>Chef Placeholder Name brings a professional hospitality mindset to every client experience, combining thoughtful menu development, efficient planning, and the calm confidence that makes in-home service feel seamless.</p>
+        <p>With experience in refined dining, private service, and custom menu execution, the focus is always on quality ingredients, gracious presentation, and food that feels deeply personal to the occasion.</p>
+      </div>
+      <div class="card">
+        <h2>What clients can expect</h2>
+        <ul>
+          <li>Custom menus shaped around your tastes, dietary needs, and event goals.</li>
+          <li>Ingredient quality that prioritizes freshness, seasonality, and Pacific Northwest inspiration.</li>
+          <li>Professional communication, polished execution, and warm, approachable service.</li>
+          <li>Experience serving Port Angeles, Sequim, and Olympic Peninsula clients in homes and vacation rentals.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <CTA title="Looking for a personal chef who feels polished and easy to work with?" text="Reach out with your goals and timeline. You’ll receive a tailored response, menu direction, and a quote built around your needs." secondaryHref="/services" secondaryLabel="View Services" />
+</BaseLayout>

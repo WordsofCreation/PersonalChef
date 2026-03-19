@@ -1,0 +1,139 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import MenuCard from '../components/MenuCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import FaqList from '../components/FaqList.astro';
+import CTA from '../components/CTA.astro';
+
+const services = await getCollection('services');
+const menus = await getCollection('menus');
+const testimonials = await getCollection('testimonials');
+const faqs = await getCollection('faqs');
+const areas = await getCollection('serviceAreas');
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Olympic Peninsula Personal Chef',
+    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80',
+    areaServed: ['Port Angeles', 'Sequim', 'Olympic Peninsula'],
+    servesCuisine: ['Pacific Northwest', 'Private Dining', 'Meal Prep'],
+    url: 'https://www.olympicpeninsulapersonalchef.com/',
+    description: 'Luxury personal chef Port Angeles service for meal prep, private dining, and vacation rental chef experiences.'
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    author: { '@type': 'Person', name: testimonials[0].data.name },
+    reviewRating: { '@type': 'Rating', ratingValue: 5 },
+    reviewBody: testimonials[0].data.quote,
+    itemReviewed: { '@type': 'Service', name: testimonials[0].data.service }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.slice(0, 3).map((faq) => ({ '@type': 'Question', name: faq.data.question, acceptedAnswer: { '@type': 'Answer', text: faq.data.answer } }))
+  }
+];
+---
+<BaseLayout
+  title="Personal Chef Port Angeles | Olympic Peninsula Personal Chef"
+  description="Luxury personal chef Port Angeles service for weekly meal prep, private dinners, vacation rental chef experiences, and small events across the Olympic Peninsula."
+  path="/"
+  schema={schema}
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="hero-badge">Personal Chef Port Angeles · Olympic Peninsula</div>
+        <h1>Elegant personal chef services for Port Angeles homes, gatherings, and coastal getaways.</h1>
+        <p>Private dining, weekly meal prep, and small event chef services designed with Pacific Northwest ingredients, refined hospitality, and a warm local touch.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/contact">Request a Quote</a>
+          <a class="btn btn-secondary" href="/sample-menus">View Sample Menus</a>
+        </div>
+        <div class="highlight-list">
+          <div><strong>Weekly meal prep</strong><span>Chef-prepared meals tailored to your routine and dietary goals.</span></div>
+          <div><strong>Private dinners</strong><span>Restaurant-level evenings for anniversaries, celebrations, and client entertaining.</span></div>
+          <div><strong>Small events</strong><span>Boutique service for holiday tables, intimate gatherings, and vacation stays.</span></div>
+        </div>
+      </div>
+      <div class="hero-art"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Featured Services</p>
+        <h2>High-end chef support built around the way you gather, host, and eat.</h2>
+      </div>
+      <div class="grid three-col">
+        {services.map((service) => <ServiceCard service={service} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid two-col">
+      <div class="card">
+        <p class="eyebrow">Why hire a personal chef in Port Angeles</p>
+        <h2>Bring ease, hospitality, and exceptional food into your everyday life.</h2>
+        <p>Hiring a personal chef in Port Angeles means fewer errands, less prep, and more time enjoying the coast, your guests, and your table. From recurring meal prep to private chef Port Angeles WA dinners, every service is designed to feel elevated yet comfortable.</p>
+      </div>
+      <div class="card">
+        <p class="eyebrow">Seasonal & local ingredients</p>
+        <h2>Menus rooted in the Pacific Northwest.</h2>
+        <p>Menus draw inspiration from Olympic Peninsula farms, fisheries, and seasonal produce. The result is food that feels polished, memorable, and connected to the region your guests came to experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Sample menu preview</p>
+        <h2>Signature menus that are easy to customize.</h2>
+      </div>
+      <div class="grid two-col">
+        {menus.slice(0, 4).map((menu) => <MenuCard menu={menu} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Client notes</p>
+        <h2>Trusted by locals, hosts, and vacation guests across the peninsula.</h2>
+      </div>
+      <div class="grid three-col">
+        {testimonials.map((testimonial) => <TestimonialCard testimonial={testimonial} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid two-col">
+      <div>
+        <div class="section-header">
+          <p class="eyebrow">Service area</p>
+          <h2>Chef services throughout Port Angeles, Sequim, and the Olympic Peninsula.</h2>
+        </div>
+        <ul class="service-area-list">
+          {areas.map((area) => <li><strong>{area.data.name}:</strong> {area.data.summary}</li>)}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="eyebrow">FAQ preview</p>
+        <h3>Planning should feel simple.</h3>
+        <FaqList faqs={faqs.slice(0, 2)} />
+      </div>
+    </div>
+  </section>
+
+  <CTA title="Let’s create a chef experience that feels effortless and distinctly local." text="Tell us about your dinner, meal prep needs, or vacation stay. You’ll receive a thoughtful response, custom options, and clear next steps for your quote." secondaryHref="/services" secondaryLabel="Explore Services" />
+</BaseLayout>

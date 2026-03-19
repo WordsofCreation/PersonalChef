@@ -1,0 +1,10 @@
+{
+  "title": "Family Meal Prep Week",
+  "category": "Weekly Meal Prep",
+  "description": "Balanced, ready-to-heat meals that keep busy weeks feeling organized, healthy, and delicious.",
+  "courses": [
+    { "name": "Prepared Lunches", "items": ["Lemon chicken grain bowls", "Roasted vegetable quinoa salads"] },
+    { "name": "Prepared Dinners", "items": ["Turkey meatballs with basil marinara", "Teriyaki salmon with jasmine rice", "Chicken enchilada casserole"] },
+    { "name": "Add-ons", "items": ["Seasonal breakfast muffins", "Snack boxes with fruit and nuts"] }
+  ]
+}

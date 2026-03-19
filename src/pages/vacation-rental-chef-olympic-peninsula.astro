@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Vacation Rental Chef Olympic Peninsula',
+  areaServed: 'Olympic Peninsula, WA',
+  provider: { '@type': 'LocalBusiness', name: 'Olympic Peninsula Personal Chef' }
+};
+---
+<BaseLayout title="Vacation Rental Chef Olympic Peninsula | Private Chef Experiences" description="Vacation rental chef Olympic Peninsula services for coastal getaways, family vacations, brunches, welcome dinners, and private in-home dining." path="/vacation-rental-chef-olympic-peninsula" schema={schema}>
+  <section class="section">
+    <div class="container section-header">
+      <p class="eyebrow">Vacation Rental Chef Olympic Peninsula</p>
+      <h1>Elevated chef experiences for unforgettable Olympic Peninsula stays.</h1>
+      <p>Add a premium amenity to your getaway with custom chef-prepared breakfasts, family-style dinners, romantic date nights, or full private dining service at your vacation rental.</p>
+    </div>
+    <div class="container grid two-col">
+      <article class="card">
+        <h2>Designed for destination hosting</h2>
+        <ul>
+          <li>Welcome meals and stocked-fridge arrival packages.</li>
+          <li>Celebration dinners for reunions, birthdays, and retreat weekends.</li>
+          <li>Brunch service and low-stress group dining after long days exploring the peninsula.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Ideal for guests and property managers</h2>
+        <p>A chef experience helps guests relax, spend more time together, and enjoy a deeper sense of place through seasonal, local menus. It also positions premium rentals as more memorable and hospitality-forward.</p>
+      </article>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid two-col">
+      <article class="card">
+        <p class="eyebrow">Planning tools</p>
+        <p>Browse <a href="/sample-menus">sample menus</a> to see brunch, private dinner, and holiday-style ideas for your stay.</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">Local service links</p>
+        <p>Looking for year-round support instead? Visit <a href="/personal-chef-port-angeles">Personal Chef Port Angeles</a> or <a href="/personal-chef-sequim">Personal Chef Sequim</a>.</p>
+      </article>
+    </div>
+  </section>
+  <CTA title="Hosting guests on the Olympic Peninsula?" text="Request a custom quote for a vacation rental chef experience, welcome dinner, brunch service, or multi-day meal plan." secondaryHref="/sample-menus" secondaryLabel="See Menu Inspiration" />
+</BaseLayout>
