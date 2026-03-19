@@ -10,34 +10,23 @@ const schema = {
 <BaseLayout title="Book a Personal Chef | Port Angeles, Sequim & Olympic Peninsula" description="Request a custom proposal for private dining, meal prep, and vacation rental chef services in Port Angeles, Sequim, and across the Olympic Peninsula." path="/contact" schema={schema}>
   <section class="section inquiry-section">
     <div class="container local-grid inquiry-layout">
-      <div class="card-stack">
-        <div>
-          <p class="eyebrow">Tailored inquiries</p>
-          <h1>Begin with a few thoughtful details, and we’ll craft a chef experience that feels seamless from the start.</h1>
-          <p>From refined private dinners to weekly meal prep and elevated vacation rental service, every inquiry is reviewed with care so your proposal reflects your setting, preferences, timeline, and level of hospitality.</p>
+      <div class="card-stack inquiry-sidebar">
+        <div class="inquiry-heading-block">
+          <p class="eyebrow">Request your custom proposal</p>
+          <h1>Share a few thoughtful details, and we’ll shape a chef experience that feels polished from the very first reply.</h1>
+          <p class="inquiry-intro-text">For private dinners, weekly meal prep, and vacation rental service across the Olympic Peninsula, every inquiry is reviewed with care and answered with a tailored recommendation.</p>
         </div>
 
         <div class="card inquiry-intro-card">
           <div class="inquiry-intro-copy">
-            <p class="inquiry-lead">Share a few details and receive a personalized proposal for your meal, dinner, or gathering.</p>
-            <p>Most inquiries receive a response within one business day.</p>
+            <p class="inquiry-lead">Expect a custom proposal, clear next steps, and availability guidance within one business day whenever possible.</p>
+            <p>Allergy-aware, wellness-focused, pescatarian, gluten-free, dairy-free, and family-specific requests are always welcome.</p>
           </div>
           <div class="inquiry-pill-list" aria-label="Why clients choose this inquiry process">
             <span>Custom menus</span>
             <span>Discreet hospitality</span>
-            <span>Olympic Peninsula service</span>
+            <span>Prompt follow-up</span>
           </div>
-        </div>
-
-        <div class="card schema-note inquiry-expectations">
-          <p><strong>What to expect:</strong> We’ll follow up with a tailored recommendation, menu direction, and next-step guidance aligned with your guest count, service style, and location.</p>
-          <p><strong>Dietary care:</strong> Allergy-aware, wellness-focused, pescatarian, gluten-free, dairy-free, and family-specific requests are all welcome.</p>
-        </div>
-
-        <div class="info-strip">
-          <div><strong>Luxury, made approachable</strong><span>Expect polished planning, clear communication, and warm service from first reply to final plate.</span></div>
-          <div><strong>Designed around your occasion</strong><span>Every proposal is built around your event rather than forcing you into a rigid package.</span></div>
-          <div><strong>Fast, reassuring follow-up</strong><span>Your inquiry is reviewed promptly so you can move forward with confidence.</span></div>
         </div>
       </div>
 
@@ -47,8 +36,8 @@ const schema = {
           <div class="inquiry-form-header">
             <div>
               <p class="eyebrow">Request your custom proposal</p>
-              <h2>An elevated planning experience starts here.</h2>
-              <p>Tell us about your meal, dinner, or gathering and we’ll respond with a custom recommendation shaped around your date, guest experience, and culinary preferences.</p>
+              <h2>A polished booking experience starts here.</h2>
+              <p>Tell us about your date, setting, and preferences, and we’ll prepare a custom proposal shaped around the experience you want to host.</p>
             </div>
             <div class="soft-panel inquiry-process" aria-label="What happens next">
               <p class="process-kicker">What happens next</p>
@@ -62,9 +51,10 @@ const schema = {
 
           <div class="form-alert form-alert-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1" hidden>
             <div class="form-alert-icon" aria-hidden="true">✓</div>
-            <div>
-              <strong>Thank you for reaching out.</strong>
-              <span>Your inquiry has been received, and we’ll be in touch soon with a tailored response, menu direction, and next-step guidance.</span>
+            <div class="form-alert-content">
+              <p class="form-alert-kicker">Inquiry received</p>
+              <strong>Thank you — your custom proposal request is in.</strong>
+              <span>We’ll review your details and follow up soon with menu direction, availability guidance, and thoughtful next steps.</span>
             </div>
           </div>
 
@@ -77,6 +67,9 @@ const schema = {
           </div>
 
           <form class="form-grid premium-form" id="bookingForm" method="post" action="https://formspree.io/f/xzbqqbwz" novalidate>
+            <div class="full-span form-section-label">
+              <p>Your details</p>
+            </div>
             <div class="field-group">
               <label for="name">Full Name <span class="field-required">Required</span></label>
               <input id="name" type="text" name="name" autocomplete="name" placeholder="Your full name" required aria-describedby="error-name" />
@@ -107,6 +100,10 @@ const schema = {
                 <option>Custom Dietary Menu</option>
               </select>
               <p class="field-error" id="error-service" aria-live="polite"></p>
+            </div>
+
+            <div class="full-span form-section-label form-section-label-planning">
+              <p>Event planning details</p>
             </div>
 
             <div class="field-group">
@@ -151,13 +148,14 @@ const schema = {
             <div class="full-span inquiry-submit-row">
               <div class="form-note inquiry-form-note">
                 <p class="submit-overline">Request Your Custom Proposal</p>
-                <p>We’ll reply with thoughtful next steps, availability guidance, and a tailored recommendation within one business day whenever possible.</p>
+                <h3>Ready when you are.</h3>
+                <p>Submit your details for a tailored recommendation, pricing guidance, and next steps aligned with your date and service style.</p>
               </div>
               <button class="btn btn-primary premium-submit" type="submit" id="submitButton">
                 <span class="submit-label">Request Your Custom Proposal</span>
                 <span class="submit-spinner" aria-hidden="true"></span>
               </button>
-              <p class="submit-reassurance">Your information stays private and is used only to prepare your chef proposal.</p>
+              <p class="submit-reassurance">Private inquiry • No obligation • Thoughtful follow-up within one business day whenever possible.</p>
             </div>
           </form>
         </div>
@@ -212,6 +210,8 @@ const schema = {
       event.preventDefault();
       resetErrors();
       successPanel.hidden = true;
+      form.hidden = false;
+      form.closest('.inquiry-form-shell-inner')?.classList.remove('is-success');
 
       if (!form.checkValidity()) {
         form.reportValidity();
@@ -234,6 +234,8 @@ const schema = {
         if (response.ok) {
           form.reset();
           successPanel.hidden = false;
+          form.hidden = true;
+          form.closest('.inquiry-form-shell-inner')?.classList.add('is-success');
           successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           successPanel.focus();
           return;
