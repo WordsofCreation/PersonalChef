@@ -42,99 +42,125 @@ const schema = {
       </div>
 
       <div class="card inquiry-form-shell">
-        <div class="inquiry-form-header">
-          <p class="eyebrow">Request your custom proposal</p>
-          <h2>An elevated planning experience starts here.</h2>
-          <p>Tell us about your meal, dinner, or gathering and we’ll respond with a custom recommendation shaped around your date, guest experience, and culinary preferences.</p>
+        <div class="inquiry-form-ornament" aria-hidden="true"></div>
+        <div class="inquiry-form-shell-inner">
+          <div class="inquiry-form-header">
+            <div>
+              <p class="eyebrow">Request your custom proposal</p>
+              <h2>An elevated planning experience starts here.</h2>
+              <p>Tell us about your meal, dinner, or gathering and we’ll respond with a custom recommendation shaped around your date, guest experience, and culinary preferences.</p>
+            </div>
+            <div class="soft-panel inquiry-process" aria-label="What happens next">
+              <p class="process-kicker">What happens next</p>
+              <ol class="process-list">
+                <li><strong>Share your details</strong><span>Tell us the essentials so we can understand your date, setting, and priorities.</span></li>
+                <li><strong>Receive a tailored proposal</strong><span>We’ll recommend the right service format, menu direction, and pricing guidance.</span></li>
+                <li><strong>Finalize your menu and date</strong><span>Once the fit feels right, we’ll refine the experience and confirm your booking.</span></li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-alert form-alert-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1" hidden>
+            <div class="form-alert-icon" aria-hidden="true">✓</div>
+            <div>
+              <strong>Thank you for reaching out.</strong>
+              <span>Your inquiry has been received, and we’ll be in touch soon with a tailored response, menu direction, and next-step guidance.</span>
+            </div>
+          </div>
+
+          <div class="form-alert form-alert-error" id="formError" role="alert" aria-live="assertive" tabindex="-1" hidden>
+            <div class="form-alert-icon" aria-hidden="true">!</div>
+            <div>
+              <strong>Please review your inquiry.</strong>
+              <span class="form-alert-message"></span>
+            </div>
+          </div>
+
+          <form class="form-grid premium-form" id="bookingForm" method="post" action="https://formspree.io/f/xzbqqbwz" novalidate>
+            <div class="field-group">
+              <label for="name">Full Name <span class="field-required">Required</span></label>
+              <input id="name" type="text" name="name" autocomplete="name" placeholder="Your full name" required aria-describedby="error-name" />
+              <p class="field-error" id="error-name" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email Address <span class="field-required">Required</span></label>
+              <input id="email" type="email" name="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="error-email" />
+              <p class="field-error" id="error-email" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group">
+              <label for="phone">Phone Number</label>
+              <input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="(360) 555-0123" aria-describedby="error-phone" />
+              <p class="field-error" id="error-phone" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group field-group-select">
+              <label for="service">Service Type <span class="field-required">Required</span></label>
+              <select id="service" name="service" required aria-describedby="error-service">
+                <option value="">Select a service</option>
+                <option>Weekly Meal Prep</option>
+                <option>Private Dinner</option>
+                <option>Vacation Rental Chef Service</option>
+                <option>Small Event Catering</option>
+                <option>Holiday Meal</option>
+                <option>Custom Dietary Menu</option>
+              </select>
+              <p class="field-error" id="error-service" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group">
+              <label for="guestCount">Guest Count</label>
+              <input id="guestCount" type="number" name="guestCount" min="1" inputmode="numeric" placeholder="2, 8, 20…" aria-describedby="error-guestCount" />
+              <p class="field-error" id="error-guestCount" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group field-group-date">
+              <label for="eventDate">Preferred Date</label>
+              <input id="eventDate" type="date" name="eventDate" aria-describedby="error-eventDate" />
+              <p class="field-error" id="error-eventDate" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group">
+              <label for="location">Location</label>
+              <input id="location" type="text" name="location" placeholder="Port Angeles, Sequim, or your Olympic Peninsula property" aria-describedby="error-location" />
+              <p class="field-error" id="error-location" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group">
+              <label for="budget">Budget Range</label>
+              <input id="budget" type="text" name="budget" placeholder="$500–$1,000, $1,500+, or preferred range" aria-describedby="error-budget" />
+              <p class="field-error" id="error-budget" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group field-group-wide">
+              <label for="dietaryNeeds">Dietary Needs</label>
+              <input id="dietaryNeeds" type="text" name="dietaryNeeds" placeholder="Allergies, preferences, wellness goals, family needs" aria-describedby="error-dietaryNeeds" />
+              <p class="field-error" id="error-dietaryNeeds" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group field-group-wide">
+              <label for="message">Message / Tell us about your event <span class="field-required">Required</span></label>
+              <textarea id="message" name="message" placeholder="Share the occasion, atmosphere, menu style, service expectations, and any details that will help us prepare a thoughtful proposal." required aria-describedby="messageHint error-message"></textarea>
+              <div class="field-meta">
+                <p class="field-hint" id="messageHint">A strong overview is enough for us to recommend the right service format, menu direction, and next steps.</p>
+                <p class="field-error" id="error-message" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="full-span inquiry-submit-row">
+              <div class="form-note inquiry-form-note">
+                <p class="submit-overline">Request Your Custom Proposal</p>
+                <p>We’ll reply with thoughtful next steps, availability guidance, and a tailored recommendation within one business day whenever possible.</p>
+              </div>
+              <button class="btn btn-primary premium-submit" type="submit" id="submitButton">
+                <span class="submit-label">Request Your Custom Proposal</span>
+                <span class="submit-spinner" aria-hidden="true"></span>
+              </button>
+              <p class="submit-reassurance">Your information stays private and is used only to prepare your chef proposal.</p>
+            </div>
+          </form>
         </div>
-
-        <div class="form-alert form-alert-success" id="formSuccess" role="status" aria-live="polite" hidden>
-          <strong>Thank you for reaching out.</strong>
-          <span>Your inquiry has been received, and we’ll be in touch soon with a tailored response and next-step guidance.</span>
-        </div>
-
-        <div class="form-alert form-alert-error" id="formError" role="alert" aria-live="assertive" hidden></div>
-
-        <form class="form-grid premium-form" id="bookingForm" method="post" action="https://formspree.io/f/xzbqqbwz" novalidate>
-          <div class="field-group">
-            <label for="name">Full Name</label>
-            <input id="name" type="text" name="name" autocomplete="name" required />
-            <p class="field-error" id="error-name" aria-live="polite"></p>
-          </div>
-
-          <div class="field-group">
-            <label for="email">Email Address</label>
-            <input id="email" type="email" name="email" autocomplete="email" required />
-            <p class="field-error" id="error-email" aria-live="polite"></p>
-          </div>
-
-          <div class="field-group">
-            <label for="phone">Phone Number</label>
-            <input id="phone" type="tel" name="phone" autocomplete="tel" />
-            <p class="field-error" id="error-phone" aria-live="polite"></p>
-          </div>
-
-          <div class="field-group">
-            <label for="service">Service Type</label>
-            <select id="service" name="service" required>
-              <option value="">Select a service</option>
-              <option>Weekly Meal Prep</option>
-              <option>Private Dinner</option>
-              <option>Vacation Rental Chef Service</option>
-              <option>Small Event Catering</option>
-              <option>Holiday Meal</option>
-              <option>Custom Dietary Menu</option>
-            </select>
-            <p class="field-error" id="error-service" aria-live="polite"></p>
-          </div>
-
-          <div class="field-group">
-            <label for="guestCount">Guest Count</label>
-            <input id="guestCount" type="number" name="guestCount" min="1" inputmode="numeric" />
-            <p class="field-error" id="error-guestCount" aria-live="polite"></p>
-          </div>
-
-          <div class="field-group">
-            <label for="eventDate">Preferred Date</label>
-            <input id="eventDate" type="date" name="eventDate" />
-            <p class="field-error" id="error-eventDate" aria-live="polite"></p>
-          </div>
-
-          <div class="field-group field-group-wide">
-            <label for="location">Location</label>
-            <input id="location" type="text" name="location" placeholder="Port Angeles, Sequim, or your Olympic Peninsula property" />
-            <p class="field-error" id="error-location" aria-live="polite"></p>
-          </div>
-
-          <div class="field-group field-group-wide">
-            <label for="dietaryNeeds">Dietary Needs</label>
-            <input id="dietaryNeeds" type="text" name="dietaryNeeds" placeholder="Allergies, preferences, wellness goals, family needs" />
-            <p class="field-error" id="error-dietaryNeeds" aria-live="polite"></p>
-          </div>
-
-          <div class="field-group">
-            <label for="budget">Budget Range</label>
-            <input id="budget" type="text" name="budget" placeholder="$500–$1,000, $1,500+, or preferred range" />
-            <p class="field-error" id="error-budget" aria-live="polite"></p>
-          </div>
-
-          <div class="field-group field-group-wide">
-            <label for="message">Message / Tell us about your event</label>
-            <textarea id="message" name="message" placeholder="Share the occasion, atmosphere, menu style, service expectations, and any details that will help us prepare a thoughtful proposal." required></textarea>
-            <p class="field-error" id="error-message" aria-live="polite"></p>
-          </div>
-
-          <div class="full-span form-note inquiry-form-note">
-            <p>Not every detail needs to be finalized today. A strong overview is enough for us to recommend the right service format, menu direction, and next steps.</p>
-          </div>
-
-          <div class="full-span inquiry-submit-row">
-            <button class="btn btn-primary premium-submit" type="submit" id="submitButton">
-              <span class="submit-label">Request Your Custom Proposal</span>
-              <span class="submit-spinner" aria-hidden="true"></span>
-            </button>
-          </div>
-        </form>
       </div>
     </div>
   </section>
@@ -145,13 +171,14 @@ const schema = {
     const submitLabel = submitButton?.querySelector('.submit-label');
     const successPanel = document.querySelector('#formSuccess');
     const errorPanel = document.querySelector('#formError');
+    const errorPanelMessage = errorPanel?.querySelector('.form-alert-message');
     const fieldErrorElements = Array.from(document.querySelectorAll('.field-error'));
 
     const fieldNames = ['name', 'email', 'phone', 'service', 'guestCount', 'eventDate', 'location', 'dietaryNeeds', 'budget', 'message'];
 
     const resetErrors = () => {
       errorPanel.hidden = true;
-      errorPanel.textContent = '';
+      if (errorPanelMessage) errorPanelMessage.textContent = '';
       fieldErrorElements.forEach((element) => {
         element.textContent = '';
       });
@@ -208,6 +235,7 @@ const schema = {
           form.reset();
           successPanel.hidden = false;
           successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          successPanel.focus();
           return;
         }
 
@@ -222,15 +250,21 @@ const schema = {
             }
           });
 
-          errorPanel.textContent = unmappedMessages[0] || 'We were unable to send your inquiry just now. Please review the highlighted fields and try again.';
-        } else {
-          errorPanel.textContent = 'We were unable to send your inquiry just now. Please try again in a moment.';
+          if (errorPanelMessage) {
+            errorPanelMessage.textContent = unmappedMessages[0] || 'We were unable to send your inquiry just now. Please review the highlighted fields and try again.';
+          }
+        } else if (errorPanelMessage) {
+          errorPanelMessage.textContent = 'We were unable to send your inquiry just now. Please try again in a moment.';
         }
 
         errorPanel.hidden = false;
+        errorPanel.focus();
       } catch (error) {
-        errorPanel.textContent = 'A connection issue interrupted your inquiry. Please try again in a moment.';
+        if (errorPanelMessage) {
+          errorPanelMessage.textContent = 'A connection issue interrupted your inquiry. Please try again in a moment.';
+        }
         errorPanel.hidden = false;
+        errorPanel.focus();
       } finally {
         setSubmitting(false);
       }
