@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { menuBuilderSections, mainCourseOptions, summaryOrder, emptySummaryCopy } from '../data/menuBuilder';
+import { emptySummaryCopy, mainCourseOptions, menuBuilderSections, starchOptionsByCategory, summaryOrder, vegetableOptionsByCategory } from '../data/menuBuilder';
 import { withBase } from '../utils/paths';
 
 const pageTitle = 'Your Sample Menu Preview | Olympic Peninsula Personal Chef';
@@ -17,6 +17,8 @@ const schema = {
 const dataPayload = {
   sections: menuBuilderSections,
   mainCourseOptions,
+  starchOptionsByCategory,
+  vegetableOptionsByCategory,
   summaryOrder,
   emptySummaryCopy
 };
@@ -130,6 +132,7 @@ const dataPayload = {
 
       const hasSelections = previewSectionOrder.some((sectionId) => {
         if (sectionId === 'optionalAdditions') return state.optionalAdditions.length > 0;
+        if (sectionId === 'vegetableSelection') return state.vegetableSelections.length > 0;
         if (sectionId === 'customConsiderations') return Boolean(state.customConsiderations.trim());
         return Boolean(state[sectionId]);
       });
@@ -171,6 +174,17 @@ const dataPayload = {
 
               if (sectionId === 'customConsiderations') {
                 return null;
+              }
+
+              if (sectionId === 'vegetableSelection') {
+                if (!state.vegetableSelections.length) return null;
+                return {
+                  label: summaryLabels[sectionId] || sectionId,
+                  value: state.vegetableSelections
+                    .map((value) => getOptionLabel(builderData, state, 'vegetableSelection', value))
+                    .filter(Boolean)
+                    .join(' · ')
+                };
               }
 
               const value = state[sectionId];

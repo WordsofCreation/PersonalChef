@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { menuBuilderSections, mainCourseOptions, summaryOrder, emptySummaryCopy } from '../data/menuBuilder';
+import { emptySummaryCopy, mainCourseOptions, menuBuilderSections, starchOptionsByCategory, summaryOrder, vegetableOptionsByCategory } from '../data/menuBuilder';
 import { withBase } from '../utils/paths';
 const schema = {
   '@context': 'https://schema.org',
@@ -12,6 +12,8 @@ const schema = {
 const dataPayload = {
   sections: menuBuilderSections,
   mainCourseOptions,
+  starchOptionsByCategory,
+  vegetableOptionsByCategory,
   summaryOrder,
   emptySummaryCopy
 };
@@ -101,8 +103,10 @@ const dataPayload = {
             <input type="hidden" name="menu_main_category" value="" data-menu-field="menu_main_category" />
             <input type="hidden" name="menu_main_selection" value="" data-menu-field="menu_main_selection" />
             <input type="hidden" name="menu_sauce" value="" data-menu-field="menu_sauce" />
-            <input type="hidden" name="menu_starch" value="" data-menu-field="menu_starch" />
-            <input type="hidden" name="menu_vegetables" value="" data-menu-field="menu_vegetables" />
+            <input type="hidden" name="menu_starch_category" value="" data-menu-field="menu_starch_category" />
+            <input type="hidden" name="menu_starch_selection" value="" data-menu-field="menu_starch_selection" />
+            <input type="hidden" name="menu_vegetable_categories" value="" data-menu-field="menu_vegetable_categories" />
+            <input type="hidden" name="menu_vegetable_selections" value="" data-menu-field="menu_vegetable_selections" />
             <input type="hidden" name="menu_additions" value="" data-menu-field="menu_additions" />
             <input type="hidden" name="menu_dessert" value="" data-menu-field="menu_dessert" />
             <input type="hidden" name="menu_custom_notes" value="" data-menu-field="menu_custom_notes" />
@@ -254,8 +258,8 @@ const dataPayload = {
         ['Main Course Category', details?.mainCourseCategory],
         ['Main Course Selection', details?.mainCourse],
         ['Sauce', details?.sauce],
-        ['Starch / Grain', details?.starch],
-        ['Vegetable Accompaniment(s)', details?.vegetable],
+        ['Starch / Grain', details?.starchSelection],
+        ['Vegetables', details?.vegetableSelections?.join(' · ')],
         ['Optional Additions', details?.additions?.join(' · ')],
         ['Dessert', details?.dessert]
       ].filter(([, value]) => Boolean(value));
@@ -282,8 +286,10 @@ const dataPayload = {
         menu_main_category: details?.mainCourseCategory || '',
         menu_main_selection: details?.mainCourse || '',
         menu_sauce: details?.sauce || '',
-        menu_starch: details?.starch || '',
-        menu_vegetables: details?.vegetable || '',
+        menu_starch_category: details?.starchCategory || '',
+        menu_starch_selection: details?.starchSelection || '',
+        menu_vegetable_categories: details?.vegetableCategories?.join(', ') || '',
+        menu_vegetable_selections: details?.vegetableSelections?.join(', ') || '',
         menu_additions: details?.additions?.join(', ') || '',
         menu_dessert: details?.dessert || '',
         menu_custom_notes: details?.customConsiderations || '',

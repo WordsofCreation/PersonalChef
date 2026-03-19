@@ -5,7 +5,9 @@ import {
   emptySummaryCopy,
   mainCourseOptions,
   menuBuilderSections,
-  summaryOrder
+  starchOptionsByCategory,
+  summaryOrder,
+  vegetableOptionsByCategory
 } from '../data/menuBuilder';
 import BuilderOptions from '../components/BuilderOptions.astro';
 
@@ -27,6 +29,8 @@ const sectionLookup = Object.fromEntries(
 const dataPayload = {
   sections: menuBuilderSections,
   mainCourseOptions,
+  starchOptionsByCategory,
+  vegetableOptionsByCategory,
   summaryOrder,
   emptySummaryCopy,
   sectionLookup
@@ -36,8 +40,8 @@ const diningStyleSection = menuBuilderSections.find((section) => section.id === 
 const starterSection = menuBuilderSections.find((section) => section.id === 'starter');
 const mainCourseCategorySection = menuBuilderSections.find((section) => section.id === 'mainCourseCategory');
 const sauceSection = menuBuilderSections.find((section) => section.id === 'sauce');
-const starchSection = menuBuilderSections.find((section) => section.id === 'starch');
-const vegetableSection = menuBuilderSections.find((section) => section.id === 'vegetable');
+const starchCategorySection = menuBuilderSections.find((section) => section.id === 'starchCategory');
+const vegetableCategorySection = menuBuilderSections.find((section) => section.id === 'vegetableCategory');
 const additionsSection = menuBuilderSections.find((section) => section.id === 'optionalAdditions');
 const dessertSection = menuBuilderSections.find((section) => section.id === 'dessert');
 
@@ -146,22 +150,54 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
                   {sauceSection?.options && <BuilderOptions sectionId="sauce" options={sauceSection.options} type="single" />}
                 </div>
               </div>
-              <div class="builder-subsection">
+              <div class="builder-subsection builder-subsection--stacked">
                 <div class="builder-subsection-head">
-                  <h3>{starchSection?.title}</h3>
-                  <p>{starchSection?.helper}</p>
+                  <h3>Starch / Grain</h3>
+                  <p>Choose a starch category first, then refine it into the specific accompaniment.</p>
                 </div>
-                <div class="builder-option-grid builder-option-grid--compact">
-                  {starchSection?.options && <BuilderOptions sectionId="starch" options={starchSection.options} type="single" />}
+                <div class="builder-nested-flow">
+                  <div class="builder-nested-panel">
+                    <div class="builder-subsection-head">
+                      <h4>{starchCategorySection?.title}</h4>
+                      <p>{starchCategorySection?.helper}</p>
+                    </div>
+                    <div class="builder-option-grid builder-option-grid--compact">
+                      {starchCategorySection?.options && <BuilderOptions sectionId="starchCategory" options={starchCategorySection.options} type="single" />}
+                    </div>
+                  </div>
+                  <div class="builder-nested-panel">
+                    <div class="builder-subsection-head">
+                      <h4>Starch / Grain Selection</h4>
+                      <p>Available starches update based on the category you choose.</p>
+                    </div>
+                    <div class="builder-option-grid builder-option-grid--compact" data-starch-options></div>
+                    <p class="builder-inline-note" data-starch-helper>Select a starch category above to view curated options.</p>
+                  </div>
                 </div>
               </div>
-              <div class="builder-subsection">
+              <div class="builder-subsection builder-subsection--stacked">
                 <div class="builder-subsection-head">
-                  <h3>{vegetableSection?.title}</h3>
-                  <p>{vegetableSection?.helper}</p>
+                  <h3>Vegetables</h3>
+                  <p>Choose a vegetable category first, then select the accompaniment that best balances the plate.</p>
                 </div>
-                <div class="builder-option-grid builder-option-grid--compact">
-                  {vegetableSection?.options && <BuilderOptions sectionId="vegetable" options={vegetableSection.options} type="single" />}
+                <div class="builder-nested-flow">
+                  <div class="builder-nested-panel">
+                    <div class="builder-subsection-head">
+                      <h4>{vegetableCategorySection?.title}</h4>
+                      <p>{vegetableCategorySection?.helper}</p>
+                    </div>
+                    <div class="builder-option-grid builder-option-grid--compact">
+                      {vegetableCategorySection?.options && <BuilderOptions sectionId="vegetableCategory" options={vegetableCategorySection.options} type="single" />}
+                    </div>
+                  </div>
+                  <div class="builder-nested-panel">
+                    <div class="builder-subsection-head">
+                      <h4>Vegetable Selection</h4>
+                      <p>Vegetable accompaniments respond to the category you choose while keeping the builder clean and easy to scan.</p>
+                    </div>
+                    <div class="builder-option-grid builder-option-grid--compact" data-vegetable-options></div>
+                    <p class="builder-inline-note" data-vegetable-helper>Select a vegetable category above to view curated options.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -280,10 +316,69 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
       const summaryConsiderations = document.querySelector('[data-summary-considerations]');
       const mainCourseContainer = document.querySelector('[data-main-course-options]');
       const mainCourseHelper = document.querySelector('[data-main-course-helper]');
+      const starchContainer = document.querySelector('[data-starch-options]');
+      const starchHelper = document.querySelector('[data-starch-helper]');
+      const vegetableContainer = document.querySelector('[data-vegetable-options]');
+      const vegetableHelper = document.querySelector('[data-vegetable-helper]');
       const previewButton = document.querySelector('[data-preview-button]');
       const form = document.querySelector('[data-menu-builder]');
       const textarea = document.querySelector('[data-builder-textarea]');
       const state = readBuilderState() || createEmptyMenuBuilderState();
+
+      const renderDependentOptions = ({
+        container,
+        helper,
+        categoryValue,
+        categorySectionId,
+        selectionSectionId,
+        selectedValue,
+        collection,
+        emptyTitle,
+        emptyCopy,
+        helperWhenEmpty,
+        helperWhenFilled
+      }) => {
+        if (!container) return;
+
+        const options = collection[categoryValue] || [];
+
+        if (!categoryValue || options.length === 0) {
+          container.innerHTML = `
+            <div class="builder-empty-state">
+              <strong>${emptyTitle}</strong>
+              <p>${emptyCopy}</p>
+            </div>
+          `;
+          if (helper) helper.textContent = helperWhenEmpty;
+          return;
+        }
+
+        container.innerHTML = options.map((option) => `
+          <label class="builder-option" for="${selectionSectionId}-${option.value}" data-option-card data-section="${selectionSectionId}" data-value="${option.value}">
+            <input
+              id="${selectionSectionId}-${option.value}"
+              class="builder-option-input"
+              type="radio"
+              name="${selectionSectionId}"
+              value="${option.value}"
+              data-builder-input
+              data-section="${selectionSectionId}"
+              ${selectedValue === option.value ? 'checked' : ''}
+            />
+            <span class="builder-option-check" aria-hidden="true"></span>
+            <span class="builder-option-copy">
+              <strong>${option.label}</strong>
+              <span>${option.description || ''}</span>
+              ${option.note ? `<small class="builder-option-note">${option.note}</small>` : ''}
+            </span>
+          </label>
+        `).join('');
+
+        if (helper) {
+          const categoryLabel = getOptionLabel(builderData, state, categorySectionId, categoryValue);
+          helper.textContent = helperWhenFilled(categoryLabel);
+        }
+      };
 
       const hydrateForm = () => {
         Object.entries(state).forEach(([sectionId, value]) => {
@@ -292,9 +387,9 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
             return;
           }
 
-          if (sectionId === 'optionalAdditions' && Array.isArray(value)) {
+          if ((sectionId === 'optionalAdditions' || sectionId === 'vegetableSelections') && Array.isArray(value)) {
             value.forEach((selectedValue) => {
-              const input = document.querySelector(`input[name="optionalAdditions"][value="${selectedValue}"]`);
+              const input = document.querySelector(`input[name="${sectionId === 'vegetableSelections' ? 'vegetableSelection' : 'optionalAdditions'}"][value="${selectedValue}"]`);
               if (input instanceof HTMLInputElement) input.checked = true;
             });
             return;
@@ -357,36 +452,90 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
         }
       };
 
+      const renderStarchOptions = () => {
+        renderDependentOptions({
+          container: starchContainer,
+          helper: starchHelper,
+          categoryValue: state.starchCategory,
+          categorySectionId: 'starchCategory',
+          selectionSectionId: 'starchSelection',
+          selectedValue: state.starchSelection,
+          collection: builderData.starchOptionsByCategory,
+          emptyTitle: 'Select a starch category',
+          emptyCopy: 'Choose a starch direction first and the matching starches or grains will appear here.',
+          helperWhenEmpty: 'Choose a starch category to unlock curated starch and grain selections.',
+          helperWhenFilled: (categoryLabel) => `${categoryLabel} selections ready to complete the plate.`
+        });
+      };
+
+      const renderVegetableOptions = () => {
+        renderDependentOptions({
+          container: vegetableContainer,
+          helper: vegetableHelper,
+          categoryValue: state.vegetableCategory,
+          categorySectionId: 'vegetableCategory',
+          selectionSectionId: 'vegetableSelection',
+          selectedValue: state.vegetableSelections[0] || '',
+          collection: builderData.vegetableOptionsByCategory,
+          emptyTitle: 'Select a vegetable category',
+          emptyCopy: 'Choose a vegetable direction first and the matching accompaniments will appear here.',
+          helperWhenEmpty: 'Choose a vegetable category to unlock curated accompaniments.',
+          helperWhenFilled: (categoryLabel) => `${categoryLabel} accompaniments ready to balance the plate.`
+        });
+      };
+
       const renderSummary = () => {
-        const summaryItems = builderData.summaryOrder
-          .map((sectionId) => {
-            if (sectionId === 'customConsiderations') {
-              return state.customConsiderations.trim()
-                ? { label: summaryLabels.customConsiderations, value: state.customConsiderations.trim() }
-                : null;
-            }
-
-            if (sectionId === 'optionalAdditions') {
-              if (!state.optionalAdditions.length) return null;
-
-              const labels = state.optionalAdditions
-                .map((value) => getOptionLabel(builderData, state, 'optionalAdditions', value))
-                .filter(Boolean)
-                .join(' · ');
-
-              return labels ? { label: summaryLabels.optionalAdditions, value: labels } : null;
-            }
-
-            const value = state[sectionId];
-            if (!value) return null;
-
-            const label = getOptionLabel(builderData, state, sectionId, value);
-
-            return label
-              ? { label: summaryLabels[sectionId] || sectionId, value: label }
-              : null;
-          })
+        const vegetableLabels = state.vegetableSelections
+          .map((value) => getOptionLabel(builderData, state, 'vegetableSelection', value))
           .filter(Boolean);
+
+        const summaryItems = [
+          state.diningStyle ? {
+            label: summaryLabels.diningStyle,
+            value: getOptionLabel(builderData, state, 'diningStyle', state.diningStyle)
+          } : null,
+          state.starter ? {
+            label: summaryLabels.starter,
+            value: getOptionLabel(builderData, state, 'starter', state.starter)
+          } : null,
+          state.mainCourseCategory ? {
+            label: summaryLabels.mainCourseCategory,
+            value: getOptionLabel(builderData, state, 'mainCourseCategory', state.mainCourseCategory)
+          } : null,
+          state.mainCourseSelection ? {
+            label: summaryLabels.mainCourseSelection,
+            value: getOptionLabel(builderData, state, 'mainCourseSelection', state.mainCourseSelection)
+          } : null,
+          state.sauce ? {
+            label: summaryLabels.sauce,
+            value: getOptionLabel(builderData, state, 'sauce', state.sauce)
+          } : null,
+          state.starchSelection ? {
+            label: 'Starch / Grain',
+            value: getOptionLabel(builderData, state, 'starchSelection', state.starchSelection),
+            meta: getOptionLabel(builderData, state, 'starchCategory', state.starchCategory)
+          } : null,
+          vegetableLabels.length ? {
+            label: 'Vegetables',
+            value: vegetableLabels.join(' · '),
+            meta: getOptionLabel(builderData, state, 'vegetableCategory', state.vegetableCategory)
+          } : null,
+          state.optionalAdditions.length ? {
+            label: summaryLabels.optionalAdditions,
+            value: state.optionalAdditions
+              .map((value) => getOptionLabel(builderData, state, 'optionalAdditions', value))
+              .filter(Boolean)
+              .join(' · ')
+          } : null,
+          state.dessert ? {
+            label: summaryLabels.dessert,
+            value: getOptionLabel(builderData, state, 'dessert', state.dessert)
+          } : null,
+          state.customConsiderations.trim() ? {
+            label: summaryLabels.customConsiderations,
+            value: state.customConsiderations.trim()
+          } : null
+        ].filter(Boolean);
 
         if (!summaryList || !summaryEmpty) return;
 
@@ -401,6 +550,7 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
             <article class="menu-summary-item">
               <p>${item.label}</p>
               <strong>${item.value}</strong>
+              ${item.meta ? `<span class="menu-summary-item-meta">${item.meta}</span>` : ''}
             </article>
           `).join('');
         }
@@ -411,15 +561,16 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
             : 'No custom considerations yet. Use the notes field to mention allergies, celebration details, favorite ingredients, or dietary preferences.';
         }
       };
-
       const syncCardStates = () => {
         document.querySelectorAll('[data-option-card]').forEach((card) => {
           const section = card.getAttribute('data-section');
           const value = card.getAttribute('data-value');
-          const isMultiple = section === 'optionalAdditions';
-          const active = isMultiple
+          const isMultiple = section === 'optionalAdditions' || section === 'vegetableSelection';
+          const active = section === 'optionalAdditions'
             ? state.optionalAdditions.includes(value)
-            : state[section] === value;
+            : section === 'vegetableSelection'
+              ? state.vegetableSelections.includes(value)
+              : state[section] === value;
           card.classList.toggle('is-selected', Boolean(active));
         });
       };
@@ -435,6 +586,8 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
           state.optionalAdditions = Array.from(document.querySelectorAll('input[name="optionalAdditions"]:checked'))
             .map((input) => input instanceof HTMLInputElement ? input.value : '')
             .filter(Boolean);
+        } else if (sectionId === 'vegetableSelection') {
+          state.vegetableSelections = target.checked ? [target.value] : [];
         } else {
           state[sectionId] = target.value;
         }
@@ -442,6 +595,16 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
         if (sectionId === 'mainCourseCategory') {
           state.mainCourseSelection = '';
           renderMainCourseOptions();
+        }
+
+        if (sectionId === 'starchCategory') {
+          state.starchSelection = '';
+          renderStarchOptions();
+        }
+
+        if (sectionId === 'vegetableCategory') {
+          state.vegetableSelections = [];
+          renderVegetableOptions();
         }
 
         persistState();
@@ -467,6 +630,8 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
       }
 
       renderMainCourseOptions();
+      renderStarchOptions();
+      renderVegetableOptions();
       hydrateForm();
       syncCardStates();
       renderSummary();
