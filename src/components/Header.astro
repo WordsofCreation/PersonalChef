@@ -14,10 +14,32 @@ const links = [
 ---
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href={withBase('/')}>Olympic Peninsula Personal Chef<span>Port Angeles · Sequim · Olympic Peninsula</span></a>
+    <a class="brand" href={withBase('/')}>
+      Olympic Peninsula Personal Chef
+      <span>Port Angeles · Sequim · Olympic Peninsula</span>
+    </a>
+
     <nav class="nav-links" aria-label="Primary navigation">
       {links.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}
     </nav>
-    <a class="btn btn-primary" href={withBase('/contact')}>Book Your Date</a>
+
+    <div class="nav-cta-group">
+      <a class="btn btn-primary nav-cta" href={withBase('/contact')}>Book Your Date</a>
+
+      <details class="mobile-nav">
+        <summary aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <div class="mobile-nav-panel">
+          <p class="mobile-nav-label">Explore the experience</p>
+          <nav aria-label="Mobile navigation">
+            {links.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}
+          </nav>
+          <a class="btn btn-primary" href={withBase('/contact')}>Request a Proposal</a>
+        </div>
+      </details>
+    </div>
   </div>
 </header>

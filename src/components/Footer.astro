@@ -1,30 +1,36 @@
 ---
 import { withBase } from '../utils/paths';
 ---
-<footer>
-  <div class="container footer-grid">
-    <div>
-      <div class="brand">Olympic Peninsula Personal Chef<span>Pacific Northwest hospitality, tailored for home and getaway tables</span></div>
-      <p>Serving Port Angeles, Sequim, and the greater Olympic Peninsula with private dining, chef-crafted meal prep, vacation rental chef experiences, and intimate event hospitality.</p>
-      <p class="schema-note">Thoughtful menu customization, seasonal sourcing, and polished communication from first inquiry to final course.</p>
-    </div>
-    <div>
-      <h3>Explore</h3>
-      <div class="footer-links">
-        <a href={withBase('/services')}>Services</a>
-        <a href={withBase('/sample-menus')}>Sample Menus</a>
-        <a href={withBase('/about-the-chef')}>About the Chef</a>
-        <a href={withBase('/faq')}>FAQ</a>
+<footer class="site-footer">
+  <div class="container footer-shell">
+    <div class="footer-grid">
+      <div class="footer-brand-block">
+        <div class="brand">Olympic Peninsula Personal Chef<span>Pacific Northwest hospitality, tailored for home and getaway tables</span></div>
+        <p>Serving Port Angeles, Sequim, and the greater Olympic Peninsula with private dining, chef-crafted meal prep, vacation rental chef experiences, and intimate event hospitality.</p>
+        <p class="schema-note">Thoughtful menu customization, seasonal sourcing, and polished communication from first inquiry to final course.</p>
+      </div>
+      <div>
+        <p class="footer-heading">Explore</p>
+        <div class="footer-links">
+          <a href={withBase('/services')}>Services</a>
+          <a href={withBase('/sample-menus')}>Sample Menus</a>
+          <a href={withBase('/about-the-chef')}>About the Chef</a>
+          <a href={withBase('/faq')}>FAQ</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-heading">Service Area</p>
+        <div class="footer-links">
+          <a href={withBase('/personal-chef-port-angeles')}>Port Angeles</a>
+          <a href={withBase('/personal-chef-sequim')}>Sequim</a>
+          <a href={withBase('/vacation-rental-chef-olympic-peninsula')}>Olympic Peninsula Vacation Rentals</a>
+          <a href={withBase('/contact')}>Request a Proposal</a>
+        </div>
       </div>
     </div>
-    <div>
-      <h3>Service Area</h3>
-      <div class="footer-links">
-        <a href={withBase('/personal-chef-port-angeles')}>Port Angeles</a>
-        <a href={withBase('/personal-chef-sequim')}>Sequim</a>
-        <a href={withBase('/vacation-rental-chef-olympic-peninsula')}>Olympic Peninsula Vacation Rentals</a>
-        <a href={withBase('/contact')}>Request a Proposal</a>
-      </div>
+    <div class="footer-bottom">
+      <p>Private chef services with a boutique, proposal-based approach for local residents, hosted weekends, and destination stays.</p>
+      <a href={withBase('/contact')}>Begin your inquiry</a>
     </div>
   </div>
 </footer>
