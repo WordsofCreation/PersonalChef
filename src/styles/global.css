@@ -1331,8 +1331,12 @@ textarea {
   grid-template-columns: minmax(0, 1.45fr) minmax(290px, 0.7fr);
   gap: 1.5rem;
   align-items: start;
+  isolation: isolate;
 }
-.menu-builder-form,
+.menu-builder-form {
+  position: relative;
+  z-index: 2;
+}
 .menu-builder-grid,
 .menu-summary-shell,
 .builder-section,
@@ -1391,11 +1395,14 @@ textarea {
 }
 .builder-option-input {
   position: absolute;
-  opacity: 0;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 .builder-option-input:focus-visible + .builder-option-check {
   box-shadow: var(--focus-ring-dark);
@@ -1490,6 +1497,8 @@ input[type='checkbox'].builder-option-input + .builder-option-check {
 .menu-summary-panel {
   position: sticky;
   top: 6.5rem;
+  z-index: 1;
+  align-self: start;
 }
 .menu-summary-course-list {
   display: grid;
