@@ -4,7 +4,8 @@ const { faqs } = Astro.props as { faqs: CollectionEntry<'faqs'>[] };
 ---
 <div class="grid two-col">
   {faqs.map((faq) => (
-    <article class="card">
+    <article class="card faq-card" style="display:grid; gap:0.65rem;">
+      <p class="eyebrow">Questions we hear often</p>
       <h3>{faq.data.question}</h3>
       <p>{faq.data.answer}</p>
     </article>

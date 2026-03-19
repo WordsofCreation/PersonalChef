@@ -22,7 +22,7 @@ const schema = [
     areaServed: ['Port Angeles', 'Sequim', 'Olympic Peninsula'],
     servesCuisine: ['Pacific Northwest', 'Private Dining', 'Meal Prep'],
     url: 'https://www.olympicpeninsulapersonalchef.com/',
-    description: 'Luxury personal chef Port Angeles service for meal prep, private dining, and vacation rental chef experiences.'
+    description: 'Premium personal chef services in Port Angeles, Sequim, and the Olympic Peninsula for private dining, meal prep, vacation rentals, and intimate events.'
   },
   {
     '@context': 'https://schema.org',
@@ -40,36 +40,75 @@ const schema = [
 ];
 ---
 <BaseLayout
-  title="Personal Chef Port Angeles | Olympic Peninsula Personal Chef"
-  description="Luxury personal chef Port Angeles service for weekly meal prep, private dinners, vacation rental chef experiences, and small events across the Olympic Peninsula."
+  title="Personal Chef Port Angeles & Sequim | Olympic Peninsula Private Dining"
+  description="Premium personal chef services in Port Angeles, Sequim, and across the Olympic Peninsula for private dining, weekly meal prep, vacation rental chef experiences, and intimate events."
   path="/"
   schema={schema}
 >
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <div class="hero-badge">Personal Chef Port Angeles · Olympic Peninsula</div>
-        <h1>Elegant personal chef services for Port Angeles homes, gatherings, and coastal getaways.</h1>
-        <p>Private dining, weekly meal prep, and small event chef services designed with Pacific Northwest ingredients, refined hospitality, and a warm local touch.</p>
+        <div class="hero-badge">Personal Chef Port Angeles · Sequim · Olympic Peninsula</div>
+        <h1>Private chef experiences that bring Pacific Northwest elegance home.</h1>
+        <p>From intimate Port Angeles dinners to refined weekly meal prep in Sequim and elevated vacation-rental dining across the Olympic Peninsula, every service is tailored with thoughtful hospitality, seasonal ingredients, and a calm, polished presence.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/contact">Request a Quote</a>
-          <a class="btn btn-secondary" href="/sample-menus">View Sample Menus</a>
+          <a class="btn btn-primary" href="/contact">Request Your Custom Proposal</a>
+          <a class="btn btn-secondary" href="/sample-menus">Browse Sample Menus</a>
+        </div>
+        <div class="hero-proof">
+          <p><strong>Responsive booking:</strong> Most inquiries receive a personal reply within one business day.</p>
+          <p><strong>Customized service:</strong> Menus are shaped around your tastes, dietary needs, home, and occasion.</p>
         </div>
         <div class="highlight-list">
-          <div><strong>Weekly meal prep</strong><span>Chef-prepared meals tailored to your routine and dietary goals.</span></div>
-          <div><strong>Private dinners</strong><span>Restaurant-level evenings for anniversaries, celebrations, and client entertaining.</span></div>
-          <div><strong>Small events</strong><span>Boutique service for holiday tables, intimate gatherings, and vacation stays.</span></div>
+          <div><span><strong>Private dining</strong><br />Restaurant-level evenings for anniversaries, celebrations, hosted weekends, and client entertaining.</span></div>
+          <div><span><strong>Weekly meal prep</strong><br />Beautifully prepared meals that bring consistency, nourishment, and ease to busy Peninsula households.</span></div>
+          <div><span><strong>Vacation & event hospitality</strong><br />Welcome dinners, brunches, and chef service that make stays feel seamless and memorable.</span></div>
         </div>
       </div>
-      <div class="hero-art"></div>
+      <div class="hero-art">
+        <div class="hero-note">
+          <strong>Seasonal, local, tailored.</strong>
+          <span>Designed for Port Angeles homes, Sequim routines, and Olympic Peninsula gatherings that deserve more than standard catering.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container split-intro">
+      <div class="section-header" style="margin-bottom:0;">
+        <p class="eyebrow">Why clients hire a personal chef</p>
+        <h2>More time at the table, less time managing the details.</h2>
+        <p>A personal chef is not only about convenience. It is about giving your household or your guests a dining experience that feels effortless, deeply considered, and beautifully executed from ingredients to cleanup.</p>
+      </div>
+      <div class="info-strip">
+        <div><strong>Comfort</strong><span>Host with confidence while your kitchen stays calm and organized.</span></div>
+        <div><strong>Quality</strong><span>Enjoy menus built around seasonal produce, pristine seafood, and ingredient integrity.</span></div>
+        <div><strong>Care</strong><span>Dietary needs, timing, and hospitality style are all handled with intention.</span></div>
+      </div>
+    </div>
+    <div class="container benefit-grid" style="margin-top:1.5rem;">
+      <article class="benefit-item">
+        <h3>For local residents</h3>
+        <p>Keep weekday meals polished and nourishing, or host special evenings in Port Angeles and Sequim without sacrificing your own time or presence.</p>
+      </article>
+      <article class="benefit-item">
+        <h3>For vacation guests</h3>
+        <p>Turn a coastal stay into something exceptional with chef-led dinners, stocked kitchens, and brunches designed around the rhythm of your trip.</p>
+      </article>
+      <article class="benefit-item">
+        <h3>For meaningful occasions</h3>
+        <p>Create space for conversation, celebration, and memorable hospitality while every course, pace, and dietary detail is thoughtfully handled.</p>
+      </article>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <p class="eyebrow">Featured Services</p>
-        <h2>High-end chef support built around the way you gather, host, and eat.</h2>
+        <p class="eyebrow">Featured services</p>
+        <h2>Chef services designed for how you live, host, and gather on the Peninsula.</h2>
+        <p>Each offering is intentionally flexible, with premium ingredients, tailored pacing, and hospitality that feels warm rather than formal.</p>
       </div>
       <div class="grid three-col">
         {services.map((service) => <ServiceCard service={service} />)}
@@ -77,17 +116,44 @@ const schema = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="container grid two-col">
+  <section class="section section-tint">
+    <div class="container local-grid">
       <div class="card">
-        <p class="eyebrow">Why hire a personal chef in Port Angeles</p>
-        <h2>Bring ease, hospitality, and exceptional food into your everyday life.</h2>
-        <p>Hiring a personal chef in Port Angeles means fewer errands, less prep, and more time enjoying the coast, your guests, and your table. From recurring meal prep to private chef Port Angeles WA dinners, every service is designed to feel elevated yet comfortable.</p>
+        <p class="eyebrow">Olympic Peninsula inspiration</p>
+        <h2>Menus shaped by the season, the shoreline, and the table in front of you.</h2>
+        <p>Think cedar-roasted salmon, orchard fruit, garden herbs, wild mushrooms, and polished comfort dishes that feel right for a waterfront evening in Port Angeles or a relaxed weekend in Sequim.</p>
+        <ul class="local-list" style="margin-top:1rem;">
+          <li><strong>Spring & summer:</strong> Bright seafood, tender greens, berries, herbs, and lighter multi-course dinners.</li>
+          <li><strong>Autumn & winter:</strong> Slow-roasted mains, root vegetables, woodland flavors, and warmly layered holiday tables.</li>
+          <li><strong>Always tailored:</strong> Menus can lean celebratory, wellness-focused, family-style, or quietly luxurious depending on the occasion.</li>
+        </ul>
       </div>
-      <div class="card">
-        <p class="eyebrow">Seasonal & local ingredients</p>
-        <h2>Menus rooted in the Pacific Northwest.</h2>
-        <p>Menus draw inspiration from Olympic Peninsula farms, fisheries, and seasonal produce. The result is food that feels polished, memorable, and connected to the region your guests came to experience.</p>
+      <div class="card-stack">
+        <article class="card">
+          <p class="eyebrow">Booking process</p>
+          <h3>Simple, attentive, and fully customized.</h3>
+          <div class="process-grid">
+            <div class="process-card">
+              <div class="step-number">1</div>
+              <h4>Share your plans</h4>
+              <p>Tell us about your event, household rhythm, travel dates, guest count, and any dietary considerations.</p>
+            </div>
+            <div class="process-card">
+              <div class="step-number">2</div>
+              <h4>Receive a custom proposal</h4>
+              <p>You’ll get menu direction, service recommendations, and pricing guidance built around your needs.</p>
+            </div>
+            <div class="process-card">
+              <div class="step-number">3</div>
+              <h4>Enjoy your chef experience</h4>
+              <p>Relax into a tailored service that feels polished, welcoming, and beautifully cared for from start to finish.</p>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Why clients trust this experience</p>
+          <p>Expect thoughtful communication, discreet professionalism, flexible customization, and food that feels elevated without being fussy. Pricing is proposal-based to reflect menu scope, guest count, and the level of service you want.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -96,7 +162,8 @@ const schema = [
     <div class="container">
       <div class="section-header">
         <p class="eyebrow">Sample menu preview</p>
-        <h2>Signature menus that are easy to customize.</h2>
+        <h2>Editorial-style menu concepts that feel aspirational and genuinely useful.</h2>
+        <p>Use these menus to get a sense of tone, ingredient style, and service possibilities before requesting your proposal.</p>
       </div>
       <div class="grid two-col">
         {menus.slice(0, 4).map((menu) => <MenuCard menu={menu} />)}
@@ -104,11 +171,12 @@ const schema = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-tint">
     <div class="container">
       <div class="section-header">
         <p class="eyebrow">Client notes</p>
-        <h2>Trusted by locals, hosts, and vacation guests across the peninsula.</h2>
+        <h2>Trusted by Peninsula households, hosts, and vacation guests who want the experience to feel special.</h2>
+        <p>Social proof matters most when it sounds human, specific, and grounded in the kind of hospitality clients actually remember.</p>
       </div>
       <div class="grid three-col">
         {testimonials.map((testimonial) => <TestimonialCard testimonial={testimonial} />)}
@@ -117,23 +185,30 @@ const schema = [
   </section>
 
   <section class="section">
-    <div class="container grid two-col">
+    <div class="container local-grid">
       <div>
         <div class="section-header">
-          <p class="eyebrow">Service area</p>
-          <h2>Chef services throughout Port Angeles, Sequim, and the Olympic Peninsula.</h2>
+          <p class="eyebrow">Where service is centered</p>
+          <h2>Serving Port Angeles, Sequim, and chef-led gatherings across the Olympic Peninsula.</h2>
+          <p>Whether you are local to the Peninsula or planning a destination stay, the service is designed to feel rooted in the region rather than generic to anywhere.</p>
         </div>
         <ul class="service-area-list">
           {areas.map((area) => <li><strong>{area.data.name}:</strong> {area.data.summary}</li>)}
         </ul>
       </div>
-      <div class="card">
-        <p class="eyebrow">FAQ preview</p>
-        <h3>Planning should feel simple.</h3>
-        <FaqList faqs={faqs.slice(0, 2)} />
+      <div class="card-stack">
+        <article class="card">
+          <p class="eyebrow">FAQ preview</p>
+          <h3>Planning should feel clear from the start.</h3>
+          <FaqList faqs={faqs.slice(0, 2)} />
+        </article>
+        <article class="card">
+          <p class="eyebrow">Helpful next steps</p>
+          <p>Compare <a href="/services">services</a>, explore <a href="/sample-menus">sample menus</a>, or visit the dedicated <a href="/personal-chef-port-angeles">Port Angeles</a> and <a href="/personal-chef-sequim">Sequim</a> pages for locally focused details.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <CTA title="Let’s create a chef experience that feels effortless and distinctly local." text="Tell us about your dinner, meal prep needs, or vacation stay. You’ll receive a thoughtful response, custom options, and clear next steps for your quote." secondaryHref="/services" secondaryLabel="Explore Services" />
+  <CTA title="Reserve a chef experience that feels effortless, polished, and unmistakably local." text="Share your preferred dates, guest count, and dining style. You’ll receive a tailored response with menu direction, availability guidance, and confident next steps for booking." secondaryHref="/services" secondaryLabel="Explore Services" />
 </BaseLayout>

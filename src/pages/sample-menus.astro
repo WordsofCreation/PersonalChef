@@ -10,16 +10,23 @@ const schema = {
   hasMenuSection: menus.map((menu) => ({ '@type': 'MenuSection', name: menu.data.title, description: menu.data.description }))
 };
 ---
-<BaseLayout title="Sample Menus | Olympic Peninsula Personal Chef" description="Explore elegant sample menus for Pacific Northwest dinners, romantic dinners for two, weekly meal prep, brunch service, and holiday meals." path="/sample-menus" schema={schema}>
+<BaseLayout title="Sample Menus | Private Chef Menus for Port Angeles & Sequim" description="Explore sample menus for Pacific Northwest private dinners, romantic evenings, brunch service, weekly meal prep, and seasonal holiday hosting across the Olympic Peninsula." path="/sample-menus" schema={schema}>
   <section class="section">
-    <div class="container section-header">
-      <p class="eyebrow">Sample Menus</p>
-      <h1>Thoughtfully structured menus designed to be customized.</h1>
-      <p>These sample menus are stored as structured content so they can be updated quickly as seasons, ingredients, and service styles evolve.</p>
+    <div class="container split-intro">
+      <div class="section-header" style="margin-bottom:0;">
+        <p class="eyebrow">Sample menus</p>
+        <h1>Menu concepts that feel seasonal, polished, and ready to tailor.</h1>
+        <p>These menus are designed to show range rather than lock you into a package. Use them to identify the flavor profile, pacing, and service style that best suits your table.</p>
+      </div>
+      <div class="info-strip">
+        <div><strong>Seasonally informed</strong><span>Menu direction shifts naturally with local produce, seafood, and the time of year.</span></div>
+        <div><strong>Built to customize</strong><span>Dietary accommodations and favorite ingredients are welcomed into the planning process.</span></div>
+        <div><strong>Useful for planning</strong><span>Perfect for private dinners, vacation weekends, celebrations, and recurring meal routines.</span></div>
+      </div>
     </div>
-    <div class="container grid two-col">
+    <div class="container grid two-col" style="margin-top:2rem;">
       {menus.map((menu) => <MenuCard menu={menu} />)}
     </div>
   </section>
-  <CTA title="See something you love?" text="Every menu can be adjusted for dietary needs, favorite ingredients, local sourcing opportunities, and the tone of your event." secondaryHref="/contact" secondaryLabel="Ask About Custom Menus" />
+  <CTA title="See a menu direction that fits your occasion?" text="Every menu can be refined for guest preferences, dietary needs, wine pairings, seasonal sourcing opportunities, and the overall tone of your event." secondaryHref="/contact" secondaryLabel="Ask About Custom Menus" />
 </BaseLayout>

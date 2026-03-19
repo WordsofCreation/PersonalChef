@@ -7,16 +7,15 @@ const links = [
   ['Port Angeles', '/personal-chef-port-angeles'],
   ['Sequim', '/personal-chef-sequim'],
   ['Vacation Rental Chef', '/vacation-rental-chef-olympic-peninsula'],
-  ['FAQ', '/faq'],
-  ['Book Now', '/contact']
+  ['FAQ', '/faq']
 ];
 ---
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href="/">Olympic Peninsula Personal Chef<span>Port Angeles, Washington</span></a>
+    <a class="brand" href="/">Olympic Peninsula Personal Chef<span>Port Angeles · Sequim · Olympic Peninsula</span></a>
     <nav class="nav-links" aria-label="Primary navigation">
       {links.map(([label, href]) => <a href={href}>{label}</a>)}
     </nav>
-    <a class="btn btn-primary" href="/contact">Request a Quote</a>
+    <a class="btn btn-primary" href="/contact">Book Your Date</a>
   </div>
 </header>

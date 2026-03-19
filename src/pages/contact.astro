@@ -7,15 +7,23 @@ const schema = {
   mainEntity: { '@type': 'LocalBusiness', name: 'Olympic Peninsula Personal Chef' }
 };
 ---
-<BaseLayout title="Contact & Book Now | Olympic Peninsula Personal Chef" description="Request a quote for personal chef Port Angeles, personal chef Sequim, meal prep, private dinners, and vacation rental chef experiences." path="/contact" schema={schema}>
+<BaseLayout title="Book a Personal Chef | Port Angeles, Sequim & Olympic Peninsula" description="Request a custom proposal for private dining, meal prep, and vacation rental chef services in Port Angeles, Sequim, and across the Olympic Peninsula." path="/contact" schema={schema}>
   <section class="section">
-    <div class="container grid two-col">
-      <div>
-        <p class="eyebrow">Contact / Book Now</p>
-        <h1>Tell us about your table, your guests, and your timeline.</h1>
-        <p>Every inquiry receives a thoughtful response, a customized recommendation, and transparent next steps for pricing. Most replies can be sent within one business day.</p>
+    <div class="container local-grid">
+      <div class="card-stack">
+        <div>
+          <p class="eyebrow">Inquire about your date</p>
+          <h1>Tell us what you’re planning, and we’ll shape the right chef experience around it.</h1>
+          <p>Whether you need a private dinner in Port Angeles, recurring meal prep in Sequim, or a chef-led vacation rental experience on the Olympic Peninsula, your inquiry begins a calm, personalized proposal process.</p>
+        </div>
         <div class="card schema-note">
-          <p><strong>Trust note:</strong> Your inquiry starts a personalized quote process. Menus, service style, and logistics are all tailored to your occasion, home, and dietary needs.</p>
+          <p><strong>What happens next:</strong> You’ll receive a thoughtful response with service recommendations, menu direction, and pricing guidance based on your guest count, timeline, and location.</p>
+          <p><strong>Dietary accommodations:</strong> Allergies, gluten-free, pescatarian, dairy-free, wellness-focused, and family-specific preferences are all welcome.</p>
+        </div>
+        <div class="info-strip">
+          <div><strong>Fast follow-up</strong><span>Most inquiries receive a reply within one business day.</span></div>
+          <div><strong>Custom proposals</strong><span>Menus and logistics are built for your actual occasion, not from a fixed package list.</span></div>
+          <div><strong>Premium, approachable service</strong><span>Expect polished hospitality that feels warm, discreet, and easy to work with.</span></div>
         </div>
       </div>
       <form class="card form-grid" name="booking" method="post" action="#">
@@ -33,11 +41,14 @@ const schema = {
           </select>
         </label>
         <label>Guest Count<input type="number" name="guestCount" min="1" /></label>
-        <label>Date<input type="date" name="date" /></label>
-        <label>Location<input type="text" name="location" placeholder="Port Angeles, Sequim, or Olympic Peninsula address" /></label>
-        <label>Dietary Needs<input type="text" name="dietaryNeeds" placeholder="Allergies, preferences, wellness goals" /></label>
-        <label class="full-span">Message<textarea name="message" placeholder="Tell us about the occasion, menu style, service expectations, and anything else helpful."></textarea></label>
-        <div class="full-span"><button class="btn btn-primary" type="submit">Request a Quote</button></div>
+        <label>Preferred Date<input type="date" name="date" /></label>
+        <label>Location<input type="text" name="location" placeholder="Port Angeles, Sequim, or your Olympic Peninsula property" /></label>
+        <label>Dietary Needs<input type="text" name="dietaryNeeds" placeholder="Allergies, preferences, wellness goals, children's needs" /></label>
+        <label class="full-span">Message<textarea name="message" placeholder="Share the occasion, menu style you have in mind, desired level of service, and any details that will help us create a thoughtful proposal."></textarea></label>
+        <div class="full-span form-note">
+          <p>There is no pressure to have every detail finalized. A strong starting point is enough for us to recommend the best service format and next steps.</p>
+        </div>
+        <div class="full-span"><button class="btn btn-primary" type="submit">Request Your Proposal</button></div>
       </form>
     </div>
   </section>

@@ -1,13 +1,14 @@
 ---
 const { title, text, primaryHref = '/contact', primaryLabel = 'Request a Quote', secondaryHref, secondaryLabel } = Astro.props;
 ---
-<section class="section">
+<section class="section section-tint">
   <div class="container">
     <div class="panel cta-banner">
       <div>
         <p class="eyebrow">Book your chef experience</p>
         <h2>{title}</h2>
         <p>{text}</p>
+        <p class="schema-note">Inquiries are answered with thoughtful next steps, menu direction, and custom pricing guidance based on your date, guest count, and location.</p>
       </div>
       <div style="display:flex; gap:1rem; flex-wrap:wrap;">
         <a class="btn btn-primary" href={primaryHref}>{primaryLabel}</a>
