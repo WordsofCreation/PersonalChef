@@ -3,6 +3,7 @@ interface Option {
   value: string;
   label: string;
   description?: string;
+  note?: string;
 }
 
 interface Props {
@@ -29,6 +30,7 @@ const formatCardId = (optionValue: string) => `${sectionId}-${optionValue}`;
     <span class="builder-option-copy">
       <strong>{option.label}</strong>
       {option.description && <span>{option.description}</span>}
+      {option.note && <small class="builder-option-note">{option.note}</small>}
     </span>
   </label>
 ))}

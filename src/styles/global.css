@@ -1431,6 +1431,14 @@ input[type='checkbox'].builder-option-input + .builder-option-check {
   color: var(--text-soft);
   line-height: 1.6;
 }
+.builder-option-note {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.76rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--bronze-soft);
+}
 .builder-multi-column {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
