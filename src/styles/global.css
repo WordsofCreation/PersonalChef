@@ -1331,8 +1331,12 @@ textarea {
   grid-template-columns: minmax(0, 1.45fr) minmax(290px, 0.7fr);
   gap: 1.5rem;
   align-items: start;
+  isolation: isolate;
 }
-.menu-builder-form,
+.menu-builder-form {
+  position: relative;
+  z-index: 2;
+}
 .menu-builder-grid,
 .menu-summary-shell,
 .builder-section,
@@ -1493,6 +1497,8 @@ input[type='checkbox'].builder-option-input + .builder-option-check {
 .menu-summary-panel {
   position: sticky;
   top: 6.5rem;
+  z-index: 1;
+  align-self: start;
 }
 .menu-summary-course-list {
   display: grid;
