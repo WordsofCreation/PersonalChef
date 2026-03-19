@@ -1,10 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { menuBuilderSections, mainCourseOptions, summaryOrder, emptySummaryCopy } from '../data/menuBuilder';
+import { withBase } from '../utils/paths';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
   name: 'Book a Personal Chef',
   mainEntity: { '@type': 'LocalBusiness', name: 'Olympic Peninsula Personal Chef' }
+};
+
+const dataPayload = {
+  sections: menuBuilderSections,
+  mainCourseOptions,
+  summaryOrder,
+  emptySummaryCopy
 };
 ---
 <BaseLayout title="Book a Personal Chef | Port Angeles, Sequim & Olympic Peninsula" description="Request a custom proposal for private dining, meal prep, and vacation rental chef services in Port Angeles, Sequim, and across the Olympic Peninsula." path="/contact" schema={schema}>
@@ -67,18 +76,37 @@ const schema = {
           </div>
 
           <section class="menu-request-handoff" data-menu-request-handoff hidden aria-labelledby="menu-request-heading">
-            <div class="menu-request-handoff-copy">
-              <p class="process-kicker">Menu preview attached</p>
-              <h3 id="menu-request-heading">Your sample menu selections will travel with this inquiry.</h3>
-              <p>We’ve carried over the menu direction you composed so your inquiry can begin with the same service style and course structure.</p>
+            <div class="menu-request-handoff-head">
+              <div class="menu-request-handoff-copy">
+                <p class="process-kicker">Selected sample menu</p>
+                <h3 id="menu-request-heading">Your Menu Request</h3>
+                <p>Your selected sample menu will be included with your inquiry so we can respond with aligned service and menu direction.</p>
+              </div>
+              <a class="menu-request-edit-link" href={withBase('/menu-preview')}>Edit Menu</a>
             </div>
-            <pre class="menu-request-handoff-summary" data-menu-request-summary></pre>
+            <div class="menu-request-handoff-grid" data-menu-request-grid></div>
+            <div class="menu-request-handoff-notes" data-menu-request-notes hidden>
+              <p class="menu-request-label">Custom Considerations</p>
+              <p data-menu-request-notes-copy></p>
+            </div>
           </section>
 
           <form class="form-grid premium-form" id="bookingForm" method="post" action="https://api.web3forms.com/submit" novalidate>
             <input type="hidden" name="access_key" value="9ed3578c-0218-46a9-ac21-0c381dac9e67" />
             <input type="hidden" name="subject" value="New Personal Chef Inquiry" />
+            
             <input type="hidden" name="sampleMenuRequest" value="" data-menu-request-input />
+            <input type="hidden" name="menu_dining_style" value="" data-menu-field="menu_dining_style" />
+            <input type="hidden" name="menu_starter" value="" data-menu-field="menu_starter" />
+            <input type="hidden" name="menu_main_category" value="" data-menu-field="menu_main_category" />
+            <input type="hidden" name="menu_main_selection" value="" data-menu-field="menu_main_selection" />
+            <input type="hidden" name="menu_sauce" value="" data-menu-field="menu_sauce" />
+            <input type="hidden" name="menu_starch" value="" data-menu-field="menu_starch" />
+            <input type="hidden" name="menu_vegetables" value="" data-menu-field="menu_vegetables" />
+            <input type="hidden" name="menu_additions" value="" data-menu-field="menu_additions" />
+            <input type="hidden" name="menu_dessert" value="" data-menu-field="menu_dessert" />
+            <input type="hidden" name="menu_custom_notes" value="" data-menu-field="menu_custom_notes" />
+            <input type="hidden" name="menu_summary" value="" data-menu-field="menu_summary" />
             <input type="hidden" name="from_name" value="PNW Personal Chef Website" />
             <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
             <div class="full-span form-section-label">
@@ -177,8 +205,15 @@ const schema = {
     </div>
   </section>
 
+  <script type="application/json" id="menu-request-data" set:html={JSON.stringify(dataPayload)}></script>
   <script type="module">
-    import { readMenuRequestPayload } from '../utils/menuBuilderClient';
+    import {
+      clearMenuRequestPayload,
+      createMenuRequestPayload,
+      hasMenuRequestSelections,
+      readBuilderState,
+      readMenuRequestPayload
+    } from '../utils/menuBuilderClient';
 
     const form = document.querySelector('#bookingForm');
     const submitButton = document.querySelector('#submitButton');
@@ -190,18 +225,79 @@ const schema = {
 
     const fieldNames = ['name', 'email', 'phone', 'service', 'guestCount', 'eventDate', 'location', 'dietaryNeeds', 'budget', 'message'];
     const menuRequestPanel = document.querySelector('[data-menu-request-handoff]');
-    const menuRequestSummary = document.querySelector('[data-menu-request-summary]');
+    const menuRequestGrid = document.querySelector('[data-menu-request-grid]');
+    const menuRequestNotes = document.querySelector('[data-menu-request-notes]');
+    const menuRequestNotesCopy = document.querySelector('[data-menu-request-notes-copy]');
     const menuRequestInput = document.querySelector('[data-menu-request-input]');
-    const menuRequestPayload = readMenuRequestPayload();
+    const menuRequestFields = Array.from(document.querySelectorAll('[data-menu-field]'));
+    const menuDataElement = document.getElementById('menu-request-data');
 
-    if (menuRequestPayload?.summary) {
+    let menuRequestPayload = readMenuRequestPayload();
+
+    if ((!menuRequestPayload || !hasMenuRequestSelections(menuRequestPayload)) && menuDataElement?.textContent) {
+      const builderData = JSON.parse(menuDataElement.textContent);
+      const builderState = readBuilderState();
+      const fallbackPayload = createMenuRequestPayload(builderData, builderState, 'contact-page');
+      if (hasMenuRequestSelections(fallbackPayload)) {
+        menuRequestPayload = fallbackPayload;
+      }
+    }
+
+    if (hasMenuRequestSelections(menuRequestPayload)) {
       menuRequestPanel?.removeAttribute('hidden');
-      if (menuRequestSummary) menuRequestSummary.textContent = menuRequestPayload.summary;
-      if (menuRequestInput instanceof HTMLInputElement) menuRequestInput.value = menuRequestPayload.summary;
+
+      const summary = menuRequestPayload?.summary || '';
+      const details = menuRequestPayload?.details;
+      const summaryRows = [
+        ['Dining Style', details?.diningStyle],
+        ['Starter', details?.starter],
+        ['Main Course Category', details?.mainCourseCategory],
+        ['Main Course Selection', details?.mainCourse],
+        ['Sauce', details?.sauce],
+        ['Starch / Grain', details?.starch],
+        ['Vegetable Accompaniment(s)', details?.vegetable],
+        ['Optional Additions', details?.additions?.join(' · ')],
+        ['Dessert', details?.dessert]
+      ].filter(([, value]) => Boolean(value));
+
+      if (menuRequestGrid) {
+        menuRequestGrid.innerHTML = summaryRows.map(([label, value]) => `
+          <article class="menu-request-item">
+            <p class="menu-request-label">${label}</p>
+            <strong>${value}</strong>
+          </article>
+        `).join('');
+      }
+
+      if (menuRequestNotes && menuRequestNotesCopy && details?.customConsiderations) {
+        menuRequestNotes.hidden = false;
+        menuRequestNotesCopy.textContent = details.customConsiderations;
+      }
+
+      if (menuRequestInput instanceof HTMLInputElement) menuRequestInput.value = summary;
+
+      const hiddenValues = {
+        menu_dining_style: details?.diningStyle || '',
+        menu_starter: details?.starter || '',
+        menu_main_category: details?.mainCourseCategory || '',
+        menu_main_selection: details?.mainCourse || '',
+        menu_sauce: details?.sauce || '',
+        menu_starch: details?.starch || '',
+        menu_vegetables: details?.vegetable || '',
+        menu_additions: details?.additions?.join(', ') || '',
+        menu_dessert: details?.dessert || '',
+        menu_custom_notes: details?.customConsiderations || '',
+        menu_summary: summary
+      };
+
+      menuRequestFields.forEach((field) => {
+        if (!(field instanceof HTMLInputElement)) return;
+        field.value = hiddenValues[field.name] || '';
+      });
 
       const messageField = form?.elements.namedItem('message');
       if (messageField instanceof HTMLTextAreaElement && !messageField.value.trim()) {
-        messageField.value = `${menuRequestPayload.summary}
+        messageField.value = `I’ve attached a sample menu request.
 
 Event details:`;
       }
@@ -269,6 +365,7 @@ Event details:`;
           successPanel.hidden = false;
           form.hidden = true;
           form.closest('.inquiry-form-shell-inner')?.classList.add('is-success');
+          clearMenuRequestPayload();
           successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           successPanel.focus();
           return;

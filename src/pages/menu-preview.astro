@@ -103,7 +103,7 @@ const dataPayload = {
   <script type="application/json" id="menu-preview-data" set:html={JSON.stringify(dataPayload)}></script>
   <script type="module">
     import {
-      buildMenuRequestMessage,
+      createMenuRequestPayload,
       getComposedMenuPreview,
       getOptionLabel,
       previewLabels,
@@ -207,12 +207,7 @@ const dataPayload = {
         }
 
         submitButton?.addEventListener('click', () => {
-          storeMenuRequestPayload({
-            source: 'menu-preview',
-            state,
-            summary: buildMenuRequestMessage(builderData, state),
-            savedAt: new Date().toISOString()
-          });
+          storeMenuRequestPayload(createMenuRequestPayload(builderData, state));
         });
       }
     }
