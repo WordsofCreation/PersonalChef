@@ -66,9 +66,19 @@ const schema = {
             </div>
           </div>
 
+          <section class="menu-request-handoff" data-menu-request-handoff hidden aria-labelledby="menu-request-heading">
+            <div class="menu-request-handoff-copy">
+              <p class="process-kicker">Menu preview attached</p>
+              <h3 id="menu-request-heading">Your sample menu selections will travel with this inquiry.</h3>
+              <p>We’ve carried over the menu direction you composed so your inquiry can begin with the same service style and course structure.</p>
+            </div>
+            <pre class="menu-request-handoff-summary" data-menu-request-summary></pre>
+          </section>
+
           <form class="form-grid premium-form" id="bookingForm" method="post" action="https://api.web3forms.com/submit" novalidate>
             <input type="hidden" name="access_key" value="9ed3578c-0218-46a9-ac21-0c381dac9e67" />
             <input type="hidden" name="subject" value="New Personal Chef Inquiry" />
+            <input type="hidden" name="sampleMenuRequest" value="" data-menu-request-input />
             <input type="hidden" name="from_name" value="PNW Personal Chef Website" />
             <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
             <div class="full-span form-section-label">
@@ -167,7 +177,9 @@ const schema = {
     </div>
   </section>
 
-  <script>
+  <script type="module">
+    import { readMenuRequestPayload } from '../utils/menuBuilderClient';
+
     const form = document.querySelector('#bookingForm');
     const submitButton = document.querySelector('#submitButton');
     const submitLabel = submitButton?.querySelector('.submit-label');
@@ -177,6 +189,23 @@ const schema = {
     const fieldErrorElements = Array.from(document.querySelectorAll('.field-error'));
 
     const fieldNames = ['name', 'email', 'phone', 'service', 'guestCount', 'eventDate', 'location', 'dietaryNeeds', 'budget', 'message'];
+    const menuRequestPanel = document.querySelector('[data-menu-request-handoff]');
+    const menuRequestSummary = document.querySelector('[data-menu-request-summary]');
+    const menuRequestInput = document.querySelector('[data-menu-request-input]');
+    const menuRequestPayload = readMenuRequestPayload();
+
+    if (menuRequestPayload?.summary) {
+      menuRequestPanel?.removeAttribute('hidden');
+      if (menuRequestSummary) menuRequestSummary.textContent = menuRequestPayload.summary;
+      if (menuRequestInput instanceof HTMLInputElement) menuRequestInput.value = menuRequestPayload.summary;
+
+      const messageField = form?.elements.namedItem('message');
+      if (messageField instanceof HTMLTextAreaElement && !messageField.value.trim()) {
+        messageField.value = `${menuRequestPayload.summary}
+
+Event details:`;
+      }
+    }
 
     const resetErrors = () => {
       errorPanel.hidden = true;

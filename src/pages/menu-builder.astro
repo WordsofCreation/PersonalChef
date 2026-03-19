@@ -217,9 +217,9 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
 
           <div class="panel builder-cta-panel">
             <div>
-              <p class="eyebrow">Next phase ready</p>
-              <h2>Preview the direction you’ve created.</h2>
-              <p>The next phase can turn this foundation into a full preview flow and inquiry handoff without rewriting the builder.</p>
+              <p class="eyebrow">Preview-ready flow</p>
+              <h2>See your selections presented like a composed private-chef menu.</h2>
+              <p>When you’re ready, move from the builder into a polished preview page without losing your selections.</p>
             </div>
             <button class="btn btn-primary builder-preview-button" type="button" data-preview-button>
               Preview My Menu
@@ -260,7 +260,17 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
   </section>
 
   <script type="application/json" id="menu-builder-data" set:html={JSON.stringify(dataPayload)}></script>
-  <script>
+  <script type="module">
+    import {
+      MENU_BUILDER_STORAGE_KEY,
+      createEmptyMenuBuilderState,
+      getOptionLabel,
+      readBuilderState,
+      summaryLabels,
+      writeBuilderState
+    } from '../utils/menuBuilderClient';
+    import { withBase } from '../utils/paths';
+
     const dataElement = document.getElementById('menu-builder-data');
 
     if (dataElement?.textContent) {
@@ -272,43 +282,33 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
       const mainCourseHelper = document.querySelector('[data-main-course-helper]');
       const previewButton = document.querySelector('[data-preview-button]');
       const form = document.querySelector('[data-menu-builder]');
-      const state = {
-        diningStyle: '',
-        starter: '',
-        mainCourseCategory: '',
-        mainCourseSelection: '',
-        sauce: '',
-        starch: '',
-        vegetable: '',
-        optionalAdditions: [],
-        dessert: '',
-        customConsiderations: ''
+      const textarea = document.querySelector('[data-builder-textarea]');
+      const state = readBuilderState() || createEmptyMenuBuilderState();
+
+      const hydrateForm = () => {
+        Object.entries(state).forEach(([sectionId, value]) => {
+          if (sectionId === 'customConsiderations') {
+            if (textarea instanceof HTMLTextAreaElement) textarea.value = value;
+            return;
+          }
+
+          if (sectionId === 'optionalAdditions' && Array.isArray(value)) {
+            value.forEach((selectedValue) => {
+              const input = document.querySelector(`input[name="optionalAdditions"][value="${selectedValue}"]`);
+              if (input instanceof HTMLInputElement) input.checked = true;
+            });
+            return;
+          }
+
+          if (typeof value === 'string' && value) {
+            const input = document.querySelector(`input[name="${sectionId}"][value="${value}"]`);
+            if (input instanceof HTMLInputElement) input.checked = true;
+          }
+        });
       };
 
-      const summaryLabels = {
-        diningStyle: 'Dining style',
-        starter: 'Starter',
-        mainCourseSelection: 'Entrée',
-        sauce: 'Sauce',
-        starch: 'Starch / Grain',
-        vegetable: 'Vegetable',
-        optionalAdditions: 'Optional additions',
-        dessert: 'Dessert',
-        customConsiderations: 'Custom considerations'
-      };
-
-      const sectionMap = Object.fromEntries(builderData.sections.map((section) => [section.id, section]));
-
-      const getOptionLabel = (sectionId, value) => {
-        if (!value) return '';
-
-        if (sectionId === 'mainCourseSelection') {
-          const categoryOptions = builderData.mainCourseOptions[state.mainCourseCategory] || [];
-          return categoryOptions.find((option) => option.value === value)?.label || '';
-        }
-
-        const option = sectionMap[sectionId]?.options?.find((item) => item.value === value);
-        return option?.label || '';
+      const persistState = () => {
+        writeBuilderState(state);
       };
 
       const renderMainCourseOptions = () => {
@@ -352,7 +352,7 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
         `).join('');
 
         if (mainCourseHelper) {
-          const categoryLabel = getOptionLabel('mainCourseCategory', category);
+          const categoryLabel = getOptionLabel(builderData, state, 'mainCourseCategory', category);
           mainCourseHelper.textContent = `${categoryLabel} entrées ready to refine your menu.`;
         }
       };
@@ -362,32 +362,29 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
           .map((sectionId) => {
             if (sectionId === 'customConsiderations') {
               return state.customConsiderations.trim()
-                ? {
-                    label: summaryLabels.customConsiderations,
-                    value: state.customConsiderations.trim()
-                  }
+                ? { label: summaryLabels.customConsiderations, value: state.customConsiderations.trim() }
                 : null;
             }
 
             if (sectionId === 'optionalAdditions') {
               if (!state.optionalAdditions.length) return null;
+
               const labels = state.optionalAdditions
-                .map((value) => getOptionLabel('optionalAdditions', value))
+                .map((value) => getOptionLabel(builderData, state, 'optionalAdditions', value))
                 .filter(Boolean)
                 .join(' · ');
-              return {
-                label: summaryLabels.optionalAdditions,
-                value: labels
-              };
+
+              return labels ? { label: summaryLabels.optionalAdditions, value: labels } : null;
             }
 
             const value = state[sectionId];
             if (!value) return null;
 
-            return {
-              label: summaryLabels[sectionId],
-              value: getOptionLabel(sectionId, value)
-            };
+            const label = getOptionLabel(builderData, state, sectionId, value);
+
+            return label
+              ? { label: summaryLabels[sectionId] || sectionId, value: label }
+              : null;
           })
           .filter(Boolean);
 
@@ -435,7 +432,9 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
         if (!sectionId) return;
 
         if (sectionId === 'optionalAdditions') {
-          state.optionalAdditions = Array.from(document.querySelectorAll('input[name="optionalAdditions"]:checked')).map((input) => input.value);
+          state.optionalAdditions = Array.from(document.querySelectorAll('input[name="optionalAdditions"]:checked'))
+            .map((input) => input instanceof HTMLInputElement ? input.value : '')
+            .filter(Boolean);
         } else {
           state[sectionId] = target.value;
         }
@@ -445,23 +444,30 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
           renderMainCourseOptions();
         }
 
+        persistState();
         syncCardStates();
         renderSummary();
       });
 
-      document.querySelector('[data-builder-textarea]')?.addEventListener('input', (event) => {
+      textarea?.addEventListener('input', (event) => {
         const target = event.target;
         if (!(target instanceof HTMLTextAreaElement)) return;
         state.customConsiderations = target.value;
+        persistState();
         renderSummary();
       });
 
       previewButton?.addEventListener('click', () => {
-        const summarySection = document.querySelector('.menu-summary-panel');
-        summarySection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        persistState();
+        window.location.href = withBase('/menu-preview');
       });
 
+      if (!sessionStorage.getItem(MENU_BUILDER_STORAGE_KEY)) {
+        persistState();
+      }
+
       renderMainCourseOptions();
+      hydrateForm();
       syncCardStates();
       renderSummary();
     }
