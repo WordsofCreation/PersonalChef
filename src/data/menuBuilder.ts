@@ -279,6 +279,7 @@ export const mainCourseOptions: MainCourseCollection = {
 export const summaryOrder = [
   'diningStyle',
   'starter',
+  'mainCourseCategory',
   'mainCourseSelection',
   'sauce',
   'starch',
