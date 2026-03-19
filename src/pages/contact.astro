@@ -66,7 +66,11 @@ const schema = {
             </div>
           </div>
 
-          <form class="form-grid premium-form" id="bookingForm" method="post" action="https://formspree.io/f/xzbqqbwz" novalidate>
+          <form class="form-grid premium-form" id="bookingForm" method="post" action="https://api.web3forms.com/submit" novalidate>
+            <input type="hidden" name="access_key" value="9ed3578c-0218-46a9-ac21-0c381dac9e67" />
+            <input type="hidden" name="subject" value="New Personal Chef Inquiry" />
+            <input type="hidden" name="from_name" value="PNW Personal Chef Website" />
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true" />
             <div class="full-span form-section-label">
               <p>Your details</p>
             </div>
@@ -245,8 +249,9 @@ const schema = {
           const unmappedMessages = [];
 
           data.errors.forEach((error) => {
-            if (error?.field) {
-              setFieldError(error.field, error.message || 'Please review this field.');
+            const fieldName = typeof error?.field === 'string' ? error.field : typeof error?.path === 'string' ? error.path : '';
+            if (fieldName) {
+              setFieldError(fieldName, error.message || 'Please review this field.');
             } else if (error?.message) {
               unmappedMessages.push(error.message);
             }
@@ -256,7 +261,7 @@ const schema = {
             errorPanelMessage.textContent = unmappedMessages[0] || 'We were unable to send your inquiry just now. Please review the highlighted fields and try again.';
           }
         } else if (errorPanelMessage) {
-          errorPanelMessage.textContent = 'We were unable to send your inquiry just now. Please try again in a moment.';
+          errorPanelMessage.textContent = data?.message || 'We were unable to send your inquiry just now. Please try again in a moment.';
         }
 
         errorPanel.hidden = false;
