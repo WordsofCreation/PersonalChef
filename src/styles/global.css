@@ -274,7 +274,7 @@ textarea,
 }
 .nav-wrap {
   display: grid;
-  grid-template-columns: minmax(320px, 1.35fr) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.45fr) auto;
   align-items: center;
   gap: 0.9rem;
   padding: 0.95rem 0;
@@ -299,11 +299,12 @@ textarea,
 .nav-links {
   display: none;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 0.25rem;
   flex-wrap: wrap;
-  justify-self: end;
-  max-width: 42rem;
+  justify-self: stretch;
+  width: 100%;
+  max-width: none;
   padding: 0.26rem;
   border-radius: var(--radius-pill);
   background: rgba(19, 36, 26, 0.84);
