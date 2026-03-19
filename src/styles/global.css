@@ -900,6 +900,9 @@ textarea,
   font-size: 0.93rem;
   color: var(--muted);
 }
+.form-alert[hidden] {
+  display: none !important;
+}
 .form-alert {
   display: grid;
   grid-template-columns: auto 1fr;
