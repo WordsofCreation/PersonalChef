@@ -11,30 +11,40 @@ const schema = {
   itemListElement: services.map((service, index) => ({ '@type': 'Service', position: index + 1, name: service.data.title, description: service.data.summary }))
 };
 ---
-<BaseLayout title="Services | Personal Chef Port Angeles & Olympic Peninsula" description="Explore weekly meal prep, private dinners, vacation rental chef services, small event catering, holiday meals, and custom dietary plans across Port Angeles and Sequim." path="/services" schema={schema}>
+<BaseLayout title="Chef Services | Port Angeles, Sequim & Olympic Peninsula" description="Explore premium private dining, weekly meal prep, vacation rental chef service, holiday menus, and boutique events across Port Angeles, Sequim, and the Olympic Peninsula." path="/services" schema={schema}>
   <section class="section">
-    <div class="container section-header">
-      <p class="eyebrow">Services</p>
-      <h1>Tailored chef services for everyday ease and elevated entertaining.</h1>
-      <p>Each service is customized around your home, your guests, your dietary needs, and the hospitality experience you want to create.</p>
+    <div class="container split-intro">
+      <div class="section-header" style="margin-bottom:0;">
+        <p class="eyebrow">Services</p>
+        <h1>Tailored chef support for everyday ease, intimate entertaining, and destination hosting.</h1>
+        <p>Every service is customized around your home, your guests, your dietary needs, and the atmosphere you want to create—from quietly luxurious meal prep to polished private dining.</p>
+      </div>
+      <div class="info-strip">
+        <div><strong>Proposal-based pricing</strong><span>Designed to reflect menu complexity, guest count, and service style.</span></div>
+        <div><strong>Local reach</strong><span>Serving Port Angeles, Sequim, and properties across the Olympic Peninsula.</span></div>
+        <div><strong>Flexible hospitality</strong><span>Plated, family-style, brunch, stocked-fridge, and wellness-focused options.</span></div>
+      </div>
     </div>
-    <div class="container grid two-col">
+    <div class="container grid two-col" style="margin-top:2rem;">
       {services.map((service) => <ServiceCard service={service} />)}
     </div>
   </section>
-  <section class="section">
+  <section class="section section-tint">
     <div class="container grid two-col">
       {services.map((service) => (
         <article class="card">
           <p class="eyebrow">{service.data.seoKeyword}</p>
           <h2>{service.data.title}</h2>
           <p>{service.data.summary}</p>
-          <p><strong>Benefits</strong></p>
+          <p><strong>What this includes</strong></p>
           <ul>
             {service.data.benefits.map((benefit) => <li>{benefit}</li>)}
           </ul>
-          <p><strong>Ideal customer:</strong> {service.data.idealFor}</p>
-          <a class="btn btn-primary" href="/contact">{service.data.cta}</a>
+          <p class="service-meta"><strong>Ideal fit:</strong> {service.data.idealFor}</p>
+          <div class="inline-links">
+            <a class="btn btn-primary" href="/contact">{service.data.cta}</a>
+            <a class="service-link" href="/sample-menus">View menu ideas →</a>
+          </div>
         </article>
       ))}
     </div>
@@ -43,19 +53,19 @@ const schema = {
   <section class="section">
     <div class="container grid two-col">
       <article class="card">
-        <p class="eyebrow">Local landing pages</p>
-        <h2>Explore chef services by location.</h2>
-        <p><a href="/personal-chef-port-angeles">Personal Chef Port Angeles</a> for waterfront homes, family meal prep, and private dining.</p>
-        <p><a href="/personal-chef-sequim">Personal Chef Sequim</a> for routine meal support and elegant hosting.</p>
-        <p><a href="/vacation-rental-chef-olympic-peninsula">Vacation Rental Chef Olympic Peninsula</a> for destination stays and hospitality-driven guest experiences.</p>
+        <p class="eyebrow">Local planning pages</p>
+        <h2>Explore service details by location.</h2>
+        <p><a href="/personal-chef-port-angeles">Personal Chef Port Angeles</a> is ideal for waterfront homes, polished dinner parties, and week-to-week meal support.</p>
+        <p><a href="/personal-chef-sequim">Personal Chef Sequim</a> focuses on tailored meal prep, wellness-minded dining, and gracious in-home entertaining.</p>
+        <p><a href="/vacation-rental-chef-olympic-peninsula">Vacation Rental Chef Olympic Peninsula</a> is designed for destination stays, hosted weekends, and elevated guest amenities.</p>
       </article>
       <article class="card">
-        <p class="eyebrow">Popular menu references</p>
-        <h2>Pair services with sample menu inspiration.</h2>
-        <p>Use the <a href="/sample-menus">Sample Menus</a> page to guide your preferred service style, pacing, and flavor profile before requesting a quote.</p>
+        <p class="eyebrow">Menu inspiration</p>
+        <h2>Use sample menus to refine the tone of your event.</h2>
+        <p>Browse the <a href="/sample-menus">Sample Menus</a> page to see how different services can feel—whether you want a celebratory multi-course dinner, stocked weekly meals, or a relaxed Peninsula brunch.</p>
       </article>
     </div>
   </section>
 
-  <CTA title="Need help choosing the right service?" text="Share your occasion, guest count, and location. We’ll recommend the best format, menu direction, and service level for your event or weekly routine." secondaryHref="/contact" secondaryLabel="Start Your Inquiry" />
+  <CTA title="Need help choosing the right level of service?" text="Share your occasion, guest count, and location, and you’ll receive a recommendation tailored to your home, timeline, and preferred style of hospitality." secondaryHref="/contact" secondaryLabel="Start Your Inquiry" />
 </BaseLayout>

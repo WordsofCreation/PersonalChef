@@ -2,16 +2,23 @@
 import type { CollectionEntry } from 'astro:content';
 const { menu } = Astro.props as { menu: CollectionEntry<'menus'> };
 ---
-<article class="card menu-card">
+<article class="card menu-card" style="display:grid; gap:1rem;">
   <p class="eyebrow">{menu.data.category}</p>
-  <h3>{menu.data.title}</h3>
-  <p>{menu.data.description}</p>
-  {menu.data.courses.map((course) => (
-    <div>
-      <strong>{course.name}</strong>
-      <ul>
-        {course.items.map((item) => <li>{item}</li>)}
-      </ul>
-    </div>
-  ))}
+  <div>
+    <h3>{menu.data.title}</h3>
+    <p>{menu.data.description}</p>
+  </div>
+  <div class="course-list">
+    {menu.data.courses.map((course) => (
+      <div class="soft-panel">
+        <strong>{course.name}</strong>
+        <ul>
+          {course.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <div class="inline-links">
+    <a class="menu-link" href="/contact">Customize this menu →</a>
+  </div>
 </article>

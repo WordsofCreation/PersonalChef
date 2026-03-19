@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from '../components/CTA.astro';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -10,25 +11,26 @@ const schema = {
   description: 'Personal chef serving Port Angeles and the Olympic Peninsula with meal prep, private dining, and custom menus.'
 };
 ---
-<BaseLayout title="About the Chef | Port Angeles Personal Chef" description="Meet the chef behind this Port Angeles personal chef service, with a culinary and hospitality background focused on custom menus, premium ingredients, and polished service." path="/about-the-chef" schema={schema}>
+<BaseLayout title="About the Chef | Olympic Peninsula Personal Chef" description="Meet the chef behind this Port Angeles and Sequim personal chef service, focused on seasonal ingredients, custom menus, polished hospitality, and a calm client experience." path="/about-the-chef" schema={schema}>
   <section class="section">
     <div class="container grid two-col">
       <div class="card">
-        <p class="eyebrow">About the Chef</p>
-        <h1>A culinary-forward approach grounded in hospitality, trust, and seasonality.</h1>
-        <p>Chef Placeholder Name brings a professional hospitality mindset to every client experience, combining thoughtful menu development, efficient planning, and the calm confidence that makes in-home service feel seamless.</p>
-        <p>With experience in refined dining, private service, and custom menu execution, the focus is always on quality ingredients, gracious presentation, and food that feels deeply personal to the occasion.</p>
+        <p class="eyebrow">About the chef</p>
+        <h1>A hospitality-led culinary approach grounded in trust, seasonality, and thoughtful service.</h1>
+        <p>Chef Placeholder Name brings a refined but approachable perspective to private dining and meal support on the Olympic Peninsula, blending menu intuition, polished execution, and the kind of calm presence that helps a home feel instantly cared for.</p>
+        <p>The focus is always on ingredient quality, attentive planning, and a guest experience that feels personal rather than performative—whether serving a romantic dinner in Port Angeles, an intimate gathering in Sequim, or a hosted coastal getaway.</p>
       </div>
       <div class="card">
-        <h2>What clients can expect</h2>
+        <p class="eyebrow">What clients can expect</p>
+        <h2>Professionalism with warmth.</h2>
         <ul>
-          <li>Custom menus shaped around your tastes, dietary needs, and event goals.</li>
-          <li>Ingredient quality that prioritizes freshness, seasonality, and Pacific Northwest inspiration.</li>
-          <li>Professional communication, polished execution, and warm, approachable service.</li>
-          <li>Experience serving Port Angeles, Sequim, and Olympic Peninsula clients in homes and vacation rentals.</li>
+          <li>Custom menus shaped around your preferences, dietary needs, and event goals.</li>
+          <li>Seasonal Pacific Northwest inspiration with an eye toward freshness, balance, and elegant presentation.</li>
+          <li>Clear communication, reliable timing, and a smooth booking process from inquiry through service.</li>
+          <li>Experience serving homes, second residences, and vacation rentals throughout Port Angeles, Sequim, and the Olympic Peninsula.</li>
         </ul>
       </div>
     </div>
   </section>
-  <CTA title="Looking for a personal chef who feels polished and easy to work with?" text="Reach out with your goals and timeline. You’ll receive a tailored response, menu direction, and a quote built around your needs." secondaryHref="/services" secondaryLabel="View Services" />
+  <CTA title="Looking for a personal chef who feels polished, responsive, and easy to welcome into your home?" text="Reach out with your date, priorities, and guest experience goals. You’ll receive thoughtful guidance, menu direction, and a tailored proposal." secondaryHref="/services" secondaryLabel="View Services" />
 </BaseLayout>

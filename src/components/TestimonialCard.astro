@@ -2,9 +2,9 @@
 import type { CollectionEntry } from 'astro:content';
 const { testimonial } = Astro.props as { testimonial: CollectionEntry<'testimonials'> };
 ---
-<article class="card">
-  <p>{'★'.repeat(testimonial.data.rating)}</p>
+<article class="card testimonial-card" style="display:grid; gap:0.25rem;">
+  <p class="stars" aria-label={`${testimonial.data.rating} out of 5 stars`}>{'★'.repeat(testimonial.data.rating)}</p>
   <p class="quote">“{testimonial.data.quote}”</p>
-  <p><strong>{testimonial.data.name}</strong> · {testimonial.data.location}</p>
-  <p>{testimonial.data.service}</p>
+  <p class="testimonial-meta"><strong>{testimonial.data.name}</strong> · {testimonial.data.location}</p>
+  <p class="testimonial-meta">Booked for {testimonial.data.service}</p>
 </article>
