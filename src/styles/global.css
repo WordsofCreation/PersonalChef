@@ -682,16 +682,112 @@ textarea,
   color: white;
   font-weight: 800;
 }
+.inquiry-section::before {
+  inset: 0.75rem auto 0.75rem 50%;
+}
+.inquiry-layout {
+  align-items: start;
+  gap: clamp(1.25rem, 2vw, 2rem);
+}
+.inquiry-intro-card,
+.inquiry-form-shell {
+  background:
+    radial-gradient(circle at top right, rgba(214, 179, 122, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(249,243,236,0.78));
+}
+.inquiry-intro-card {
+  display: grid;
+  gap: 1.2rem;
+}
+.inquiry-lead {
+  color: var(--text);
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+.inquiry-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.inquiry-pill-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.72rem 1rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.76);
+  border: 1px solid rgba(67, 46, 29, 0.1);
+  color: var(--forest-deep);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+.inquiry-pill-list span::before {
+  content: '✦';
+  color: var(--gold);
+}
+.inquiry-expectations {
+  display: grid;
+  gap: 0.8rem;
+}
+.inquiry-form-shell {
+  padding: clamp(1.5rem, 2.4vw, 2.2rem);
+  box-shadow: var(--shadow);
+}
+.inquiry-form-header {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+.inquiry-form-header h2 {
+  font-size: clamp(2.1rem, 4.2vw, 3.15rem);
+}
+.form-alert {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 22px;
+  border: 1px solid transparent;
+}
+.form-alert strong,
+.form-alert span {
+  color: inherit;
+}
+.form-alert-success {
+  background: linear-gradient(180deg, rgba(31,67,56,0.12), rgba(255,255,255,0.82));
+  border-color: rgba(31,67,56,0.18);
+  color: var(--forest-deep);
+}
+.form-alert-error {
+  background: linear-gradient(180deg, rgba(165, 107, 67, 0.12), rgba(255,255,255,0.84));
+  border-color: rgba(126, 76, 46, 0.16);
+  color: var(--bronze-deep);
+}
 .form-grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.premium-form {
+  gap: 1.15rem;
+}
+.field-group {
+  display: grid;
+  gap: 0.45rem;
+}
+.field-group-wide,
+.full-span {
+  grid-column: 1 / -1;
 }
 label {
   display: grid;
   gap: 0.45rem;
   font-weight: 700;
   color: var(--text);
+}
+.field-group > label {
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
 }
 input, select, textarea {
   width: 100%;
@@ -706,11 +802,56 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: rgba(126, 76, 46, 0.34);
-  box-shadow: 0 0 0 4px rgba(165, 107, 67, 0.12);
+  box-shadow: 0 0 0 4px rgba(165, 107, 67, 0.12), 0 14px 30px rgba(31, 24, 20, 0.08);
   background: white;
+  transform: translateY(-1px);
+}
+input[aria-invalid='true'],
+select[aria-invalid='true'],
+textarea[aria-invalid='true'] {
+  border-color: rgba(126, 76, 46, 0.5);
+  box-shadow: 0 0 0 4px rgba(165, 107, 67, 0.08);
 }
 textarea { min-height: 160px; resize: vertical; }
-.full-span { grid-column: 1 / -1; }
+.field-error {
+  min-height: 1.2rem;
+  margin: 0;
+  color: var(--bronze-deep);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+.inquiry-form-note {
+  margin-top: 0.25rem;
+}
+.inquiry-submit-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.25rem;
+}
+.premium-submit {
+  min-width: min(100%, 22rem);
+  position: relative;
+  box-shadow: 0 22px 40px rgba(126, 76, 46, 0.24);
+}
+.premium-submit:disabled {
+  cursor: wait;
+  opacity: 0.9;
+}
+.submit-spinner {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.34);
+  border-top-color: rgba(255,255,255,0.95);
+  display: none;
+  animation: spin 0.8s linear infinite;
+}
+.premium-submit[aria-busy='true'] .submit-spinner {
+  display: inline-block;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 .form-note,
 .soft-panel {
   padding: 1rem 1.1rem;
@@ -787,5 +928,8 @@ textarea { min-height: 160px; resize: vertical; }
   .info-strip div:first-child { border-top: 0; }
   .form-grid,
   .hero-proof { grid-template-columns: 1fr; }
+  .inquiry-form-shell { padding: 1.2rem; }
+  .inquiry-submit-row { justify-content: stretch; }
+  .inquiry-pill-list span { width: 100%; justify-content: center; }
   .card, .panel, .cta-banner, .footer-shell { border-radius: 24px; }
 }
