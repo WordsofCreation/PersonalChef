@@ -1,3 +1,6 @@
+---
+import { withBase } from '../utils/paths';
+---
 <footer>
   <div class="container footer-grid">
     <div>
@@ -8,21 +11,21 @@
     <div>
       <h3>Explore</h3>
       <div class="footer-links">
-        <a href="/services">Services</a>
-        <a href="/sample-menus">Sample Menus</a>
-        <a href="/about-the-chef">About the Chef</a>
-        <a href="/faq">FAQ</a>
+        <a href={withBase('/services')}>Services</a>
+        <a href={withBase('/sample-menus')}>Sample Menus</a>
+        <a href={withBase('/about-the-chef')}>About the Chef</a>
+        <a href={withBase('/faq')}>FAQ</a>
       </div>
     </div>
     <div>
       <h3>Service Area</h3>
       <div class="footer-links">
-        <a href="/personal-chef-port-angeles">Port Angeles</a>
-        <a href="/personal-chef-sequim">Sequim</a>
-        <a href="/vacation-rental-chef-olympic-peninsula">Olympic Peninsula Vacation Rentals</a>
-        <a href="/contact">Request a Proposal</a>
+        <a href={withBase('/personal-chef-port-angeles')}>Port Angeles</a>
+        <a href={withBase('/personal-chef-sequim')}>Sequim</a>
+        <a href={withBase('/vacation-rental-chef-olympic-peninsula')}>Olympic Peninsula Vacation Rentals</a>
+        <a href={withBase('/contact')}>Request a Proposal</a>
       </div>
     </div>
   </div>
 </footer>
-<div class="sticky-mobile-cta"><a class="btn btn-primary" href="/contact">Book Your Chef Experience</a></div>
+<div class="sticky-mobile-cta"><a class="btn btn-primary" href={withBase('/contact')}>Book Your Chef Experience</a></div>

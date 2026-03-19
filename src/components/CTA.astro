@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/paths';
+
 const { title, text, primaryHref = '/contact', primaryLabel = 'Request a Quote', secondaryHref, secondaryLabel } = Astro.props;
 ---
 <section class="section section-tint">
@@ -11,8 +13,8 @@ const { title, text, primaryHref = '/contact', primaryLabel = 'Request a Quote',
         <p class="schema-note">Inquiries are answered with thoughtful next steps, menu direction, and custom pricing guidance based on your date, guest count, and location.</p>
       </div>
       <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-        <a class="btn btn-primary" href={primaryHref}>{primaryLabel}</a>
-        {secondaryHref && secondaryLabel && <a class="btn btn-secondary" href={secondaryHref}>{secondaryLabel}</a>}
+        <a class="btn btn-primary" href={withBase(primaryHref)}>{primaryLabel}</a>
+        {secondaryHref && secondaryLabel && <a class="btn btn-secondary" href={withBase(secondaryHref)}>{secondaryLabel}</a>}
       </div>
     </div>
   </div>

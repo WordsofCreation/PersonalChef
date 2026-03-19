@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/CTA.astro';
+import { withBase } from '../utils/paths';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -35,11 +36,11 @@ const schema = {
     <div class="container grid two-col">
       <article class="card">
         <p class="eyebrow">Planning tools</p>
-        <p>Browse <a href="/sample-menus">sample menus</a> to see brunch, private dinner, and holiday-style ideas for your stay.</p>
+        <p>Browse <a href={withBase('/sample-menus')}>sample menus</a> to see brunch, private dinner, and holiday-style ideas for your stay.</p>
       </article>
       <article class="card">
         <p class="eyebrow">Local service links</p>
-        <p>Looking for year-round support instead? Visit <a href="/personal-chef-port-angeles">Personal Chef Port Angeles</a> or <a href="/personal-chef-sequim">Personal Chef Sequim</a>.</p>
+        <p>Looking for year-round support instead? Visit <a href={withBase('/personal-chef-port-angeles')}>Personal Chef Port Angeles</a> or <a href={withBase('/personal-chef-sequim')}>Personal Chef Sequim</a>.</p>
       </article>
     </div>
   </section>

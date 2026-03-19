@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/paths';
+
 const links = [
   ['Home', '/'],
   ['Services', '/services'],
@@ -12,10 +14,10 @@ const links = [
 ---
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href="/">Olympic Peninsula Personal Chef<span>Port Angeles · Sequim · Olympic Peninsula</span></a>
+    <a class="brand" href={withBase('/')}>Olympic Peninsula Personal Chef<span>Port Angeles · Sequim · Olympic Peninsula</span></a>
     <nav class="nav-links" aria-label="Primary navigation">
-      {links.map(([label, href]) => <a href={href}>{label}</a>)}
+      {links.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}
     </nav>
-    <a class="btn btn-primary" href="/contact">Book Your Date</a>
+    <a class="btn btn-primary" href={withBase('/contact')}>Book Your Date</a>
   </div>
 </header>
