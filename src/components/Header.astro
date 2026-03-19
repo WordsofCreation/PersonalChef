@@ -10,7 +10,14 @@ const links = [
   ['Sequim', '/personal-chef-sequim'],
   ['Vacation Rental Chef', '/vacation-rental-chef-olympic-peninsula'],
   ['FAQ', '/faq']
-];
+] as const;
+
+const normalizePath = (value: string) => {
+  const trimmed = value.replace(/\/$/, '');
+  return trimmed || '/';
+};
+
+const currentPath = normalizePath(Astro.url.pathname);
 ---
 <header class="site-header">
   <div class="container nav-wrap">
@@ -20,7 +27,16 @@ const links = [
     </a>
 
     <nav class="nav-links" aria-label="Primary navigation">
-      {links.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}
+      {links.map(([label, href]) => {
+        const targetPath = normalizePath(withBase(href));
+        const isActive = currentPath === targetPath;
+
+        return (
+          <a href={withBase(href)} aria-current={isActive ? 'page' : undefined}>
+            {label}
+          </a>
+        );
+      })}
     </nav>
 
     <div class="nav-cta-group">
@@ -35,7 +51,16 @@ const links = [
         <div class="mobile-nav-panel">
           <p class="mobile-nav-label">Explore the experience</p>
           <nav aria-label="Mobile navigation">
-            {links.map(([label, href]) => <a href={withBase(href)}>{label}</a>)}
+            {links.map(([label, href]) => {
+              const targetPath = normalizePath(withBase(href));
+              const isActive = currentPath === targetPath;
+
+              return (
+                <a href={withBase(href)} aria-current={isActive ? 'page' : undefined}>
+                  {label}
+                </a>
+              );
+            })}
           </nav>
           <a class="btn btn-primary" href={withBase('/contact')}>Request a Proposal</a>
         </div>
