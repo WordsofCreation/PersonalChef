@@ -29,7 +29,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Olympic Coast Dinner; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 2.35,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -62,7 +62,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Forest & Field Supper; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 2.35,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -95,7 +95,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Romantic Peninsula Dinner; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 2.35,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -128,7 +128,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for PNW Family Table; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 2.35,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -161,7 +161,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Seasonal Tasting Menu; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 2.35,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -194,7 +194,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Coastal Brunch Table; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 2.35,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -227,7 +227,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Harvest Celebration Dinner; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 2.35,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -260,7 +260,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Wellness from the Northwest; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 2.35,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -311,7 +311,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 15.28,
       "estimated_cost_per_portion": 3.82,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -362,7 +362,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 19.98,
       "estimated_cost_per_portion": 5.0,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -413,7 +413,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 51.7,
       "estimated_cost_per_portion": 12.93,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -464,7 +464,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 28.2,
       "estimated_cost_per_portion": 7.05,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -513,7 +513,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Bitter Greens with apple, candied walnuts, and cider vinaigrette; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -564,7 +564,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -615,7 +615,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -664,7 +664,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Caramelized Onion and Gruyère Tart; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -715,7 +715,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 37.6,
       "estimated_cost_per_portion": 9.4,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -766,7 +766,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -815,7 +815,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for PNW Seasonal Soup; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 22.32,
       "estimated_cost_per_portion": 5.58,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -866,7 +866,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 25.85,
       "estimated_cost_per_portion": 6.46,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -915,7 +915,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Leek and potato velouté; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 35.25,
       "estimated_cost_per_portion": 8.81,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -966,7 +966,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 38.77,
       "estimated_cost_per_portion": 9.69,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1017,7 +1017,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 11.75,
       "estimated_cost_per_portion": 2.94,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1068,7 +1068,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 15.28,
       "estimated_cost_per_portion": 3.82,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1119,7 +1119,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 11.75,
       "estimated_cost_per_portion": 2.94,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1170,7 +1170,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 14.1,
       "estimated_cost_per_portion": 3.52,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1221,7 +1221,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1272,7 +1272,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 15.28,
       "estimated_cost_per_portion": 3.82,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1321,7 +1321,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Roasted Steelhead with lemon and herbs; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 9.4,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1372,7 +1372,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 29.38,
       "estimated_cost_per_portion": 7.34,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1423,7 +1423,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 14.1,
       "estimated_cost_per_portion": 3.52,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1474,7 +1474,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 15.28,
       "estimated_cost_per_portion": 3.82,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1525,7 +1525,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 18.8,
       "estimated_cost_per_portion": 4.7,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1576,7 +1576,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1628,7 +1628,7 @@
         "vegetable-forward",
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1679,7 +1679,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1730,7 +1730,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1781,7 +1781,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1832,7 +1832,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 56.4,
       "estimated_cost_per_portion": 14.1,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1883,7 +1883,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 17.62,
       "estimated_cost_per_portion": 4.41,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1934,7 +1934,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 18.8,
       "estimated_cost_per_portion": 4.7,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -1983,7 +1983,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Red Wine Braised Chuck Roast; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 56.4,
       "estimated_cost_per_portion": 14.1,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2034,7 +2034,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 27.03,
       "estimated_cost_per_portion": 6.76,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2085,7 +2085,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 38.77,
       "estimated_cost_per_portion": 9.69,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2136,7 +2136,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2187,7 +2187,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 44.65,
       "estimated_cost_per_portion": 11.16,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2238,7 +2238,7 @@
       "dietary_tags": [
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2289,7 +2289,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 41.12,
       "estimated_cost_per_portion": 10.28,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2341,7 +2341,7 @@
         "vegetable-forward",
         "meat"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 10.58,
       "estimated_cost_per_portion": 2.65,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2392,7 +2392,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 57.58,
       "estimated_cost_per_portion": 14.39,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2443,7 +2443,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 44.65,
       "estimated_cost_per_portion": 11.16,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2494,7 +2494,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 36.43,
       "estimated_cost_per_portion": 9.11,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2545,7 +2545,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 37.6,
       "estimated_cost_per_portion": 9.4,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2596,7 +2596,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 14.69,
       "estimated_cost_per_portion": 3.67,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2647,7 +2647,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 61.1,
       "estimated_cost_per_portion": 15.28,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2698,7 +2698,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 30.55,
       "estimated_cost_per_portion": 7.64,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2749,7 +2749,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 37.6,
       "estimated_cost_per_portion": 9.4,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2800,7 +2800,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 35.25,
       "estimated_cost_per_portion": 8.81,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2851,7 +2851,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 65.8,
       "estimated_cost_per_portion": 16.45,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2902,7 +2902,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 36.43,
       "estimated_cost_per_portion": 9.11,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -2953,7 +2953,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 48.18,
       "estimated_cost_per_portion": 12.04,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3004,7 +3004,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 61.1,
       "estimated_cost_per_portion": 15.28,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3055,7 +3055,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 35.25,
       "estimated_cost_per_portion": 8.81,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3104,7 +3104,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Roasted delicata with grains and herbs; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 29.38,
       "estimated_cost_per_portion": 7.34,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3153,7 +3153,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Beurre Blanc; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 28.2,
       "estimated_cost_per_portion": 1.76,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3202,7 +3202,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Sauce Suprême; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3251,7 +3251,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Lemon Herb Butter; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3300,7 +3300,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Dill Cream Sauce; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 24.68,
       "estimated_cost_per_portion": 1.54,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3349,7 +3349,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Mustard Cream Sauce; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3398,7 +3398,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Tarragon Cream; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3447,7 +3447,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Chive Beurre Blanc; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3496,7 +3496,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Red Wine Reduction; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 37.6,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3545,7 +3545,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Pinot Noir Jus; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 37.6,
       "estimated_cost_per_portion": 2.35,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3594,7 +3594,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Shallot Pan Reduction; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3643,7 +3643,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Port Wine Glaze; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3692,7 +3692,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Cider Shallot Jus; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3743,7 +3743,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3792,7 +3792,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Herb Roasting Jus; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3841,7 +3841,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Salsa Verde; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3890,7 +3890,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Basil Oil; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3939,7 +3939,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Chive Emulsion; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -3988,7 +3988,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Tarragon Herb Sauce; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4037,7 +4037,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Parsley Herb Drizzle; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4086,7 +4086,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Dill Lemon Emulsion; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4135,7 +4135,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Sorrel Herb Sauce; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4186,7 +4186,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4235,7 +4235,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Roasted Red Pepper Coulis; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4284,7 +4284,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Celery Root Purée; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4333,7 +4333,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Parsnip Purée; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4382,7 +4382,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Apple Cider Gastrique; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4431,7 +4431,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Tomato-Fennel Fondue; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 28.2,
       "estimated_cost_per_portion": 1.76,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4480,7 +4480,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Carrot Ginger Purée; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4529,7 +4529,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Smoked Onion Purée; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 23.5,
       "estimated_cost_per_portion": 1.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4578,7 +4578,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Pommes Purée; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 38.77,
       "estimated_cost_per_portion": 9.69,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4627,7 +4627,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Potato Gratin; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 38.77,
       "estimated_cost_per_portion": 9.69,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4676,7 +4676,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Roasted Fingerling Potatoes; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 11.16,
       "estimated_cost_per_portion": 2.79,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4725,7 +4725,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Brown Butter Mashed Potatoes; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 38.77,
       "estimated_cost_per_portion": 9.69,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4774,7 +4774,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Herb-Roasted Baby Potatoes; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 11.16,
       "estimated_cost_per_portion": 2.79,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4823,7 +4823,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Wild Rice Pilaf; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 33.49,
       "estimated_cost_per_portion": 8.37,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4874,7 +4874,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 51.7,
       "estimated_cost_per_portion": 12.93,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4925,7 +4925,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 31.73,
       "estimated_cost_per_portion": 7.93,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -4974,7 +4974,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Barley with Herbs; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 31.73,
       "estimated_cost_per_portion": 7.93,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5023,7 +5023,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Creamy Polenta; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 49.35,
       "estimated_cost_per_portion": 12.34,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5072,7 +5072,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Parmesan Risotto; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 42.3,
       "estimated_cost_per_portion": 10.57,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5121,7 +5121,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Cider-Glazed Root Mash; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 65.8,
       "estimated_cost_per_portion": 16.45,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5170,7 +5170,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Herb Grain Medley; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 38.77,
       "estimated_cost_per_portion": 9.69,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5221,7 +5221,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 47.0,
       "estimated_cost_per_portion": 11.75,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5270,7 +5270,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Haricots Verts with Shallots; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 12.93,
       "estimated_cost_per_portion": 3.23,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5319,7 +5319,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Asparagus with Lemon and Herbs; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 6.46,
       "estimated_cost_per_portion": 1.61,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5368,7 +5368,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Charred Broccolini; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 8.22,
       "estimated_cost_per_portion": 2.06,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5417,7 +5417,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Braised Greens; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 7.05,
       "estimated_cost_per_portion": 1.76,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5466,7 +5466,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Peas with Mint and Shallots; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 7.64,
       "estimated_cost_per_portion": 1.91,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5515,7 +5515,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Glazed Carrots; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 12.93,
       "estimated_cost_per_portion": 3.23,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5566,7 +5566,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 58.75,
       "estimated_cost_per_portion": 14.69,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5615,7 +5615,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Butter-Braised Cabbage; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 14.1,
       "estimated_cost_per_portion": 3.52,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5664,7 +5664,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Roasted Brussels Sprouts; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 8.22,
       "estimated_cost_per_portion": 2.06,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5715,7 +5715,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 7.64,
       "estimated_cost_per_portion": 1.91,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5766,7 +5766,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 8.22,
       "estimated_cost_per_portion": 2.06,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5815,7 +5815,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Fennel and Leek Braise; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 47.0,
       "estimated_cost_per_portion": 11.75,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5866,7 +5866,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 5.29,
       "estimated_cost_per_portion": 1.32,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5917,7 +5917,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 31.14,
       "estimated_cost_per_portion": 7.79,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -5968,7 +5968,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 31.14,
       "estimated_cost_per_portion": 7.79,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6017,7 +6017,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Artisan Bread Service; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 21.15,
       "estimated_cost_per_portion": 5.29,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6066,7 +6066,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Cultured Butter & Sea Salt; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 19.04,
       "estimated_cost_per_portion": 4.76,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6115,7 +6115,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Cheese Course; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 39.95,
       "estimated_cost_per_portion": 9.99,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6166,7 +6166,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 32.9,
       "estimated_cost_per_portion": 8.22,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6215,7 +6215,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Appetizer Board; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 30.55,
       "estimated_cost_per_portion": 7.64,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6264,7 +6264,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Soup Course; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 22.32,
       "estimated_cost_per_portion": 5.58,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6315,7 +6315,7 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 31.14,
       "estimated_cost_per_portion": 7.79,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6366,7 +6366,7 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 35.25,
       "estimated_cost_per_portion": 8.81,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6415,7 +6415,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Wine-Pairing Notes; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 4.7,
       "estimated_cost_per_portion": 1.18,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6464,7 +6464,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Brunch Pastry Basket; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 21.15,
       "estimated_cost_per_portion": 5.29,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6513,7 +6513,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Local Jam & Bread Board; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 25.85,
       "estimated_cost_per_portion": 6.46,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6562,7 +6562,7 @@
       ],
       "prep_notes": "Phase 1 internal recipe scaffold for Northwest Cheese Board; refine method, exact gram weights, and vendor-specific sourcing in Phase 2.",
       "dietary_tags": [],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 44.65,
       "estimated_cost_per_portion": 11.16,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6614,7 +6614,7 @@
         "vegetable-forward",
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 42.3,
       "estimated_cost_per_portion": 10.57,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6665,7 +6665,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 49.35,
       "estimated_cost_per_portion": 12.34,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6716,7 +6716,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 37.6,
       "estimated_cost_per_portion": 9.4,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6767,7 +6767,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 61.1,
       "estimated_cost_per_portion": 15.28,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6818,7 +6818,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 28.2,
       "estimated_cost_per_portion": 7.05,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6870,7 +6870,7 @@
         "vegetable-forward",
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 44.65,
       "estimated_cost_per_portion": 11.16,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6921,7 +6921,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 56.4,
       "estimated_cost_per_portion": 14.1,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -6973,7 +6973,7 @@
         "dessert",
         "gluten-conscious"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 42.3,
       "estimated_cost_per_portion": 10.57,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -7024,7 +7024,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 39.95,
       "estimated_cost_per_portion": 9.99,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -7075,7 +7075,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 61.1,
       "estimated_cost_per_portion": 15.28,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -7126,7 +7126,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 44.65,
       "estimated_cost_per_portion": 11.16,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -7177,7 +7177,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 25.85,
       "estimated_cost_per_portion": 6.46,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -7228,7 +7228,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 44.65,
       "estimated_cost_per_portion": 11.16,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
@@ -7279,7 +7279,7 @@
       "dietary_tags": [
         "dessert"
       ],
-      "costing_status": "placeholder-estimate",
+      "costing_status": "placeholder",
       "estimated_total_recipe_cost": 65.8,
       "estimated_cost_per_portion": 16.45,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI."
