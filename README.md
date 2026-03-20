@@ -10,3 +10,7 @@ This repository is configured for the simplest GitHub Pages project-site setup:
 - The live project-site URL will be `https://<your-github-username>.github.io/PersonalChef/`.
 
 The production-ready static site is built directly into `docs/`, including `docs/index.html` and `docs/.nojekyll`, so GitHub Pages can serve the site as a plain static project site from the `main` branch.
+
+## Maintenance notes
+
+- See [`FOLLOWUP.md`](./FOLLOWUP.md) for the next-session cleanup checklist and change-splitting guidance.
