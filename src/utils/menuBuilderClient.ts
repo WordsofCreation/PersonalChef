@@ -4,6 +4,7 @@ import type {
   BuilderSection,
   MainCourseCollection
 } from '../data/menuBuilder';
+import { createPublicPricingGuidance } from '../data/publicPricingGuidance';
 
 export type MenuBuilderState = {
   diningStyle: string;
@@ -47,11 +48,26 @@ export type MenuRequestDetails = {
   customConsiderations: string;
 };
 
+export type MenuRequestPublicPricing = {
+  heading: string;
+  tierLabel: string;
+  tierDescriptor: string;
+  displayMode: 'starting-at' | 'range' | 'custom-proposal';
+  estimateLabel: string;
+  rangeLow: number | null;
+  rangeHigh: number | null;
+  startingAtPerPerson: number | null;
+  summary: string;
+  supportingText: string;
+  disclaimer: string;
+};
+
 export type MenuRequestPayload = {
   source?: string;
   state: MenuBuilderState;
   details: MenuRequestDetails;
   summary: string;
+  publicPricing?: MenuRequestPublicPricing | null;
   savedAt?: string;
 };
 
@@ -384,14 +400,35 @@ export const hasMenuRequestSelections = (payload: Pick<MenuRequestPayload, 'deta
   );
 };
 
-export const createMenuRequestPayload = (data: MenuBuilderClientData, state: MenuBuilderState, source = 'menu-preview'): MenuRequestPayload => {
+export const createMenuRequestPayload = (
+  data: MenuBuilderClientData,
+  state: MenuBuilderState,
+  source = 'menu-preview',
+  options: { guestCount?: number | null } = {}
+): MenuRequestPayload => {
   const preview = getComposedMenuPreview(data, state);
+  const publicPricing = createPublicPricingGuidance(state, options);
 
   return {
     source,
     state,
     details: preview.details,
     summary: buildMenuRequestMessage(data, state),
+    publicPricing: publicPricing.isVisible
+      ? {
+          heading: publicPricing.heading,
+          tierLabel: publicPricing.tierLabel,
+          tierDescriptor: publicPricing.tierDescriptor,
+          displayMode: publicPricing.displayMode,
+          estimateLabel: publicPricing.estimateLabel,
+          rangeLow: publicPricing.rangeLow,
+          rangeHigh: publicPricing.rangeHigh,
+          startingAtPerPerson: publicPricing.startingAtPerPerson,
+          summary: publicPricing.summary,
+          supportingText: publicPricing.supportingText,
+          disclaimer: publicPricing.disclaimer
+        }
+      : null,
     savedAt: new Date().toISOString()
   };
 };
