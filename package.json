@@ -4,9 +4,12 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "build:private-costing": "node scripts/generate-private-costing.mjs",
+    "prebuild": "npm run build:private-costing",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "check:private-costing": "node scripts/generate-private-costing.mjs"
   },
   "dependencies": {
     "astro": "^5.5.2",

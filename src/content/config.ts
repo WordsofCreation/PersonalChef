@@ -76,7 +76,7 @@ const privateRecipes = defineCollection({
       })),
       prep_notes: z.string(),
       dietary_tags: z.array(z.string()),
-      costing_status: z.enum(['placeholder-estimate', 'needs-review', 'approved']),
+      costing_status: z.enum(['placeholder', 'estimated', 'verified', 'incomplete']),
       estimated_total_recipe_cost: z.number(),
       estimated_cost_per_portion: z.number(),
       notes: z.string()
@@ -97,6 +97,7 @@ const ingredientCosts = defineCollection({
       purchase_price: z.number(),
       usable_yield_percent: z.number(),
       edible_unit_cost: z.number(),
+      purchase_measure_unit: z.string().optional(),
       last_updated: z.string(),
       notes: z.string()
     }))
