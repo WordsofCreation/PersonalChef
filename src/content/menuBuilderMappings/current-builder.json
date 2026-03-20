@@ -1,0 +1,308 @@
+{
+  "version": 1,
+  "description": "Maps current public Sample Menu Builder selections to internal unpublished recipe ids for later costing and estimate logic.",
+  "sections": {
+    "diningStyle": {
+      "olympic-coast-dinner": "dining-style-olympic-coast-dinner",
+      "forest-and-field-supper": "dining-style-forest-and-field-supper",
+      "romantic-peninsula-dinner": "dining-style-romantic-peninsula-dinner",
+      "pnw-family-table": "dining-style-pnw-family-table",
+      "seasonal-tasting-menu": "dining-style-seasonal-tasting-menu",
+      "coastal-brunch-table": "dining-style-coastal-brunch-table",
+      "harvest-celebration-dinner": "dining-style-harvest-celebration-dinner",
+      "wellness-from-the-northwest": "dining-style-wellness-from-the-northwest"
+    },
+    "starter": {
+      "little-gem-salad-with-herbs-and-champagne-vinaigrette": "starter-little-gem-salad-with-herbs-and-champagne-vinaigrette",
+      "roasted-beet-salad-with-chevre-hazelnuts-and-dill": "starter-roasted-beet-salad-with-chevre-hazelnuts-and-dill",
+      "smoked-salmon-crostini-with-creme-fraiche-and-chives": "starter-smoked-salmon-crostini-with-creme-fraiche-and-chives",
+      "cucumber-salad-with-yogurt-herbs-and-lemon": "starter-cucumber-salad-with-yogurt-herbs-and-lemon",
+      "bitter-greens-with-apple-candied-walnuts-and-cider-vinaigrette": "starter-bitter-greens-with-apple-candied-walnuts-and-cider-vinaigrette",
+      "pear-and-blue-cheese-salad-with-toasted-seeds": "starter-pear-and-blue-cheese-salad-with-toasted-seeds",
+      "wild-mushroom-tartlet": "starter-wild-mushroom-tartlet",
+      "caramelized-onion-and-gruyere-tart": "starter-caramelized-onion-and-gruyere-tart",
+      "dungeness-crab-cakes-with-herb-aioli": "starter-dungeness-crab-cakes-with-herb-aioli",
+      "roasted-delicata-squash-with-brown-butter-and-sage": "starter-roasted-delicata-squash-with-brown-butter-and-sage",
+      "pnw-seasonal-soup": "starter-pnw-seasonal-soup",
+      "creamy-cauliflower-soup-with-chive-oil": "starter-creamy-cauliflower-soup-with-chive-oil",
+      "leek-and-potato-veloute": "starter-leek-and-potato-veloute",
+      "woodland-mushroom-toast-with-herbs": "starter-woodland-mushroom-toast-with-herbs"
+    },
+    "mainCourseCategory": {
+      "pnw-seafood": [
+        "main-cedar-plank-salmon",
+        "main-seared-pacific-halibut",
+        "main-herb-roasted-black-cod",
+        "main-pan-seared-scallops",
+        "main-dungeness-crab-cakes",
+        "main-miso-glazed-salmon",
+        "main-roasted-steelhead-with-lemon-and-herbs",
+        "main-halibut-with-fennel-and-white-wine",
+        "main-salmon-with-dill-and-cider-glaze"
+      ],
+      "woodland-poultry": [
+        "main-herb-roasted-chicken-supreme",
+        "main-pan-seared-airline-chicken-breast",
+        "main-cider-brined-roast-chicken",
+        "main-chicken-with-forest-mushroom-pan-sauce",
+        "main-roast-chicken-with-tarragon-cream",
+        "main-crispy-chicken-with-leek-fondue",
+        "main-herb-roasted-chicken-with-apple-shallot-jus"
+      ],
+      "braised-and-roasted-meats": [
+        "main-braised-beef-short-rib",
+        "main-filet-of-beef-with-herb-butter",
+        "main-seared-bistro-steak",
+        "main-red-wine-braised-chuck-roast",
+        "main-cider-glazed-pork-tenderloin",
+        "main-apple-brined-pork-loin",
+        "main-herb-crusted-pork-chop",
+        "main-slow-roasted-pork-shoulder",
+        "main-beef-with-pinot-noir-jus"
+      ],
+      "vegetarian-from-the-garden": [
+        "main-wild-mushroom-risotto",
+        "main-roasted-cauliflower-steak",
+        "main-herb-polenta-with-seasonal-vegetables",
+        "main-lentil-and-root-vegetable-galette",
+        "main-butternut-squash-ravioli",
+        "main-forest-mushroom-bread-pudding",
+        "main-roasted-squash-with-sage-brown-butter",
+        "main-ricotta-gnocchi-with-herbs-and-mushrooms",
+        "main-savory-tart-with-leek-chevre-and-roasted-vegetables"
+      ],
+      "vegan-seasonal-plate": [
+        "main-charred-cauliflower-with-chickpea-puree",
+        "main-wild-rice-and-mushroom-stuffed-squash",
+        "main-lentil-cassoulet-with-root-vegetables",
+        "main-roasted-carrot-and-farro-plate",
+        "main-herb-braised-white-beans-with-greens",
+        "main-cider-glazed-root-vegetable-plate",
+        "main-mushroom-and-lentil-roast",
+        "main-roasted-delicata-with-grains-and-herbs"
+      ]
+    },
+    "mainCourseSelection": {
+      "cedar-plank-salmon": "main-cedar-plank-salmon",
+      "seared-pacific-halibut": "main-seared-pacific-halibut",
+      "herb-roasted-black-cod": "main-herb-roasted-black-cod",
+      "pan-seared-scallops": "main-pan-seared-scallops",
+      "dungeness-crab-cakes": "main-dungeness-crab-cakes",
+      "miso-glazed-salmon": "main-miso-glazed-salmon",
+      "roasted-steelhead-with-lemon-and-herbs": "main-roasted-steelhead-with-lemon-and-herbs",
+      "halibut-with-fennel-and-white-wine": "main-halibut-with-fennel-and-white-wine",
+      "salmon-with-dill-and-cider-glaze": "main-salmon-with-dill-and-cider-glaze",
+      "herb-roasted-chicken-supreme": "main-herb-roasted-chicken-supreme",
+      "pan-seared-airline-chicken-breast": "main-pan-seared-airline-chicken-breast",
+      "cider-brined-roast-chicken": "main-cider-brined-roast-chicken",
+      "chicken-with-forest-mushroom-pan-sauce": "main-chicken-with-forest-mushroom-pan-sauce",
+      "roast-chicken-with-tarragon-cream": "main-roast-chicken-with-tarragon-cream",
+      "crispy-chicken-with-leek-fondue": "main-crispy-chicken-with-leek-fondue",
+      "herb-roasted-chicken-with-apple-shallot-jus": "main-herb-roasted-chicken-with-apple-shallot-jus",
+      "braised-beef-short-rib": "main-braised-beef-short-rib",
+      "filet-of-beef-with-herb-butter": "main-filet-of-beef-with-herb-butter",
+      "seared-bistro-steak": "main-seared-bistro-steak",
+      "red-wine-braised-chuck-roast": "main-red-wine-braised-chuck-roast",
+      "cider-glazed-pork-tenderloin": "main-cider-glazed-pork-tenderloin",
+      "apple-brined-pork-loin": "main-apple-brined-pork-loin",
+      "herb-crusted-pork-chop": "main-herb-crusted-pork-chop",
+      "slow-roasted-pork-shoulder": "main-slow-roasted-pork-shoulder",
+      "beef-with-pinot-noir-jus": "main-beef-with-pinot-noir-jus",
+      "wild-mushroom-risotto": "main-wild-mushroom-risotto",
+      "roasted-cauliflower-steak": "main-roasted-cauliflower-steak",
+      "herb-polenta-with-seasonal-vegetables": "main-herb-polenta-with-seasonal-vegetables",
+      "lentil-and-root-vegetable-galette": "main-lentil-and-root-vegetable-galette",
+      "butternut-squash-ravioli": "main-butternut-squash-ravioli",
+      "forest-mushroom-bread-pudding": "main-forest-mushroom-bread-pudding",
+      "roasted-squash-with-sage-brown-butter": "main-roasted-squash-with-sage-brown-butter",
+      "ricotta-gnocchi-with-herbs-and-mushrooms": "main-ricotta-gnocchi-with-herbs-and-mushrooms",
+      "savory-tart-with-leek-chevre-and-roasted-vegetables": "main-savory-tart-with-leek-chevre-and-roasted-vegetables",
+      "charred-cauliflower-with-chickpea-puree": "main-charred-cauliflower-with-chickpea-puree",
+      "wild-rice-and-mushroom-stuffed-squash": "main-wild-rice-and-mushroom-stuffed-squash",
+      "lentil-cassoulet-with-root-vegetables": "main-lentil-cassoulet-with-root-vegetables",
+      "roasted-carrot-and-farro-plate": "main-roasted-carrot-and-farro-plate",
+      "herb-braised-white-beans-with-greens": "main-herb-braised-white-beans-with-greens",
+      "cider-glazed-root-vegetable-plate": "main-cider-glazed-root-vegetable-plate",
+      "mushroom-and-lentil-roast": "main-mushroom-and-lentil-roast",
+      "roasted-delicata-with-grains-and-herbs": "main-roasted-delicata-with-grains-and-herbs"
+    },
+    "sauce": {
+      "beurre-blanc": "sauce-beurre-blanc",
+      "sauce-supreme": "sauce-sauce-supreme",
+      "lemon-herb-butter": "sauce-lemon-herb-butter",
+      "dill-cream-sauce": "sauce-dill-cream-sauce",
+      "mustard-cream-sauce": "sauce-mustard-cream-sauce",
+      "tarragon-cream": "sauce-tarragon-cream",
+      "chive-beurre-blanc": "sauce-chive-beurre-blanc",
+      "red-wine-reduction": "sauce-red-wine-reduction",
+      "pinot-noir-jus": "sauce-pinot-noir-jus",
+      "shallot-pan-reduction": "sauce-shallot-pan-reduction",
+      "port-wine-glaze": "sauce-port-wine-glaze",
+      "cider-shallot-jus": "sauce-cider-shallot-jus",
+      "mushroom-jus": "sauce-mushroom-jus",
+      "herb-roasting-jus": "sauce-herb-roasting-jus",
+      "salsa-verde": "sauce-salsa-verde",
+      "basil-oil": "sauce-basil-oil",
+      "chive-emulsion": "sauce-chive-emulsion",
+      "tarragon-herb-sauce": "sauce-tarragon-herb-sauce",
+      "parsley-herb-drizzle": "sauce-parsley-herb-drizzle",
+      "dill-lemon-emulsion": "sauce-dill-lemon-emulsion",
+      "sorrel-herb-sauce": "sauce-sorrel-herb-sauce",
+      "wild-mushroom-veloute": "sauce-wild-mushroom-veloute",
+      "roasted-red-pepper-coulis": "sauce-roasted-red-pepper-coulis",
+      "celery-root-puree": "sauce-celery-root-puree",
+      "parsnip-puree": "sauce-parsnip-puree",
+      "apple-cider-gastrique": "sauce-apple-cider-gastrique",
+      "tomato-fennel-fondue": "sauce-tomato-fennel-fondue",
+      "carrot-ginger-puree": "sauce-carrot-ginger-puree",
+      "smoked-onion-puree": "sauce-smoked-onion-puree"
+    },
+    "starchCategory": {
+      "potato-preparations": [
+        "starch-pommes-puree",
+        "starch-potato-gratin",
+        "starch-roasted-fingerling-potatoes",
+        "starch-brown-butter-mashed-potatoes",
+        "starch-herb-roasted-baby-potatoes"
+      ],
+      "rice-and-grain-sides": [
+        "starch-wild-rice-pilaf",
+        "starch-mushroom-rice-pilaf",
+        "starch-farro-with-herbs",
+        "starch-barley-with-herbs"
+      ],
+      "polenta-and-risotto": [
+        "starch-creamy-polenta",
+        "starch-parmesan-risotto"
+      ],
+      "seasonal-rustic-sides": [
+        "starch-cider-glazed-root-mash",
+        "starch-herb-grain-medley",
+        "starch-woodland-mushroom-grain-pilaf"
+      ]
+    },
+    "starchSelection": {
+      "pommes-puree": "starch-pommes-puree",
+      "potato-gratin": "starch-potato-gratin",
+      "roasted-fingerling-potatoes": "starch-roasted-fingerling-potatoes",
+      "brown-butter-mashed-potatoes": "starch-brown-butter-mashed-potatoes",
+      "herb-roasted-baby-potatoes": "starch-herb-roasted-baby-potatoes",
+      "wild-rice-pilaf": "starch-wild-rice-pilaf",
+      "mushroom-rice-pilaf": "starch-mushroom-rice-pilaf",
+      "farro-with-herbs": "starch-farro-with-herbs",
+      "barley-with-herbs": "starch-barley-with-herbs",
+      "creamy-polenta": "starch-creamy-polenta",
+      "parmesan-risotto": "starch-parmesan-risotto",
+      "cider-glazed-root-mash": "starch-cider-glazed-root-mash",
+      "herb-grain-medley": "starch-herb-grain-medley",
+      "woodland-mushroom-grain-pilaf": "starch-woodland-mushroom-grain-pilaf"
+    },
+    "vegetableCategory": {
+      "green-vegetables": [
+        "vegetable-haricots-verts-with-shallots",
+        "vegetable-asparagus-with-lemon-and-herbs",
+        "vegetable-charred-broccolini",
+        "vegetable-braised-greens",
+        "vegetable-peas-with-mint-and-shallots"
+      ],
+      "root-and-orchard-vegetables": [
+        "vegetable-glazed-carrots",
+        "vegetable-roasted-root-vegetables",
+        "vegetable-butter-braised-cabbage",
+        "vegetable-roasted-brussels-sprouts",
+        "vegetable-roasted-squash-wedges"
+      ],
+      "woodland-and-earthy-sides": [
+        "vegetable-sauteed-woodland-mushrooms",
+        "vegetable-fennel-and-leek-braise",
+        "vegetable-roasted-cauliflower-with-herbs"
+      ],
+      "seasonal-market-sides": [
+        "vegetable-seasonal-market-vegetables",
+        "vegetable-chef-s-market-vegetable-selection"
+      ]
+    },
+    "vegetableSelection": {
+      "haricots-verts-with-shallots": [
+        "vegetable-haricots-verts-with-shallots"
+      ],
+      "asparagus-with-lemon-and-herbs": [
+        "vegetable-asparagus-with-lemon-and-herbs"
+      ],
+      "charred-broccolini": [
+        "vegetable-charred-broccolini"
+      ],
+      "braised-greens": [
+        "vegetable-braised-greens"
+      ],
+      "peas-with-mint-and-shallots": [
+        "vegetable-peas-with-mint-and-shallots"
+      ],
+      "glazed-carrots": [
+        "vegetable-glazed-carrots"
+      ],
+      "roasted-root-vegetables": [
+        "vegetable-roasted-root-vegetables"
+      ],
+      "butter-braised-cabbage": [
+        "vegetable-butter-braised-cabbage"
+      ],
+      "roasted-brussels-sprouts": [
+        "vegetable-roasted-brussels-sprouts"
+      ],
+      "roasted-squash-wedges": [
+        "vegetable-roasted-squash-wedges"
+      ],
+      "sauteed-woodland-mushrooms": [
+        "vegetable-sauteed-woodland-mushrooms"
+      ],
+      "fennel-and-leek-braise": [
+        "vegetable-fennel-and-leek-braise"
+      ],
+      "roasted-cauliflower-with-herbs": [
+        "vegetable-roasted-cauliflower-with-herbs"
+      ],
+      "seasonal-market-vegetables": [
+        "vegetable-seasonal-market-vegetables"
+      ],
+      "chef-s-market-vegetable-selection": [
+        "vegetable-chef-s-market-vegetable-selection"
+      ]
+    },
+    "optionalAdditions": {
+      "artisan-bread-service": "addition-artisan-bread-service",
+      "cultured-butter-and-sea-salt": "addition-cultured-butter-and-sea-salt",
+      "cheese-course": "addition-cheese-course",
+      "seasonal-salad": "addition-seasonal-salad",
+      "appetizer-board": "addition-appetizer-board",
+      "soup-course": "addition-soup-course",
+      "extra-vegetable-side": "addition-extra-vegetable-side",
+      "oyster-add-on": "addition-oyster-add-on",
+      "wine-pairing-notes": "addition-wine-pairing-notes",
+      "brunch-pastry-basket": "addition-brunch-pastry-basket",
+      "local-jam-and-bread-board": "addition-local-jam-and-bread-board",
+      "northwest-cheese-board": "addition-northwest-cheese-board"
+    },
+    "dessert": {
+      "vanilla-bean-panna-cotta": "dessert-vanilla-bean-panna-cotta",
+      "chocolate-pot-de-creme": "dessert-chocolate-pot-de-creme",
+      "lemon-tart": "dessert-lemon-tart",
+      "rustic-berry-galette": "dessert-rustic-berry-galette",
+      "apple-crisp": "dessert-apple-crisp",
+      "seasonal-fruit-with-whipped-mascarpone": "dessert-seasonal-fruit-with-whipped-mascarpone",
+      "creme-brulee": "dessert-creme-brulee",
+      "flourless-chocolate-torte": "dessert-flourless-chocolate-torte",
+      "pear-almond-tart": "dessert-pear-almond-tart",
+      "blackberry-cobbler": "dessert-blackberry-cobbler",
+      "honey-cake-with-cream": "dessert-honey-cake-with-cream",
+      "poached-pears-with-spiced-syrup": "dessert-poached-pears-with-spiced-syrup",
+      "hazelnut-chocolate-tart": "dessert-hazelnut-chocolate-tart",
+      "berry-shortcake": "dessert-berry-shortcake"
+    }
+  },
+  "future_notes": [
+    "Category maps support dependent UI sections where a category selection controls allowed child recipes.",
+    "Vegetable selections are arrays to support future multi-select or composed vegetable pairings.",
+    "Dining styles are represented as internal pricing profiles so estimate logic can apply service multipliers later."
+  ]
+}
