@@ -96,8 +96,12 @@ const ingredientCosts = defineCollection({
       purchase_quantity: z.number(),
       purchase_price: z.number(),
       usable_yield_percent: z.number(),
-      edible_unit_cost: z.number(),
+      edible_unit_cost: z.number().nullable().optional(),
       purchase_measure_unit: z.string().optional(),
+      recipe_unit_mappings: z.array(z.object({
+        unit: z.string(),
+        quantity_per_purchase_unit: z.number()
+      })).optional(),
       last_updated: z.string(),
       notes: z.string()
     }))

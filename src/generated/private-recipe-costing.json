@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T21:14:36.196Z",
+  "generated_at": "2026-03-20T21:20:58.365Z",
   "source_versions": {
     "privateRecipes": 1,
     "ingredientCosts": 2
@@ -390,7 +390,21 @@
       "usable_yield_percent": 100,
       "edible_unit_cost": 7,
       "last_updated": "2026-03-20",
-      "notes": "Phase 1 placeholder cost record for internal recipe costing.",
+      "notes": "Include loaf-to-slice and loaf-to-ounce mappings for internal recipe costing.",
+      "recipe_unit_mappings": [
+        {
+          "unit": "slice",
+          "quantity_per_purchase_unit": 12
+        },
+        {
+          "unit": "slices",
+          "quantity_per_purchase_unit": 12
+        },
+        {
+          "unit": "oz",
+          "quantity_per_purchase_unit": 16
+        }
+      ],
       "purchase_measure_unit": "loaf",
       "purchase_unit_cost": 7,
       "edible_unit_cost_source": "provided-record"
@@ -1200,7 +1214,17 @@
       "usable_yield_percent": 100,
       "edible_unit_cost": 4,
       "last_updated": "2026-03-20",
-      "notes": "Phase 1 placeholder cost record for internal recipe costing.",
+      "notes": "Include box-to-packet mapping for internal recipe costing.",
+      "recipe_unit_mappings": [
+        {
+          "unit": "packet",
+          "quantity_per_purchase_unit": 4
+        },
+        {
+          "unit": "packets",
+          "quantity_per_purchase_unit": 4
+        }
+      ],
       "purchase_measure_unit": "box",
       "purchase_unit_cost": 4,
       "edible_unit_cost_source": "provided-record"
@@ -2789,9 +2813,9 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "incomplete",
-      "estimated_total_recipe_cost": 14.25,
-      "estimated_cost_per_portion": 3.56,
+      "costing_status": "estimated",
+      "estimated_total_recipe_cost": 18.92,
+      "estimated_cost_per_portion": 4.73,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI.",
       "resolved_profile_source": "recipe-record",
       "ingredient_cost_breakdown": [
@@ -2824,22 +2848,22 @@
           "linked_ingredient_cost_id": "country-bread",
           "recipe_quantity": 8,
           "recipe_unit": "slices",
+          "normalized_recipe_quantity": 0.6667,
           "purchase_measure_unit": "loaf",
           "purchase_unit_cost": 7,
           "edible_unit_cost": 7,
-          "status": "incomplete",
-          "warning": "No conversion path from slices to loaf.",
-          "cost_of_quantity_used": null
+          "status": "estimated",
+          "cost_of_quantity_used": 4.67
         }
       ],
       "costing_notes": [
-        "Ingredient Country Bread could not be converted from slices to loaf."
+        "Estimated from linked purchase records and usable yield percentages."
       ],
-      "costing_warning_count": 1,
+      "costing_warning_count": 0,
       "last_costed": "2026-03-20",
       "portion_count": 4,
-      "costed_ingredient_count": 2,
-      "missing_cost_ingredient_count": 1
+      "costed_ingredient_count": 3,
+      "missing_cost_ingredient_count": 0
     },
     {
       "id": "starter-cucumber-salad-with-yogurt-herbs-and-lemon",
@@ -3373,9 +3397,9 @@
       "dietary_tags": [
         "seafood"
       ],
-      "costing_status": "incomplete",
-      "estimated_total_recipe_cost": 24.58,
-      "estimated_cost_per_portion": 6.14,
+      "costing_status": "estimated",
+      "estimated_total_recipe_cost": 25.89,
+      "estimated_cost_per_portion": 6.47,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI.",
       "resolved_profile_source": "recipe-record",
       "ingredient_cost_breakdown": [
@@ -3408,22 +3432,22 @@
           "linked_ingredient_cost_id": "country-bread",
           "recipe_quantity": 3,
           "recipe_unit": "oz",
+          "normalized_recipe_quantity": 0.1875,
           "purchase_measure_unit": "loaf",
           "purchase_unit_cost": 7,
           "edible_unit_cost": 7,
-          "status": "incomplete",
-          "warning": "No conversion path from oz to loaf.",
-          "cost_of_quantity_used": null
+          "status": "estimated",
+          "cost_of_quantity_used": 1.31
         }
       ],
       "costing_notes": [
-        "Ingredient Country Bread could not be converted from oz to loaf."
+        "Estimated from linked purchase records and usable yield percentages."
       ],
-      "costing_warning_count": 1,
+      "costing_warning_count": 0,
       "last_costed": "2026-03-20",
       "portion_count": 4,
-      "costed_ingredient_count": 2,
-      "missing_cost_ingredient_count": 1
+      "costed_ingredient_count": 3,
+      "missing_cost_ingredient_count": 0
     },
     {
       "id": "starter-roasted-delicata-squash-with-brown-butter-and-sage",
@@ -3859,9 +3883,9 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "incomplete",
-      "estimated_total_recipe_cost": 16.06,
-      "estimated_cost_per_portion": 4.01,
+      "costing_status": "estimated",
+      "estimated_total_recipe_cost": 18.39,
+      "estimated_cost_per_portion": 4.6,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI.",
       "resolved_profile_source": "recipe-record",
       "ingredient_cost_breakdown": [
@@ -3882,12 +3906,12 @@
           "linked_ingredient_cost_id": "country-bread",
           "recipe_quantity": 4,
           "recipe_unit": "slices",
+          "normalized_recipe_quantity": 0.3333,
           "purchase_measure_unit": "loaf",
           "purchase_unit_cost": 7,
           "edible_unit_cost": 7,
-          "status": "incomplete",
-          "warning": "No conversion path from slices to loaf.",
-          "cost_of_quantity_used": null
+          "status": "estimated",
+          "cost_of_quantity_used": 2.33
         },
         {
           "ingredient_name": "Fresh Herbs",
@@ -3903,13 +3927,13 @@
         }
       ],
       "costing_notes": [
-        "Ingredient Country Bread could not be converted from slices to loaf."
+        "Estimated from linked purchase records and usable yield percentages."
       ],
-      "costing_warning_count": 1,
+      "costing_warning_count": 0,
       "last_costed": "2026-03-20",
       "portion_count": 4,
-      "costed_ingredient_count": 2,
-      "missing_cost_ingredient_count": 1
+      "costed_ingredient_count": 3,
+      "missing_cost_ingredient_count": 0
     },
     {
       "id": "main-cedar-plank-salmon",
@@ -6895,9 +6919,9 @@
       "dietary_tags": [
         "vegetable-forward"
       ],
-      "costing_status": "incomplete",
-      "estimated_total_recipe_cost": 21.31,
-      "estimated_cost_per_portion": 5.33,
+      "costing_status": "estimated",
+      "estimated_total_recipe_cost": 26.56,
+      "estimated_cost_per_portion": 6.64,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI.",
       "resolved_profile_source": "recipe-record",
       "ingredient_cost_breakdown": [
@@ -6918,12 +6942,12 @@
           "linked_ingredient_cost_id": "country-bread",
           "recipe_quantity": 12,
           "recipe_unit": "oz",
+          "normalized_recipe_quantity": 0.75,
           "purchase_measure_unit": "loaf",
           "purchase_unit_cost": 7,
           "edible_unit_cost": 7,
-          "status": "incomplete",
-          "warning": "No conversion path from oz to loaf.",
-          "cost_of_quantity_used": null
+          "status": "estimated",
+          "cost_of_quantity_used": 5.25
         },
         {
           "ingredient_name": "Eggs",
@@ -6939,13 +6963,13 @@
         }
       ],
       "costing_notes": [
-        "Ingredient Country Bread could not be converted from oz to loaf."
+        "Estimated from linked purchase records and usable yield percentages."
       ],
-      "costing_warning_count": 1,
+      "costing_warning_count": 0,
       "last_costed": "2026-03-20",
       "portion_count": 4,
-      "costed_ingredient_count": 2,
-      "missing_cost_ingredient_count": 1
+      "costed_ingredient_count": 3,
+      "missing_cost_ingredient_count": 0
     },
     {
       "id": "main-roasted-squash-with-sage-brown-butter",
@@ -14818,9 +14842,9 @@
         "vegetable-forward",
         "dessert"
       ],
-      "costing_status": "incomplete",
-      "estimated_total_recipe_cost": 6.74,
-      "estimated_cost_per_portion": 1.69,
+      "costing_status": "estimated",
+      "estimated_total_recipe_cost": 7.74,
+      "estimated_cost_per_portion": 1.94,
       "notes": "Internal operational recipe only. Do not surface in public routes or UI.",
       "resolved_profile_source": "recipe-record",
       "ingredient_cost_breakdown": [
@@ -14853,22 +14877,22 @@
           "linked_ingredient_cost_id": "gelatin",
           "recipe_quantity": 1,
           "recipe_unit": "packet",
+          "normalized_recipe_quantity": 0.25,
           "purchase_measure_unit": "box",
           "purchase_unit_cost": 4,
           "edible_unit_cost": 4,
-          "status": "incomplete",
-          "warning": "No conversion path from packet to box.",
-          "cost_of_quantity_used": null
+          "status": "estimated",
+          "cost_of_quantity_used": 1
         }
       ],
       "costing_notes": [
-        "Ingredient Gelatin could not be converted from packet to box."
+        "Estimated from linked purchase records and usable yield percentages."
       ],
-      "costing_warning_count": 1,
+      "costing_warning_count": 0,
       "last_costed": "2026-03-20",
       "portion_count": 4,
-      "costed_ingredient_count": 2,
-      "missing_cost_ingredient_count": 1
+      "costed_ingredient_count": 3,
+      "missing_cost_ingredient_count": 0
     },
     {
       "id": "dessert-chocolate-pot-de-creme",
@@ -16253,10 +16277,10 @@
       "recipe_name": "Smoked Salmon Crostini with crème fraîche and chives",
       "category": "starter",
       "profile_source": "recipe-record",
-      "total_cost": 14.25,
-      "cost_per_portion": 3.56,
-      "costing_status": "incomplete",
-      "warning_count": 1
+      "total_cost": 18.92,
+      "cost_per_portion": 4.73,
+      "costing_status": "estimated",
+      "warning_count": 0
     },
     {
       "recipe_id": "starter-cucumber-salad-with-yogurt-herbs-and-lemon",
@@ -16313,10 +16337,10 @@
       "recipe_name": "Dungeness Crab Cakes with herb aioli",
       "category": "starter",
       "profile_source": "recipe-record",
-      "total_cost": 24.58,
-      "cost_per_portion": 6.14,
-      "costing_status": "incomplete",
-      "warning_count": 1
+      "total_cost": 25.89,
+      "cost_per_portion": 6.47,
+      "costing_status": "estimated",
+      "warning_count": 0
     },
     {
       "recipe_id": "starter-roasted-delicata-squash-with-brown-butter-and-sage",
@@ -16363,10 +16387,10 @@
       "recipe_name": "Woodland mushroom toast with herbs",
       "category": "starter",
       "profile_source": "recipe-record",
-      "total_cost": 16.06,
-      "cost_per_portion": 4.01,
-      "costing_status": "incomplete",
-      "warning_count": 1
+      "total_cost": 18.39,
+      "cost_per_portion": 4.6,
+      "costing_status": "estimated",
+      "warning_count": 0
     },
     {
       "recipe_id": "main-cedar-plank-salmon",
@@ -16673,10 +16697,10 @@
       "recipe_name": "Forest Mushroom Bread Pudding",
       "category": "main-course",
       "profile_source": "recipe-record",
-      "total_cost": 21.31,
-      "cost_per_portion": 5.33,
-      "costing_status": "incomplete",
-      "warning_count": 1
+      "total_cost": 26.56,
+      "cost_per_portion": 6.64,
+      "costing_status": "estimated",
+      "warning_count": 0
     },
     {
       "recipe_id": "main-roasted-squash-with-sage-brown-butter",
@@ -17493,10 +17517,10 @@
       "recipe_name": "Vanilla Bean Panna Cotta",
       "category": "dessert",
       "profile_source": "recipe-record",
-      "total_cost": 6.74,
-      "cost_per_portion": 1.69,
-      "costing_status": "incomplete",
-      "warning_count": 1
+      "total_cost": 7.74,
+      "cost_per_portion": 1.94,
+      "costing_status": "estimated",
+      "warning_count": 0
     },
     {
       "recipe_id": "dessert-chocolate-pot-de-creme",
@@ -17627,6 +17651,67 @@
       "cost_per_portion": 5.87,
       "costing_status": "estimated",
       "warning_count": 0
+    }
+  ],
+  "summary_by_status": {
+    "estimated": 148
+  },
+  "summary_by_category": [
+    {
+      "category": "dining-style-profile",
+      "recipe_count": 8,
+      "estimated_recipe_count": 8,
+      "incomplete_recipe_count": 0,
+      "total_estimated_cost": 3398.5
+    },
+    {
+      "category": "starter",
+      "recipe_count": 14,
+      "estimated_recipe_count": 14,
+      "incomplete_recipe_count": 0,
+      "total_estimated_cost": 122.97
+    },
+    {
+      "category": "main-course",
+      "recipe_count": 42,
+      "estimated_recipe_count": 42,
+      "incomplete_recipe_count": 0,
+      "total_estimated_cost": 1136.81
+    },
+    {
+      "category": "sauce",
+      "recipe_count": 29,
+      "estimated_recipe_count": 29,
+      "incomplete_recipe_count": 0,
+      "total_estimated_cost": 107.2
+    },
+    {
+      "category": "starch",
+      "recipe_count": 14,
+      "estimated_recipe_count": 14,
+      "incomplete_recipe_count": 0,
+      "total_estimated_cost": 81.34
+    },
+    {
+      "category": "vegetable",
+      "recipe_count": 15,
+      "estimated_recipe_count": 15,
+      "incomplete_recipe_count": 0,
+      "total_estimated_cost": 82.62
+    },
+    {
+      "category": "optional-addition",
+      "recipe_count": 12,
+      "estimated_recipe_count": 12,
+      "incomplete_recipe_count": 0,
+      "total_estimated_cost": 217.98
+    },
+    {
+      "category": "dessert",
+      "recipe_count": 14,
+      "estimated_recipe_count": 14,
+      "incomplete_recipe_count": 0,
+      "total_estimated_cost": 160.29
     }
   ]
 }

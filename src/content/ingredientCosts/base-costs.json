@@ -311,7 +311,21 @@
       "usable_yield_percent": 100,
       "edible_unit_cost": 7.0,
       "last_updated": "2026-03-20",
-      "notes": "Phase 1 placeholder cost record for internal recipe costing."
+      "notes": "Include loaf-to-slice and loaf-to-ounce mappings for internal recipe costing.",
+      "recipe_unit_mappings": [
+        {
+          "unit": "slice",
+          "quantity_per_purchase_unit": 12
+        },
+        {
+          "unit": "slices",
+          "quantity_per_purchase_unit": 12
+        },
+        {
+          "unit": "oz",
+          "quantity_per_purchase_unit": 16
+        }
+      ]
     },
     {
       "id": "butter",
@@ -959,7 +973,17 @@
       "usable_yield_percent": 100,
       "edible_unit_cost": 4.0,
       "last_updated": "2026-03-20",
-      "notes": "Phase 1 placeholder cost record for internal recipe costing."
+      "notes": "Include box-to-packet mapping for internal recipe costing.",
+      "recipe_unit_mappings": [
+        {
+          "unit": "packet",
+          "quantity_per_purchase_unit": 4
+        },
+        {
+          "unit": "packets",
+          "quantity_per_purchase_unit": 4
+        }
+      ]
     },
     {
       "id": "flour",

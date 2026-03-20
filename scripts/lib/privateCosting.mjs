@@ -56,6 +56,10 @@ const buildUsageUnitsByIngredientCostId = (recipes) => {
 };
 
 const inferPurchaseMeasureUnit = (costRecord, usageUnits) => {
+  if (costRecord.purchase_measure_unit) {
+    return normalizeUnit(costRecord.purchase_measure_unit);
+  }
+
   const normalizedPurchaseUnit = normalizeUnit(costRecord.purchase_unit);
   if (FIXED_PURCHASE_MEASURE_UNIT[normalizedPurchaseUnit]) {
     return FIXED_PURCHASE_MEASURE_UNIT[normalizedPurchaseUnit];
@@ -72,11 +76,24 @@ const inferPurchaseMeasureUnit = (costRecord, usageUnits) => {
   return null;
 };
 
-const convertRecipeQuantityToPurchaseMeasure = (quantity, recipeUnit, purchaseMeasureUnit) => {
+const buildRecipeUnitMappingIndex = (costRecord) =>
+  new Map(
+    (costRecord.recipe_unit_mappings ?? []).map((mapping) => [
+      normalizeUnit(mapping.unit),
+      mapping.quantity_per_purchase_unit
+    ])
+  );
+
+const convertRecipeQuantityToPurchaseMeasure = (quantity, recipeUnit, costRecord) => {
   const normalizedRecipeUnit = normalizeUnit(recipeUnit);
-  const normalizedPurchaseUnit = normalizeUnit(purchaseMeasureUnit);
+  const normalizedPurchaseUnit = normalizeUnit(costRecord.purchase_measure_unit);
+  const recipeUnitMappingIndex = buildRecipeUnitMappingIndex(costRecord);
 
   if (normalizedRecipeUnit === normalizedPurchaseUnit) return quantity;
+  if (recipeUnitMappingIndex.has(normalizedRecipeUnit)) {
+    const quantityPerPurchaseUnit = recipeUnitMappingIndex.get(normalizedRecipeUnit);
+    return quantityPerPurchaseUnit > 0 ? quantity / quantityPerPurchaseUnit : null;
+  }
   if (normalizedRecipeUnit in MASS_TO_OUNCES && normalizedPurchaseUnit in MASS_TO_OUNCES) {
     return (quantity * MASS_TO_OUNCES[normalizedRecipeUnit]) / MASS_TO_OUNCES[normalizedPurchaseUnit];
   }
@@ -197,7 +214,7 @@ const costRecipeIngredient = (ingredient, costRecord, warnings) => {
     };
   }
 
-  const normalizedRecipeQuantity = convertRecipeQuantityToPurchaseMeasure(recipeQuantity, ingredient.unit, costRecord.purchase_measure_unit);
+  const normalizedRecipeQuantity = convertRecipeQuantityToPurchaseMeasure(recipeQuantity, ingredient.unit, costRecord);
   if (normalizedRecipeQuantity == null) {
     warnings.push(`Ingredient ${ingredient.ingredient_name} could not be converted from ${ingredient.unit} to ${costRecord.purchase_measure_unit}.`);
     return {
@@ -244,6 +261,34 @@ const costRecipeIngredient = (ingredient, costRecord, warnings) => {
     cost_of_quantity_used: roundCurrency(costOfQuantityUsed)
   };
 };
+
+const buildSummaryByStatus = (recipes) =>
+  recipes.reduce((totals, recipe) => {
+    totals[recipe.costing_status] = (totals[recipe.costing_status] ?? 0) + 1;
+    return totals;
+  }, {});
+
+const buildCategorySummary = (recipes) =>
+  Object.values(
+    recipes.reduce((categories, recipe) => {
+      const category = categories[recipe.category] ?? {
+        category: recipe.category,
+        recipe_count: 0,
+        estimated_recipe_count: 0,
+        incomplete_recipe_count: 0,
+        total_estimated_cost: 0
+      };
+      category.recipe_count += 1;
+      if (recipe.costing_status === 'estimated') category.estimated_recipe_count += 1;
+      if (recipe.costing_status === 'incomplete') category.incomplete_recipe_count += 1;
+      category.total_estimated_cost += recipe.estimated_total_recipe_cost ?? 0;
+      categories[recipe.category] = category;
+      return categories;
+    }, {})
+  ).map((category) => ({
+    ...category,
+    total_estimated_cost: roundCurrency(category.total_estimated_cost)
+  }));
 
 export const generatePrivateRecipeCosting = () => {
   const sourceRecipes = recipesData.recipes.map(mergeRecipeWithResolvedProfile);
@@ -310,6 +355,8 @@ export const generatePrivateRecipeCosting = () => {
     source_versions: { privateRecipes: recipesData.version, ingredientCosts: ingredientCostsData.version },
     ingredient_costs: [...ingredientCostsById.values()],
     recipes: enrichedRecipes,
-    summary
+    summary,
+    summary_by_status: buildSummaryByStatus(enrichedRecipes),
+    summary_by_category: buildCategorySummary(enrichedRecipes)
   };
 };
