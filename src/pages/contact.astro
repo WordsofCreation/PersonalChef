@@ -87,6 +87,18 @@ const dataPayload = {
               <a class="menu-request-edit-link" href={withBase('/menu-preview')}>Edit Menu</a>
             </div>
             <div class="menu-request-handoff-grid" data-menu-request-grid></div>
+            <div class="menu-request-estimate soft-panel" data-menu-request-estimate hidden>
+              <div class="menu-request-estimate-head">
+                <div>
+                  <p class="process-kicker">Planning guidance</p>
+                  <h4 data-menu-request-estimate-heading></h4>
+                </div>
+                <span class="menu-request-estimate-tier" data-menu-request-estimate-tier hidden></span>
+              </div>
+              <p class="menu-request-estimate-summary" data-menu-request-estimate-summary></p>
+              <p class="menu-request-estimate-supporting" data-menu-request-estimate-supporting></p>
+              <p class="menu-request-estimate-disclaimer" data-menu-request-estimate-disclaimer></p>
+            </div>
             <div class="menu-request-handoff-notes" data-menu-request-notes hidden>
               <p class="menu-request-label">Custom Considerations</p>
               <p data-menu-request-notes-copy></p>
@@ -234,6 +246,12 @@ const dataPayload = {
     const menuRequestNotesCopy = document.querySelector('[data-menu-request-notes-copy]');
     const menuRequestInput = document.querySelector('[data-menu-request-input]');
     const menuRequestFields = Array.from(document.querySelectorAll('[data-menu-field]'));
+    const menuRequestEstimate = document.querySelector('[data-menu-request-estimate]');
+    const menuRequestEstimateHeading = document.querySelector('[data-menu-request-estimate-heading]');
+    const menuRequestEstimateTier = document.querySelector('[data-menu-request-estimate-tier]');
+    const menuRequestEstimateSummary = document.querySelector('[data-menu-request-estimate-summary]');
+    const menuRequestEstimateSupporting = document.querySelector('[data-menu-request-estimate-supporting]');
+    const menuRequestEstimateDisclaimer = document.querySelector('[data-menu-request-estimate-disclaimer]');
     const menuDataElement = document.getElementById('menu-request-data');
 
     let menuRequestPayload = readMenuRequestPayload();
@@ -241,7 +259,11 @@ const dataPayload = {
     if ((!menuRequestPayload || !hasMenuRequestSelections(menuRequestPayload)) && menuDataElement?.textContent) {
       const builderData = JSON.parse(menuDataElement.textContent);
       const builderState = readBuilderState();
-      const fallbackPayload = createMenuRequestPayload(builderData, builderState, 'contact-page');
+      const guestCountField = document.querySelector('#guestCount');
+      const parsedGuestCount = guestCountField instanceof HTMLInputElement ? Number.parseInt(guestCountField.value, 10) : NaN;
+      const fallbackPayload = createMenuRequestPayload(builderData, builderState, 'contact-page', {
+        guestCount: Number.isFinite(parsedGuestCount) ? parsedGuestCount : null
+      });
       if (hasMenuRequestSelections(fallbackPayload)) {
         menuRequestPayload = fallbackPayload;
       }
@@ -276,6 +298,20 @@ const dataPayload = {
       if (menuRequestNotes && menuRequestNotesCopy && details?.customConsiderations) {
         menuRequestNotes.hidden = false;
         menuRequestNotesCopy.textContent = details.customConsiderations;
+      }
+
+      if (menuRequestEstimate && menuRequestEstimateHeading && menuRequestEstimateSummary && menuRequestEstimateSupporting && menuRequestEstimateDisclaimer && menuRequestPayload?.publicPricing) {
+        const publicPricing = menuRequestPayload.publicPricing;
+        menuRequestEstimate.hidden = false;
+        menuRequestEstimateHeading.textContent = publicPricing.heading;
+        menuRequestEstimateSummary.textContent = publicPricing.summary;
+        menuRequestEstimateSupporting.textContent = publicPricing.supportingText;
+        menuRequestEstimateDisclaimer.textContent = publicPricing.disclaimer;
+
+        if (menuRequestEstimateTier && publicPricing.tierLabel) {
+          menuRequestEstimateTier.hidden = false;
+          menuRequestEstimateTier.textContent = publicPricing.tierLabel;
+        }
       }
 
       if (menuRequestInput instanceof HTMLInputElement) menuRequestInput.value = summary;

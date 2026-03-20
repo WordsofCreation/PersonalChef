@@ -57,6 +57,19 @@ const dataPayload = {
               <div class="menu-preview-composed-lines" data-preview-composed-lines></div>
             </div>
 
+            <div class="menu-preview-estimate panel-soft" data-preview-estimate hidden>
+              <div class="menu-preview-estimate-head">
+                <div>
+                  <p class="menu-preview-kicker">Planning guidance</p>
+                  <h3 data-preview-estimate-heading></h3>
+                </div>
+                <span class="menu-preview-estimate-tier" data-preview-estimate-tier hidden></span>
+              </div>
+              <p class="menu-preview-estimate-summary" data-preview-estimate-summary></p>
+              <p class="menu-preview-estimate-supporting" data-preview-estimate-supporting></p>
+              <p class="menu-preview-estimate-disclaimer" data-preview-estimate-disclaimer></p>
+            </div>
+
             <div class="menu-preview-notes panel-soft" data-preview-notes hidden>
               <p class="menu-preview-kicker">Custom considerations</p>
               <p data-preview-notes-copy></p>
@@ -119,6 +132,7 @@ const dataPayload = {
       storeMenuRequestPayload,
       summaryLabels
     } from '../utils/menuBuilderClient';
+    import { createPublicPricingGuidance } from '../data/publicPricingGuidance';
 
     const dataElement = document.getElementById('menu-preview-data');
 
@@ -134,6 +148,12 @@ const dataPayload = {
       const badge = document.querySelector('[data-preview-badge]');
       const lead = document.querySelector('[data-preview-lead]');
       const submitButton = document.querySelector('[data-submit-menu-request]');
+      const estimatePanel = document.querySelector('[data-preview-estimate]');
+      const estimateHeading = document.querySelector('[data-preview-estimate-heading]');
+      const estimateTier = document.querySelector('[data-preview-estimate-tier]');
+      const estimateSummary = document.querySelector('[data-preview-estimate-summary]');
+      const estimateSupporting = document.querySelector('[data-preview-estimate-supporting]');
+      const estimateDisclaimer = document.querySelector('[data-preview-estimate-disclaimer]');
 
       const hasSelections = previewSectionOrder.some((sectionId) => {
         if (sectionId === 'optionalAdditions') return state.optionalAdditions.length > 0;
@@ -218,6 +238,23 @@ const dataPayload = {
               ${item.description ? `<span>${item.description}</span>` : ''}
             </article>
           `).join('');
+        }
+
+        if (estimatePanel && estimateHeading && estimateSummary && estimateSupporting && estimateDisclaimer) {
+          const publicPricing = createPublicPricingGuidance(state);
+
+          if (publicPricing.isVisible) {
+            estimatePanel.hidden = false;
+            estimateHeading.textContent = publicPricing.heading;
+            estimateSummary.textContent = publicPricing.summary;
+            estimateSupporting.textContent = publicPricing.supportingText;
+            estimateDisclaimer.textContent = publicPricing.disclaimer;
+
+            if (estimateTier && publicPricing.tierLabel) {
+              estimateTier.hidden = false;
+              estimateTier.textContent = publicPricing.tierLabel;
+            }
+          }
         }
 
         if (notesPanel && notesCopy && preview.details.customConsiderations) {
