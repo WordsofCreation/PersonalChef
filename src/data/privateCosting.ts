@@ -13,3 +13,7 @@ export const getPrivateRecipeCostingById = (recipeId: string) =>
   privateRecipeCosting.recipes.find((recipe) => recipe.id === recipeId);
 
 export const getPrivateRecipeCostingSummary = () => privateRecipeCosting.summary;
+
+
+export const getIncompletePrivateRecipeCosting = () =>
+  privateRecipeCosting.recipes.filter((recipe) => recipe.costing_status === 'incomplete');
