@@ -25,6 +25,7 @@ The script also normalizes common unit conversions such as:
 - teaspoons / tablespoons / cups ↔ fluid ounces
 - fluid ounces ↔ milliliters
 - each-style count units where supported
+- ingredient-specific purchase mappings such as loaf → slices / ounces or box → packets when the private ingredient cost record includes `recipe_unit_mappings`
 
 ## Recipe totals produced by the generator
 
@@ -62,6 +63,17 @@ When vendor costs change:
 2. Run `npm run build:private-costing`.
 3. Review the regenerated `src/generated/private-recipe-costing.json` output.
 
+If a recipe starts warning on unit conversions, add or adjust `recipe_unit_mappings` on the related ingredient record so the generator can translate recipe usage units back to the purchase unit cleanly.
+
 ## Internal-only reminder
 
 Do not expose `src/generated/private-recipe-costing.json` or any raw recipe/ingredient cost values on public-facing routes in this phase.
+
+## Future Phase 3 preparation
+
+The generated file now also includes:
+
+- `summary_by_status`
+- `summary_by_category`
+
+These are internal-only rollups intended to support future menu-level estimate composition without moving costing formulas into public UI files.
