@@ -257,9 +257,15 @@ const initialMainCourseOptions = mainCourseOptions[defaultMainCourseCategory] ??
               <h2>See your selections presented like a composed private-chef menu.</h2>
               <p>When you’re ready, move from the builder into a polished preview page without losing your selections.</p>
             </div>
-            <button class="btn btn-primary builder-preview-button" type="button" data-preview-button>
-              Preview My Menu
-            </button>
+            <div class="builder-cta-actions">
+              <div class="planning-note planning-note--builder" aria-label="Chef's planning note">
+                <p class="planning-note-title">Chef’s Planning Note</p>
+                <p>Selections here serve as a sample planning guide. Final dishes and ingredients are confirmed during booking and may be thoughtfully refined based on seasonal sourcing, market availability, and chef recommendations.</p>
+              </div>
+              <button class="btn btn-primary builder-preview-button" type="button" data-preview-button>
+                Preview My Menu
+              </button>
+            </div>
           </div>
         </div>
       </form>

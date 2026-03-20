@@ -1343,7 +1343,9 @@ textarea {
 .builder-subsection,
 .builder-section-head,
 .builder-subsection-head,
-.builder-cta-panel {
+.builder-cta-panel,
+.builder-cta-actions,
+.planning-note {
   display: grid;
   gap: 1.25rem;
 }
@@ -1516,8 +1518,40 @@ input[type='checkbox'].builder-option-input + .builder-option-check {
     linear-gradient(135deg, rgba(24, 40, 29, 0.96), rgba(8, 15, 11, 0.94)),
     radial-gradient(circle at top right, rgba(212, 160, 23, 0.12), transparent 28%);
 }
+.builder-cta-actions {
+  justify-items: stretch;
+  gap: 0.95rem;
+  max-width: 31rem;
+}
 .builder-preview-button {
   min-width: 220px;
+}
+.planning-note {
+  padding: 0.95rem 1rem;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.planning-note-title {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--bronze-deep);
+}
+.planning-note p:last-child {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+.planning-note--builder {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(8, 15, 11, 0.18));
+}
+.planning-note--preview {
+  gap: 0.75rem;
 }
 .menu-summary-panel {
   position: sticky;
@@ -1575,6 +1609,10 @@ input[type='checkbox'].builder-option-input + .builder-option-check {
     grid-template-columns: 1fr;
   }
 
+  .builder-cta-actions {
+    max-width: none;
+  }
+
   .menu-summary-panel {
     position: static;
   }
@@ -1591,6 +1629,10 @@ input[type='checkbox'].builder-option-input + .builder-option-check {
   .menu-summary-panel,
   .menu-builder-intro {
     padding: 1.2rem;
+  }
+
+  .planning-note {
+    padding: 0.9rem;
   }
 
   .menu-builder-intro h1 {
