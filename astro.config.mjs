@@ -7,5 +7,6 @@ export default defineConfig({
   site: 'https://YOUR-GITHUB-USERNAME.github.io',
   base: githubPagesBase,
   output: 'static',
+  trailingSlash: 'always',
   outDir: './docs'
 });
