@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://<your-github-username>.github.io/PersonalChef/sitemap-index.xml
