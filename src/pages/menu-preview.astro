@@ -65,6 +65,24 @@ const dataPayload = {
                 </div>
                 <span class="menu-preview-estimate-tier" data-preview-estimate-tier hidden></span>
               </div>
+              <div class="menu-preview-guest-count">
+                <label class="menu-preview-guest-count-label" for="menu-preview-guest-count">Number of people</label>
+                <div class="menu-preview-guest-count-control">
+                  <button type="button" class="menu-preview-guest-button" data-guest-count-decrement aria-label="Decrease guest count">−</button>
+                  <input
+                    id="menu-preview-guest-count"
+                    class="menu-preview-guest-input"
+                    type="number"
+                    inputmode="numeric"
+                    min="1"
+                    step="1"
+                    value="2"
+                    data-preview-guest-count
+                  />
+                  <button type="button" class="menu-preview-guest-button" data-guest-count-increment aria-label="Increase guest count">+</button>
+                </div>
+                <p class="menu-preview-guest-count-note">Adjust the guest count to see the planning estimate scale for your table.</p>
+              </div>
               <p class="menu-preview-estimate-summary" data-preview-estimate-summary></p>
               <p class="menu-preview-estimate-supporting" data-preview-estimate-supporting></p>
               <p class="menu-preview-estimate-disclaimer" data-preview-estimate-disclaimer></p>
@@ -154,6 +172,9 @@ const dataPayload = {
       const estimateSummary = document.querySelector('[data-preview-estimate-summary]');
       const estimateSupporting = document.querySelector('[data-preview-estimate-supporting]');
       const estimateDisclaimer = document.querySelector('[data-preview-estimate-disclaimer]');
+      const guestCountInput = document.querySelector('[data-preview-guest-count]');
+      const decrementGuestCountButton = document.querySelector('[data-guest-count-decrement]');
+      const incrementGuestCountButton = document.querySelector('[data-guest-count-increment]');
 
       const hasSelections = previewSectionOrder.some((sectionId) => {
         if (sectionId === 'optionalAdditions') return state.optionalAdditions.length > 0;
@@ -240,22 +261,68 @@ const dataPayload = {
           `).join('');
         }
 
-        if (estimatePanel && estimateHeading && estimateSummary && estimateSupporting && estimateDisclaimer) {
-          const publicPricing = createPublicPricingGuidance(state);
+        const normalizeGuestCount = (value) => {
+          const parsed = Number.parseInt(String(value || ''), 10);
+          if (!Number.isFinite(parsed) || parsed < 1) return 1;
+          return Math.min(100, parsed);
+        };
 
-          if (publicPricing.isVisible) {
-            estimatePanel.hidden = false;
-            estimateHeading.textContent = publicPricing.heading;
-            estimateSummary.textContent = publicPricing.summary;
-            estimateSupporting.textContent = publicPricing.supportingText;
-            estimateDisclaimer.textContent = publicPricing.disclaimer;
-
-            if (estimateTier && publicPricing.tierLabel) {
-              estimateTier.hidden = false;
-              estimateTier.textContent = publicPricing.tierLabel;
-            }
+        const renderEstimate = (guestCount) => {
+          const pricing = createPublicPricingGuidance(state, { guestCount });
+          if (!estimatePanel || !estimateHeading || !estimateTier || !estimateSummary || !estimateSupporting || !estimateDisclaimer) {
+            return;
           }
-        }
+
+          if (!pricing.isVisible) {
+            estimatePanel.hidden = true;
+            return;
+          }
+
+          estimatePanel.hidden = false;
+          estimateHeading.textContent = pricing.heading;
+          estimateSummary.textContent = pricing.summary;
+          estimateSupporting.textContent = pricing.supportingText;
+          estimateDisclaimer.textContent = pricing.disclaimer;
+
+          if (pricing.tierLabel) {
+            estimateTier.textContent = pricing.tierLabel;
+            estimateTier.hidden = false;
+          } else {
+            estimateTier.hidden = true;
+            estimateTier.textContent = '';
+          }
+        };
+
+        const syncGuestCountEstimate = (nextValue) => {
+          const guestCount = normalizeGuestCount(nextValue);
+
+          if (guestCountInput) {
+            guestCountInput.value = String(guestCount);
+          }
+
+          renderEstimate(guestCount);
+          return guestCount;
+        };
+
+        const currentGuestCount = syncGuestCountEstimate(guestCountInput?.value || 2);
+
+        guestCountInput?.addEventListener('input', (event) => {
+          syncGuestCountEstimate(event.currentTarget.value);
+        });
+
+        guestCountInput?.addEventListener('blur', (event) => {
+          syncGuestCountEstimate(event.currentTarget.value);
+        });
+
+        decrementGuestCountButton?.addEventListener('click', () => {
+          const guestCount = normalizeGuestCount(guestCountInput?.value || currentGuestCount);
+          syncGuestCountEstimate(Math.max(1, guestCount - 1));
+        });
+
+        incrementGuestCountButton?.addEventListener('click', () => {
+          const guestCount = normalizeGuestCount(guestCountInput?.value || currentGuestCount);
+          syncGuestCountEstimate(guestCount + 1);
+        });
 
         if (notesPanel && notesCopy && preview.details.customConsiderations) {
           notesPanel.hidden = false;
@@ -263,7 +330,8 @@ const dataPayload = {
         }
 
         submitButton?.addEventListener('click', () => {
-          storeMenuRequestPayload(createMenuRequestPayload(builderData, state));
+          const guestCount = syncGuestCountEstimate(guestCountInput?.value || currentGuestCount);
+          storeMenuRequestPayload(createMenuRequestPayload(builderData, state, 'menu-preview', { guestCount }));
         });
       }
     }
