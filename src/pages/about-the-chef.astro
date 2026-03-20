@@ -4,11 +4,11 @@ import CTA from '../components/CTA.astro';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Chef Placeholder Name',
+  name: 'Chef Scott Stokes',
   jobTitle: 'Personal Chef',
   worksFor: { '@type': 'LocalBusiness', name: 'Olympic Peninsula Personal Chef' },
   address: { '@type': 'PostalAddress', addressLocality: 'Port Angeles', addressRegion: 'WA' },
-  description: 'Personal chef serving Port Angeles and the Olympic Peninsula with meal prep, private dining, and custom menus.'
+  description: 'Chef Scott Stokes offers private dining and personalized meal support across Port Angeles, Sequim, and the Olympic Peninsula with seasonal ingredients, tailored menus, and thoughtful hospitality.'
 };
 ---
 <BaseLayout title="About the Chef | Olympic Peninsula Personal Chef" description="Meet the chef behind this Port Angeles and Sequim personal chef service, focused on seasonal ingredients, custom menus, polished hospitality, and a calm client experience." path="/about-the-chef" schema={schema}>
@@ -16,9 +16,10 @@ const schema = {
     <div class="container grid two-col">
       <div class="card">
         <p class="eyebrow">About the chef</p>
-        <h1>A hospitality-led culinary approach grounded in trust, seasonality, and thoughtful service.</h1>
-        <p>Chef Placeholder Name brings a refined but approachable perspective to private dining and meal support on the Olympic Peninsula, blending menu intuition, polished execution, and the kind of calm presence that helps a home feel instantly cared for.</p>
-        <p>The focus is always on ingredient quality, attentive planning, and a guest experience that feels personal rather than performative—whether serving a romantic dinner in Port Angeles, an intimate gathering in Sequim, or a hosted coastal getaway.</p>
+        <h1>A thoughtful, elevated approach to private dining rooted in seasonality, care, and Pacific Northwest hospitality.</h1>
+        <p>Chef Scott Stokes brings a thoughtful, elevated approach to private dining on the Olympic Peninsula, shaped by years of hands-on culinary experience, strong hospitality instincts, and a genuine love of creating memorable meals. His work is centered on seasonal ingredients, carefully tailored menus, and the kind of calm, attentive service that helps guests feel cared for from the moment the experience begins.</p>
+        <p>Whether preparing a romantic dinner in Port Angeles, a warm gathering in Sequim, or a beautifully planned meal for a coastal getaway, Chef Scott focuses on food that feels both refined and welcoming. His approach blends polished execution with flexibility, allowing each menu to reflect the occasion, the setting, and the people around the table.</p>
+        <p>Known for thoughtful menu development, ingredient awareness, and a deep respect for both comfort and quality, Chef Scott creates dining experiences that feel personal rather than performative. From intimate private dinners to customized meal support, the goal is always the same: to serve food with care, intention, and a sense of place rooted in the Pacific Northwest.</p>
       </div>
       <div class="card">
         <p class="eyebrow">What clients can expect</p>
